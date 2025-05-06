@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Welcome to My Static App!");
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     console.log("Welcome to My Static App!");
+// });
 
 
 $(window).on('load', function () {
