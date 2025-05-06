@@ -462,9 +462,6 @@ p{
     .desktop {
         display: none; /* Hide desktop navbar on mobile */
     }
-    /* .mobile {
-        display: block;
-    } */
 
     .figtingWithAISlider{
         background-color: #000;
@@ -493,7 +490,6 @@ p{
         color: #fff;
     }
     .slider_arrows {
- 
         position: absolute;
         top: 15%;
         transform: translateY(-50%);
@@ -503,6 +499,7 @@ p{
         display: flex;
         padding: 0 30px;
     }
+    
     .slider_arrow_left svg, .slider_arrow_right svg{
         filter: invert(1) brightness(2);
     }
@@ -520,9 +517,7 @@ p{
 }
 
 @media (min-width: 769px) {
-    /* .desktop {
-        display: block; 
-    } */
+
     .mobile {
         display: none; /* Hide mobile navbar on larger screens */
     }
