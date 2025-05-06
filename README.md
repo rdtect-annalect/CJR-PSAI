@@ -1,5 +1,6 @@
 # CJR-PSAI
 
+## Heading 2
 * Make footer with pngs from figma
 * Make Carousel for "Fighting with AI" Section
 * Still waiting on gifs and videos for background and other sections
