@@ -5,8 +5,8 @@ body {
     line-height: 1.6;
 }
 header {
-    background: #333;
-    color: #fff;
+    /* background: #333;/ */
+    /* color: #fff; */
     padding: 10px 0;
     text-align: center;
 }
@@ -25,6 +25,12 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
+/* a tags */
+nav ul li a:hover {
+    text-decoration: underline; /* Add hover effect for links */
+    cursor: pointer;
+}
 main {
     padding: 20px;
 }
@@ -33,10 +39,87 @@ section {
 }
 footer {
     text-align: center;
-    background: #333;
+    /* background: #333; */
     color: #fff;
     padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+#logo {
+    width: 100px;
+    height: auto;
+}
+
+#background-image {
+    background-image: url('img/HEADER.png');
+    background-size: cover;
+    position: fixed; /* Makes it not part of the flow */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    z-index: -1; /* Places it behind other content */
+}
+
+#background-image-2 {
+    background-image: url('img/VIDEO\ SECTION.png');
+    background-size: cover;
+    position: fixed; /* Makes it not part of the flow */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+}
+
+
+/* NAVBAR */
+
+.nav-link {
+    color: #ffffffd5; /* White text color */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding around the link */
+    display: inline-block; /* Make it block level for padding */
+}
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-image: none; /* Remove default icon */
+    display: inline-block;
+    width: 30px; /* Width of the hamburger icon */
+    height: 20px; /* Height of the hamburger icon */
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon span {
+    content: '';
+    display: block;
+    background-color: red; /* Set the color of the lines */
+    height: 3px; /* Thickness of the lines */
+    width: 100%; /* Full width of the icon */
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler-icon::before {
+    top: 0; /* Position the first line at the top */
+}
+
+.navbar-toggler-icon span {
+    top: 50%; /* Position the middle line */
+    transform: translateY(-50%);
+}
+
+.navbar-toggler-icon::after {
+    bottom: 0; /* Position the last line at the bottom */
+}
+
+.navbar-toggler:focus {
+    outline: none; /* Removes the grey border when clicked */
+    box-shadow: none; /* Removes any additional focus shadow */
 }
