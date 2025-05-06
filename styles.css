@@ -5,9 +5,6 @@ body {
     line-height: 1.6;
 }
 header {
-    /* background: #333;/ */
-    /* color: #fff; */
-    padding: 10px 0;
     text-align: center;
 }
 header h1 {
@@ -31,9 +28,7 @@ nav ul li a:hover {
     text-decoration: underline; /* Add hover effect for links */
     cursor: pointer;
 }
-main {
-    padding: 20px;
-}
+
 section {
     margin-bottom: 20px;
 }
@@ -52,35 +47,32 @@ footer {
     height: auto;
 }
 
-#background-image {
-    background-image: url('img/HEADER.png');
+.bg-img {
+    background-repeat: no-repeat;
     background-size: cover;
-    position: fixed; /* Makes it not part of the flow */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
-    z-index: -1; /* Places it behind other content */
-}
-
-#background-image-2 {
-    background-image: url('img/VIDEO\ SECTION.png');
-    background-size: cover;
-    position: fixed; /* Makes it not part of the flow */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh; /* Full viewport height */
+    width: 100%; 
+    height: auto; 
+    position: relative; 
 }
 
 
-/* NAVBAR */
-
+/* NAVBAR */ 
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar is above other content */
+}
 .nav-link {
-    color: #ffffffd5; /* White text color */
+    color: #ffffffc3; /* White text color */
     text-decoration: none; /* Remove underline */
     padding: 10px 15px; /* Padding around the link */
     display: inline-block; /* Make it block level for padding */
+}
+
+.nav-link:hover {
+    color: #ffffff; /* Change color on hover */
+    text-decoration: underline; /* Underline on hover */
 }
 .navbar-toggler {
     border: none;
@@ -122,4 +114,25 @@ footer {
 .navbar-toggler:focus {
     outline: none; /* Removes the grey border when clicked */
     box-shadow: none; /* Removes any additional focus shadow */
+}
+
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none; /* Hide desktop navbar on mobile */
+    }
+    /* .mobile {
+        display: block;
+    } */
+}
+
+@media (min-width: 769px) {
+    /* .desktop {
+        display: block; 
+    } */
+    .mobile {
+        display: none; /* Hide mobile navbar on larger screens */
+    }
 }
