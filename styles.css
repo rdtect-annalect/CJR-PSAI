@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@font-face {
+    font-family: 'TT_Paplane_Trial_Regular';
+    src: url(fonts/TT_Paplane_Trial_Regular.ttf);
+}
+
 html{
     font-size: 85%;
 }
@@ -35,6 +40,24 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+#video-1 {
+    background-color: #FF4F2A;
+}
+
+.video-text {
+    text-transform: uppercase;
+    color: black;
+    letter-spacing: 2.5px;
+    line-height: 200%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+
+.big-pad {
+    padding-top: 18rem;
+    padding-bottom: 18rem;
+}
 
 /* a tags */
 nav ul li a:hover {
@@ -46,6 +69,7 @@ section {
     margin-bottom: 20px;
 }
 footer {
+    font-family: "TT_Paplane_Trial_Regular", sans-serif;
     text-align: center;
     /* background: #333; */
     color: #fff;
@@ -53,7 +77,7 @@ footer {
     position: fixed; */
     bottom: 0;
     width: 100%;
-background-color: #000;
+    background-color: #000;
 
 }
 .fooetr-wrapper {
@@ -108,23 +132,72 @@ p{
     position: relative; 
 }
 
+/* GIF SPANS */
+#header-container .span-one {
+    position: absolute;
+    top: 60px; 
+    left: -6%; 
+    width: 50%;
+}
+#header-container .span-two {
+    position: absolute;
+    top: 150px;
+    right: 8rem;
+    width: 15%;
+}
+#header-container .span-three {
+    position: absolute;
+    bottom: 110px; 
+    left: 5rem; 
+    width: 15%;
+}
+
+#why-this-matters .span-one {
+    position: absolute;
+    top: 10px; 
+    left: 0px; 
+    width: 15%;
+}
+
+#why-this-matters .span-two {
+    position: absolute;
+    bottom: 10px; 
+    right: 0px; 
+    width: 15%;
+}
+
+#about .span-one {
+    position: absolute;
+    top: 10px; 
+    left: 0px; 
+    width: 15%;
+}
+
+#about .span-two {
+    position: absolute;
+    bottom: 10px; 
+    right: 0px; 
+    width: 15%;
+}
+/* GIF SPANS END */
 
 /* NAVBAR */ 
 .navbar {
+    font-family: "TT_Paplane_Trial_Regular", sans-serif;
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensure navbar is above other content */
+    z-index: 1000; 
 }
 .nav-link {
-    color: #ffffffc3; /* White text color */
+    color:#e4d9c9c9; /* White text color */
     text-decoration: none; /* Remove underline */
     padding: 10px 15px; /* Padding around the link */
     display: inline-block; /* Make it block level for padding */
 }
 
 .nav-link:hover {
-    color: #ffffff; /* Change color on hover */
+    color: #fbefdc; /* Change color on hover */
     text-decoration: underline; /* Underline on hover */
 }
 .navbar-toggler {
@@ -499,7 +572,7 @@ p{
         display: flex;
         padding: 0 30px;
     }
-    
+
     .slider_arrow_left svg, .slider_arrow_right svg{
         filter: invert(1) brightness(2);
     }
@@ -517,7 +590,7 @@ p{
 }
 
 @media (min-width: 769px) {
-
+ 
     .mobile {
         display: none; /* Hide mobile navbar on larger screens */
     }
