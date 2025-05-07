@@ -1,0 +1,26 @@
+@media screen and (min-width: 1600px) {
+    html{
+        font-size: 100%;
+    }
+    .navbar {
+        padding-top: 3.5rem;
+    }
+
+    .para-box-wrapper.abt-colmbia {
+        margin-top: 5rem;
+    }
+
+  }
+
+
+  @media screen and (min-width: 1024px) {
+
+  .nav-item:not(:last-child) {
+    margin-right: 3rem;
+}
+
+
+.h-100vh{
+    height: 100vh;
+}
+  }
