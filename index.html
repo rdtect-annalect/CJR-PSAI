@@ -8,7 +8,9 @@
 
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -17,15 +19,25 @@
 
     <main>
         <header>
-            <!-- FPO -->
-            <div class="container-fluid g-0 ">
-                <img src="img/desktop/HEADER.jpg" alt="" class="bg-img desktop">
+            <!-- HEADER -->
+            <div class="container-fluid g-0 position-relative" id="header-container">
+                <img src="img/desktop/gif/CJR_MACRON_MOVING.gif" alt="" class="bg-img desktop">
+                <span class="span-one">
+                    <img src="img/desktop/gif/CJR_ThePsAI_Lockup CENTER B.gif" alt="" class="desktop img-fluid">
+                </span>
+                <span class="span-two">
+                    <img src="img/desktop/gif/GIF ORANGE/CJR_CODE_01.gif" alt="" class="desktop img-fluid">
+                </span>
+                <span class="span-three">
+                    <img src="img/desktop/gif/GIF ORANGE/CJR_CODE_04.gif" alt="" class="desktop img-fluid">
+                </span>
+
+
                 <img src="img/mobile/HEADER-mobile.jpg" alt="" class="bg-img mobile">
             </div>
-    
-    
+
             <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container-fluid custom-fluid" >
+                <div class="container-fluid custom-fluid">
                     <!-- ADD IN WITH CORRECT IMG AFTER BG GIF -->
                     <a class="navbar-brand" href="#">
                         <img src="img/fpo-logo.png" alt="Logo" class="d-inline-block align-text-top" id="logo">
@@ -34,7 +46,7 @@
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon">
                             <!-- Add this span for the middle line -->
-                            <span></span> 
+                            <span></span>
                         </span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
@@ -58,30 +70,63 @@
                     </div>
                 </div>
             </nav>
-    
+
         </header>
 
-        
 
-        <div class="container-fluid g-0">
-            <img src="img/desktop/VIDEO SECTION.jpg" alt="" class="bg-img desktop">
-            <img src="img/mobile/VIDEO SECTION.jpg" alt="" class="bg-img mobile">
+        <!-- VIDEO TEXT-->
+        <div class="container-fluid g-0 text-center big-pad" id="video-1">
+            <!-- <img src="img/desktop/VIDEO SECTION.jpg" alt="" class="bg-img desktop"> -->
+
+            <div class="row justify-content-center desktop">
+                <div class="col col-md-9 col-lg-7 col-xl-5">
+                    <p class="video-text">
+                        For more than a century, photography has been one of the
+                        greatest tools journalists have had to establish truth and
+                        trust. But AI-generated images are making it increasingly hard
+                        to distinguish real from fake journalism. The PSAi is a campaign
+                        that uses viral AI images to teach people how to spot AI images
+                    </p>
+                </div>
+            </div>
+        </div>
+        <img src="img/mobile/VIDEO SECTION.jpg" alt="" class="bg-img mobile">
+
+        <!-- VIDEO -->
+        <div class="container-fluid g-0" id="video-section">
+            <video class="w-100" autoplay controls muted loop>
+                <source src="img/video/SpotAI_FINAL_v7.mp4" type="video/mp4">
+            </video>
         </div>
 
-        <div class="container-fluid g-0">
+        <!-- WHY THIS MATTERS -->
+        <div class="container-fluid g-0 position-relative" id="why-this-matters">
             <img src="img/desktop/WHY THIS MATTERS.jpg" alt="" class="bg-img desktop">
+            <span class="span-one">
+                <img src="img/desktop/gif/GIF ORANGE/CJR_CODE_02.gif" alt="" class="desktop img-fluid">
+            </span>
+            <span class="span-two">
+                <img src="img/desktop/gif/GIF ORANGE/CJR_CODE_02.gif" alt="" class="desktop img-fluid">
+            </span>
+
             <img src="img/mobile/WHY THIS MATTERS.jpg" alt="" class="bg-img mobile">
         </div>
-        
-        <!-- MAKE INTO CAROUSEL -->
-        <!-- <div class="container-fluid g-0">
-            <img src="img/desktop/FIGHTHING WITH AI.jpg" alt="" class="bg-img desktop">
-            <img src="img/mobile/FIGHTHING WITH AI.jpg" alt="" class="bg-img mobile"> 
-        </div> -->
 
-        
-        <section >
-       
+        <!-- FIGHTING WITH AI GRID -->
+        <div class="container-fluid g-0">
+            <img src="img/desktop/FIGHTHING WITH AI.jpg" alt="" class="bg-img desktop">
+            <img src="img/mobile/FIGHTHING WITH AI.jpg" alt="" class="bg-img mobile">
+        </div>
+
+        <!-- HOW TO SPOT AI -->
+        <div class="container-fluid g-0">
+            <img src="img/desktop/HOW TO SPOT AI.jpg" alt="" class="bg-img desktop">
+            <img src="img/mobile/HOW TO SPOT AI.jpg" alt="" class="bg-img mobile">
+        </div>
+
+        <!-- POTENTIALLY USABLE FOR MODAL ARROW LOGIC -->
+        <!-- <section>
+
             <div class="figtingWithAISlider position-relative">
                 <div class="slide-item">
                     <div class="row flex-lg-row-reverse">
@@ -91,26 +136,29 @@
                                     <source media="(min-width:1024px)" srcset="img/fightingwithAI/1.jpg">
                                     <source media="(max-width:465px)" srcset="img/fightingwithAI/1-mobile.jpg">
                                     <img src="img/fightingwithAI/1.jpg" alt="" class="img-fluid">
-                                  </picture>
-                        </div>
+                                </picture>
+                            </div>
                         </div>
 
                         <div class="col-md-12 col-lg-12 col-xl-6">
                             <div class="slide-content">
                                 <div class="slide-content">
-                                    <h2 class="slider__main-title text-dark-orange">FIGHTING<br /> WITH AI<br/> -</h2>
-<p class="slider__image-title text-dark-orange">IMAGE 01</p>
+                                    <h2 class="slider__main-title text-dark-orange">FIGHTING<br /> WITH AI<br /> -</h2>
+                                    <p class="slider__image-title text-dark-orange">IMAGE 01</p>
 
-<h3 class="slider__person-label mb-0">PERSON IN IMAGE:</h3>
-<small class="slider__person-name mb-4 d-block">Shrimp Jesus</small>
+                                    <h3 class="slider__person-label mb-0">PERSON IN IMAGE:</h3>
+                                    <small class="slider__person-name mb-4 d-block">Shrimp Jesus</small>
 
-<h3 class="slider__context-label">CONTEXT:</h3>
+                                    <h3 class="slider__context-label">CONTEXT:</h3>
 
-                                    <p>When people started talking about ‘AI garbage’ taking over the<br class="d-none d-lg-block"/> internet, this was a key viral example. At the time, many people <br class="d-none d-lg-block"/>actually believed this was a real image.</p>
+                                    <p>When people started talking about ‘AI garbage’ taking over the<br
+                                            class="d-none d-lg-block" /> internet, this was a key viral example. At the
+                                        time, many people <br class="d-none d-lg-block" />actually believed this was a
+                                        real image.</p>
 
                                     <ul class="viral-stats p-0 m-0 mt-4">
                                         <li class="d-flex gap-2 align-items-center">
-                                            <img src="img/fightingwithAI/ICON_04.svg"/>
+                                            <img src="img/fightingwithAI/ICON_04.svg" />
                                             <span class="text-dark-orange">Viral Stats:</span>
                                         </li>
 
@@ -121,43 +169,55 @@
 
 
                                     <div class="d-flex gap-2 align-items-center mt-4 btn_links-list">
-                                        
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 01 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 02 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 03 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 04 ] </span> </a>
-                                      
+
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 01 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 02 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 03 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 04 ] </span> </a>
+
 
                                     </div>
 
                                     <div class="slider_arrows">
                                         <div class="slider_arrow_left">
-                                            
-<svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z" fill="#FF4F2A"/>
-    </svg>
-    
+
+                                            <svg width="18" height="36" viewBox="0 0 18 36" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z"
+                                                    fill="#FF4F2A" />
+                                            </svg>
+
                                         </div>
 
                                         <div class="dash">
 
-                                            <svg width="155" height="1" viewBox="0 0 155 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A" stroke-dasharray="2 2"/>
-                                                </svg>
-                                                
+                                            <svg width="155" height="1" viewBox="0 0 155 1" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A"
+                                                    stroke-dasharray="2 2" />
+                                            </svg>
+
                                         </div>
                                         <div class="slider_arrow_right">
-                                           
-<svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z" fill="#FF4F2A"/>
-    </svg>
-    
+
+                                            <svg width="18" height="36" viewBox="0 0 18 36" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z"
+                                                    fill="#FF4F2A" />
+                                            </svg>
+
                                         </div>
                                     </div>
                                 </div>
-    </div>
+                            </div>
                         </div>
-               
+
                     </div>
 
                 </div>
@@ -170,29 +230,32 @@
                                     <source media="(min-width:1024px)" srcset="img/fightingwithAI/1.jpg">
                                     <source media="(max-width:465px)" srcset="img/fightingwithAI/1-mobile.jpg">
                                     <img src="img/fightingwithAI/1.jpg" alt="" class="img-fluid">
-                                  </picture>
+                                </picture>
 
-                                    
-                        </div>
+
+                            </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="slide-content">
                                 <div class="slide-content">
-                                    <h2 class="slider__main-title text-dark-orange">FIGHTING<br/> WITH AI<br/> -</h2>
-<p class="slider__image-title text-dark-orange">IMAGE 02</p>
+                                    <h2 class="slider__main-title text-dark-orange">FIGHTING<br /> WITH AI<br /> -</h2>
+                                    <p class="slider__image-title text-dark-orange">IMAGE 02</p>
 
-<h3 class="slider__person-label mb-0">PERSON IN IMAGE:</h3>
-<small class="slider__person-name mb-4 d-block">Shrimp Jesus</small>
+                                    <h3 class="slider__person-label mb-0">PERSON IN IMAGE:</h3>
+                                    <small class="slider__person-name mb-4 d-block">Shrimp Jesus</small>
 
-<h3 class="slider__context-label">CONTEXT:</h3>
+                                    <h3 class="slider__context-label">CONTEXT:</h3>
 
                                     <p>When people started talking about ‘AI garbage’ taking over the
-                                        <br class="d-none d-lg-block" /> internet, this was a key viral example. At the time, many people <br class="d-none d-lg-block"/>actually believed this was a real image.</p>
+                                        <br class="d-none d-lg-block" /> internet, this was a key viral example. At the
+                                        time, many people <br class="d-none d-lg-block" />actually believed this was a
+                                        real image.
+                                    </p>
 
                                     <ul class="viral-stats p-0 m-0 mt-4">
                                         <li class="d-flex gap-2 align-items-center">
-                                            <img src="img/fightingwithAI/ICON_04.svg"/>
+                                            <img src="img/fightingwithAI/ICON_04.svg" />
                                             <span class="text-dark-orange">Viral Stats:</span>
                                         </li>
 
@@ -203,107 +266,127 @@
 
 
                                     <div class="d-flex gap-2 align-items-center mt-4 btn_links-list">
-                                        
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 01 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 02 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 03 ] </span> </a>
-                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block"> [ 04 ] </span> </a>
-                                      
+
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 01 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 02 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 03 ] </span> </a>
+                                        <a href="#" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">
+                                                [ 04 ] </span> </a>
+
 
                                     </div>
 
                                     <div class="slider_arrows">
                                         <div class="slider_arrow_left">
-                                            
-<svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z" fill="#FF4F2A"/>
-    </svg>
-    
+
+                                            <svg width="18" height="36" viewBox="0 0 18 36" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z"
+                                                    fill="#FF4F2A" />
+                                            </svg>
+
                                         </div>
 
                                         <div class="dash">
 
-                                            <svg width="155" height="1" viewBox="0 0 155 1" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A" stroke-dasharray="2 2"/>
-                                                </svg>
-                                                
+                                            <svg width="155" height="1" viewBox="0 0 155 1" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A"
+                                                    stroke-dasharray="2 2" />
+                                            </svg>
+
                                         </div>
                                         <div class="slider_arrow_right">
-                                           
-<svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z" fill="#FF4F2A"/>
-    </svg>
-    
+
+                                            <svg width="18" height="36" viewBox="0 0 18 36" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z"
+                                                    fill="#FF4F2A" />
+                                            </svg>
+
                                         </div>
                                     </div>
                                 </div>
-    </div>
+                            </div>
                         </div>
-                
+
                     </div>
 
                 </div>
-              
-              </div>
-        </section>
 
-        <div class="container-fluid g-0">
-            <img src="img/desktop/HOW TO SPOT AI.jpg" alt="" class="bg-img desktop">
-            <img src="img/mobile/HOW TO SPOT AI.jpg" alt="" class="bg-img mobile"> 
-        </div>
+            </div>
+        </section> -->
 
-        <div class="container-fluid g-0">
-            <img src="img/desktop/QUIZ.jpg" alt="" class="bg-img desktop">
-            <img src="img/mobile/QUIZ.jpg" alt="" class="bg-img mobile"> 
-        </div>
-
-        <div class="container-fluid g-0">
+        <!-- ABOUT CJR -->
+        <div class="container-fluid g-0 position-relative" id="about">
             <img src="img/desktop/ABOUT CJR.jpg" alt="" class="bg-img desktop">
-            <img src="img/mobile/ABOUT CJR.jpg" alt="" class="bg-img mobile"> 
+            <span class="span-one">
+                <img src="img/desktop/gif/GIF WHITE/CJR_Codes_White_02.gif" alt="" class="desktop img-fluid">
+            </span>
+            <span class="span-two">
+                <img src="img/desktop/gif/GIF WHITE/CJR_Codes_White_02.gif" alt="" class="desktop img-fluid">
+            </span>
+
+            <img src="img/mobile/ABOUT CJR.jpg" alt="" class="bg-img mobile">
         </div>
 
     </main>
+
     <footer class="position-relative custom-fluid">
-        <!-- MAKE FOOTER WITH PNGS FROM FIGMA -->
         <div class="container-fluid">
-          <div class="fooetr-wrapper">
-            <div class="footer-logo">
-                <img src="img/CJR-Logo.svg" alt="CJR logo" >
-               </div>
-    
-               <div class="footer-links">
-                <a href="#">QUIZ</a>
-                <a href="#">Tool to identify AI</a>
-                <a href="#">contact us</a>
-                <a href="#">cjr site</a>
-               </div>
-          </div>
+            <div class="fooetr-wrapper">
+                <div class="footer-logo">
+                    <img src="img/CJR-Logo.svg" alt="CJR logo">
+                </div>
+
+                <div class="footer-links">
+                    <a href="#">QUIZ</a>
+                    <a href="#">Tool to identify AI</a>
+                    <a href="#">contact us</a>
+                    <a href="#">cjr site</a>
+                </div>
+            </div>
         </div>
 
-         <span class="cross cross-one">
+        <span class="cross cross-one">
             <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z" fill="#FFF9EB"/>
+                <path
+                    d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z"
+                    fill="#FFF9EB" />
             </svg>
-            </span>
-            <span class="cross cross-two">
-                <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z" fill="#FFF9EB"/>
-                </svg>
-                </span>
-                <span class="cross cross-three">
-                    <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z" fill="#FFF9EB"/>
-                    </svg>
-                    </span>
-        
+        </span>
+        <span class="cross cross-two">
+            <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z"
+                    fill="#FFF9EB" />
+            </svg>
+        </span>
+        <span class="cross cross-three">
+            <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4.28737 0L2.85825 1.42833L1.42912 0L0 1.42833L1.42912 2.85666L0 4.29118L1.42912 5.71951L2.85825 4.29118L4.28737 5.71951L5.71649 4.29118L4.28737 2.85666L5.71649 1.42833L4.28737 0Z"
+                    fill="#FFF9EB" />
+            </svg>
+        </span>
+
     </footer>
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- jquery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-       <!-- slick-carousel CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- slick-carousel CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="script.js"></script>
 </body>
 
