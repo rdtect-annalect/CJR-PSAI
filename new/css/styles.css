@@ -325,6 +325,13 @@ header{
     align-items: center;
     justify-content: center;
 }
+.slider_arrows.white svg path{
+    fill: #fff;
+    
+}
+.slider_arrows.white svg line{
+    stroke: #fff;
+}
 
 .slider_arrows {
     display: flex;

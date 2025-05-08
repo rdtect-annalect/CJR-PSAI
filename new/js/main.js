@@ -11,11 +11,10 @@
     images:{
         small:"images/spot-ai/small/1.png",
         medium:"images/spot-ai/large/1.png",
-    }
     },
-    {
+    
       title: "Tip 02 ",
-     subtitle:"Look at<br/> the facial<br/> features",
+     subtitle:"Look at facial features",
       description: "Check for asymmetry in facial features, odd eye placement, unnatural skin textures, hair that’s perfectly smooth and clean, or expressions that don't match the situation.",
           images:{
         small:"images/spot-ai/small/2.png",
@@ -25,7 +24,7 @@
     },
     {
         title: "Tip 03 ",
-       subtitle:"Scan the<br/> background",
+       subtitle:"Scan the background",
         description: "Look for blurry or distorted background elements, or faces and objects that don't fit the scene.",
             images:{
         small:"images/spot-ai/small/3.png",
@@ -57,8 +56,8 @@
 
       {
         title: "Tip 06 ",
-        subtitle:"Look for distorted logos or text",
-        description: "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+        subtitle:"Pay attention<br/> to lighting<br/> and shadows",
+        description: "Observe if shadows fall in an illogical way or if lighting seems inconsistent across the image.",
             images:{
         small:"images/spot-ai/small/6.png",
         medium:"images/spot-ai/large/6.png",
@@ -67,8 +66,8 @@
  },
  {
   title: "Tip 07 ",
-  subtitle:"Look for distorted logos or text",
-  description: "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+  subtitle:"Check<br/> textures<br/> and patterns",
+  description: "Check for unnatural repetition of patterns in clothing, hair, or other textures.",
       images:{
   small:"images/spot-ai/small/7.png",
   medium:"images/spot-ai/large/7.png",
@@ -77,8 +76,8 @@
 },
 {
   title: "Tip 08 ",
-  subtitle:"Look for distorted logos or text",
-  description: "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+  subtitle:"Are there<br/> digital<br/> artifacts?",
+  description: "Pixelation, strange colors, blurriness in unexpected places, or objects that are blended together can indicate AI manipulation.",
       images:{
   small:"images/spot-ai/small/8.png",
   medium:"images/spot-ai/large/8.png",
@@ -87,8 +86,8 @@
 },
 {
   title: "Tip 09 ",
-  subtitle:"Look for distorted logos or text",
-  description: "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+  subtitle:"Reverse<br/>  image<br/>  search",
+  description: "Use a search engine to see if the image appears elsewhere online and check for potential sources or inconsistencies.",
       images:{
   small:"images/spot-ai/small/9.png",
   medium:"images/spot-ai/large/9.png",
@@ -97,8 +96,8 @@
 },
 {
   title: "Tip 10 ",
-  subtitle:"Look for distorted logos or text",
-  description: "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+  subtitle:"Check the<br/> source",
+  description: "Be cautious of images from websites known for generating or sharing AI-generated content. ",
       images:{
   small:"images/spot-ai/small/10.png",
   medium:"images/spot-ai/large/10.png",
