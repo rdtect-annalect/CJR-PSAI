@@ -1,5 +1,14 @@
 [
     {
+      "title": "Tip 01 ",
+      "subtitle": "Check hands and fingers",
+      "description": "AI often struggles with realistic hand placement and finger details, including extra fingers and warped hands.",
+      "images": {
+        "small": "images/spot-ai/small/1.png",
+        "medium": "images/spot-ai/large/1.png"
+      }
+    },
+    {
       "title": "Tip 02 ",
       "subtitle": "Look at facial features",
       "description": "Check for asymmetry in facial features, odd eye placement, unnatural skin textures, hair that’s perfectly smooth and clean, or expressions that don't match the situation.",
