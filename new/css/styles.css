@@ -136,10 +136,6 @@ header{
 
 
 
-.video-section{
-    background-color: #FF4F2A;
- 
-}
 
 
 .arrows-button {
@@ -191,7 +187,6 @@ header{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 18rem;
     text-align: center
 }
 
@@ -822,7 +817,54 @@ position: relative;
 }
 
 .navbar-toggler-icon svg {
-    fill: #fff;
+    fill: #ff6600;
     width: 30px;
     height: 30px;
+}
+
+.video-wrapper {
+    height: 100vh;
+    width: 100%;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slick-arrow.slick-disabled {
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+#imageGrid{
+    width: 100%;
+}
+
+span.border.orange{
+    border-color: #ff6600 !important;
+}
+
+.coders-gifs img {
+    position: absolute;
+    width: 18rem;
+    z-index: 3;
+   
+}
+
+.coders-gifs .top_img {
+ 
+    right: 0;
+    top: 8rem;
+}
+
+.coders-gifs .bottom_img {
+ 
+    left: 0;
+    bottom: 3rem;
+}
+
+.dark_cta:not(:first-child) {
+    display: none;
 }

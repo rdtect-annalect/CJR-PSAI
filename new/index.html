@@ -27,7 +27,7 @@
     <header>
       <nav class="navbar navbar-expand-lg custom-space">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand d-block d-lg-none" href="index.html">
             <img
               src="images/fpo-logo.png"
               alt="Logo"
@@ -53,7 +53,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#About">About</a>
+                <a class="nav-link" aria-current="page" href="#about">About</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#music-video">Music Video</a>
@@ -75,11 +75,22 @@
 
     <main>
       <section class="hero-section position-relative">
-        <div class="hero-image">
-          <img src="images/CJR_MACRON_MOVING.gif" alt="Hero Image" class="img-fluid" />
 
-       
+        <div class="video-wrapper">
+            <video loop muted autoplay>
+                <source src="video/CJR_MACRON_MOVING.webm" type="video/webm">
+              </video>
+
+              <div class="coders-gifs">
+                    <img src="images/textgif.gif" class="top_img"/>
+                    <img src="images/textgif.gif" class="bottom_img"/>
+              </div>
         </div>
+        <!-- <div class="hero-image">
+          <img src="images/CJR_MACRON_MOVING.gif" alt="Hero Image" class="img-fluid" />
+            
+       
+        </div> -->
         <div class="the-PSAI">
           <img src="images/the-psai.gif" alt="The PSAI" class="img-fluid" />
         </div>
@@ -92,11 +103,11 @@
               <div class="text-center">
   
                   <div class="para-box-wrapper black-border abt-colmbia">
-                      <p class="text-black font-weight-500 m-0 text-uppercase">
+                      <p class="text-black font-weight-500 m-0 ">
                        
 
                           For more than a century, photography has been one of
-                           journalists’ greatest tools to establish truth and trust. But AI-generated images are making it increasingly difficult to distinguish real from synthetic media. The PSAi is a campaign that uses viral AI images to teach people how to spot AI images—and highlight the role we all play in<br/> spreading fakes.
+                           journalists’ greatest tools to establish truth and trust. But AI-generated images are making it increasingly difficult to distinguish real from synthetic media. The PSAi is a campaign that uses viral AI images to teach people how to spot AI images—and highlight the role we all play in spreading fakes.
                         </p>
                       <div class="corner-square black tl "></div>
   <div class="corner-square black tr"></div>
@@ -129,7 +140,7 @@
             </div>
             <div class="play-button">
               <a href="#" class="arrows-button">
-                Watch Now
+                Watch to learn
                 <span class="corner top-left">
                     
 <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -166,41 +177,13 @@
 
       </section>
 
-      <section class="whyThis-matter-sec position-relative overflow-hidden" style="background-image: url(images/155d60f01befb4177bb38716e18e6dcd7e19d3fe.png);" id="why_psai">
-        <div class="row justify-content-center align-items-center h-100vh">
-            <div class="col-md-9 ">
-                <div class="whyThis-matter-sec-text text-center">
-                    <h2 class="heading-1 text-orange mb-3 text-uppercase">why this matters</h2>
-                   
-                    <div class="para-box-wrapper">
-                        <p class="text-white text-uppercase m-0">
-                          <!-- <span class="three_arrows">&#11208;&#11208;&#11208;</span>  -->
-                          At a time when trust in journalism is at a historic low, the Columbia Journalism Review has a responsibility to call out the threat AI poses to the media ecosystem. The PSAi is intended to help people stop the spread of misinformation by checking visuals before they share. 
-                         
-                        </p>
-                        <div class="corner-square tl"></div>
-<div class="corner-square tr"></div>
-<div class="corner-square bl"></div>
-<div class="corner-square br"></div>
 
-                      </div>
-                      
-                    
-                    <div class="CJR_ELMNT_SQUARE">
-                        <img src="images/CJR_ELMNT_SQUARE 1.svg" alt="CJR Logo"  />
-                    </div>
-                  </div>
-            </div>
-            
-        </div>
-      </section>
-
-      <section class="withAI bg-pale-yellow position-relative overflow-hidden " id="spotAI">
+      <section class="withAI bg-pale-yellow position-relative overflow-hidden " >
 
        
         <div class="row h-100vh">
             <div class="col-md-12 text-center">
-                <h2 class="heading-1 text-orange text-uppercase mt-5">FIGHTING AI <span class="border">WITH AI</span></h2>
+                <h2 class="heading-1 text-orange text-uppercase mt-5">FIGHTING AI <span class="border orange">WITH AI</span></h2>
                 <h3 class="sub-heading text-black mt-4 ">Learn about the images featured in The PSAi</h3>
 
                 <button id="refreshBtn" class="btn btn-danger mt-3">
@@ -255,6 +238,37 @@
                 </div>
         </div>
       </section>
+
+      <section class="whyThis-matter-sec position-relative overflow-hidden" style="background-image: url(images/155d60f01befb4177bb38716e18e6dcd7e19d3fe.png);" id="why_psai">
+        <div class="row justify-content-center align-items-center h-100vh">
+            <div class="col-md-9 ">
+                <div class="whyThis-matter-sec-text text-center">
+                    <h2 class="heading-1 text-orange mb-3 text-uppercase">why this matters</h2>
+                   
+                    <div class="para-box-wrapper">
+                        <p class="text-white  m-0">
+                          <!-- <span class="three_arrows">&#11208;&#11208;&#11208;</span>  -->
+                          At a time when trust in journalism is at a historic low, the Columbia Journalism Review has a responsibility to call out the threat AI poses to the media ecosystem. The PSAi is intended to help people stop the spread of misinformation by checking visuals before they share. 
+                         
+                        </p>
+                        <div class="corner-square tl"></div>
+<div class="corner-square tr"></div>
+<div class="corner-square bl"></div>
+<div class="corner-square br"></div>
+
+                      </div>
+                      
+                    
+                    <div class="CJR_ELMNT_SQUARE">
+                        <img src="images/CJR_ELMNT_SQUARE 1.svg" alt="CJR Logo"  />
+                    </div>
+                  </div>
+            </div>
+            
+        </div>
+      </section>
+
+  
 
 
       <section class="how-tospot-ai-sec position-relative bg-orange" id="spotAI">

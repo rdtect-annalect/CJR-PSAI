@@ -38,6 +38,11 @@ section{
 
   
 @media (max-width: 768px) {
+
+
+    #refreshBtn{
+        margin-bottom: 10px;
+    }
     .customPopup{
         overflow-y: auto;
         overflow-x: hidden;
@@ -80,7 +85,7 @@ section{
     .bg-coding-img::after, .bg-coding-img::before{
         width: 50%;
     }
-    .images-gallery {
+    #imageGrid {
         display: flex;
         flex-direction: row;
         gap: 30px;
@@ -89,7 +94,7 @@ section{
 
     .images-gallery a {
         position: static;
-        width: 300px !important;
+        width: 100% !important;
         height: 300px !important;
         margin: auto;
         gap: 20px;
@@ -161,10 +166,23 @@ section{
 
     .the-PSAI img{
         width: 100%;
+        bottom: 10rem;
+        top: auto;
+        left: auto;
     }
+
+    section#music-video {
+        padding: 0 !important;
+    }
+    
 }
 
 @media (min-width: 769px) {
+
+    #refreshBtn {
+        margin-bottom: 10px;
+        position: absolute;
+    }
  
     .mobile {
         display: none; /* Hide mobile navbar on larger screens */
