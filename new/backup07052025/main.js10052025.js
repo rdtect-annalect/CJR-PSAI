@@ -757,7 +757,7 @@ function textTrim() {
     tips.forEach((tip, index) => {
       $('#imageGrid').append(`
         <a class="img-${index + 1} image-popup-vertical-fit" href="javascript:void(0)" data-target="#modal-1" data-index="${index}">
-          <img src="${tip.images.small}" class="img-fluid">
+          <img src="${tip.images.small}" class="img-fluid rounded">
         </a>
       `);
     });
@@ -774,51 +774,55 @@ function textTrim() {
   }
   
 
+  function openModalSlider() {
+ 
   
-  function openModalSlider(index) {
+ 
     let allSlidesContent = '';
-  
-    currentTips.forEach((tip, i) => {
-      const sourcesHtml = tip.sources.map((url, j) => `
-        <a href="${url}" target="_blank" class="dark_cta">
-          SOURCE LINK <span class="text-dark-orange d-block">[ ${String(j + 1).padStart(2, '0')} ]</span>
-        </a>
-      `).join('');
-  
+    FightWithAIData.forEach(tip => {
+      const sourcesHtml = tip.sources
+      .map((url, i) => `<a href="${url}" target="_blank" class="dark_cta">SOURCE LINK <span class="text-dark-orange d-block">[ ${String(i + 1).padStart(2, '0')} ]</span></a>`)
+      .join('');
+
       let statsHtml = '';
-      if (tip.stats?.likes) {
-        statsHtml += `<li>${tip.stats.likes} <span class="text-dark-orange">likes</span></li>`;
-      }
-      if (tip.stats?.shares) {
-        statsHtml += `<li>${tip.stats.shares} <span class="text-dark-orange">shares</span></li>`;
-      }
-      if (tip.stats?.views) {
-        statsHtml += `<li>${tip.stats.views} <span class="text-dark-orange">views</span></li>`;
-      }
-  
+ // Conditionally show stats if they exist
+ if (tip.stats?.likes) {
+  statsHtml += `<li>${tip.stats.likes} <span class="text-dark-orange">likes</span></li>`;
+}
+if (tip.stats?.shares) {
+  statsHtml += `<li>${tip.stats.shares} <span class="text-dark-orange">shares</span></li>`;
+}
+if (tip.stats?.views) {
+  statsHtml += `<li>${tip.stats.views} <span class="text-dark-orange">views</span></li>`;
+}
+
+
       allSlidesContent += `
         <div class="slide-item">
-          <div class="row flex-lg-row-reverse">
+            <div class="row flex-lg-row-reverse">
             <div class="col-md-12 col-lg-12 col-xl-6">
-              <div class="img-container">
-                <img src="${tip.images.medium}" class="img-fluid rounded" />
+            <div class="img-container">
+              <img src="${tip.images.medium}" class="img-fluid rounded" />
               </div>
             </div>
+
             <div class="col-md-12 col-lg-12 col-xl-6">
-              <div class="slide-content">
-                <h5>${tip.title}</h5>
-                <p>${tip.description}</p>
-                <ul class="viral-stats p-0 m-0 mt-4">
-                  <li class="d-flex gap-2 align-items-center">
-                    <img src="images/fightingwithAI/ICON_04.svg" />
-                    <span class="text-dark-orange">Viral Stats:</span>
-                  </li>
-                  ${statsHtml}
-                </ul>
-                <div class="d-flex gap-2 align-items-center mt-4 btn_links-list flex-wrap">
-                  ${sourcesHtml}
-                </div>
-              </div>
+            <div class="slide-content">
+              <h5>${tip.title}</h5>
+              <p>${tip.description}</p>
+
+              <ul class="viral-stats p-0 m-0 mt-4">
+              <li class="d-flex gap-2 align-items-center">
+                <img src="images/fightingwithAI/ICON_04.svg" />
+                <span class="text-dark-orange">Viral Stats:</span>
+              </li>
+              ${statsHtml}
+            </ul>
+
+            <div class="d-flex gap-2 align-items-center mt-4 btn_links-list flex-wrap">
+              ${sourcesHtml}
+            </div>
+            </div>
             </div>
           </div>
         </div>
@@ -828,25 +832,30 @@ function textTrim() {
     const $slider = $('.figtingWithAISlider');
     $slider.html(allSlidesContent);
   
+    // Reinitialize slick
     if ($slider.hasClass('slick-initialized')) {
       $slider.slick('unslick');
     }
   
     $slider.slick({
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      arrows: true,
-      dots: false,
-      speed: 1000,
-      fade: true,
-      infinite: false,
-      initialSlide: index, // 👈 Start at the clicked index
-      prevArrow: $('.customPopup .slider_arrow_left'),
-      nextArrow: $('.customPopup .slider_arrow_right'),
+          slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: true,
+        arrows: true,
+        dots:false,
+        speed:1000,
+        fade:true,
+        infinite:false,
+        prevArrow: $('.customPopup .slider_arrow_left'),
+        nextArrow: $('.customPopup .slider_arrow_right'),
     });
   
+    // Show the modal
     $('.customPopup').addClass('show');
+  
+
   }
+
 
   const initialTips = getRandomTips();
   renderSmallImages(initialTips); // ⬅️ This ensures small images show
