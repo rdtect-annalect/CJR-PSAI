@@ -655,7 +655,7 @@ small: "images/fightingwithAI/Julian.jpg",
       openModal(slickIndex);
     });
     
-    // Ensure proper layout on modal open
+
     $('#carouselModal').on('shown.bs.modal', function () {
       setTimeout(function () {
         // $('.modalSlider').slick('setPosition');
@@ -718,7 +718,7 @@ function textTrim() {
     $('.images-gallery img').each(function() {
       const img = $(this);
       
-      const randomX = Math.random() * 10 - 5;  // Random X offset between -5px and 5px
+      const randomX = Math.random() * 10 - 5;  
 
       img.css('transform', `translate(${randomX + (mouseX / 100)}px)`);
     });
@@ -762,12 +762,12 @@ function textTrim() {
       `);
     });
   
-    // Bind the click handler to the whole anchor (which holds the data-target and index)
+   
     $('.image-popup-vertical-fit').on('click', function () {
       const index = $(this).data('index');
       const targetSelector = $(this).data('target');
       
-      openModalSlider(index); // Open slider with the right slide
+      openModalSlider(index); 
       $(targetSelector).addClass('show');
       $('html, body').addClass('overflow-hidden');
     });
