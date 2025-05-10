@@ -840,7 +840,7 @@ function textTrim() {
       speed: 1000,
       fade: true,
       infinite: false,
-      initialSlide: index, // 👈 Start at the clicked index
+      initialSlide: index, 
       prevArrow: $('.customPopup .slider_arrow_left'),
       nextArrow: $('.customPopup .slider_arrow_right'),
     });
