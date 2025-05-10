@@ -757,7 +757,7 @@ function textTrim() {
     tips.forEach((tip, index) => {
       $('#imageGrid').append(`
         <a class="img-${index + 1} image-popup-vertical-fit" href="javascript:void(0)" data-target="#modal-1" data-index="${index}">
-          <img src="${tip.images.small}" class="img-fluid rounded">
+          <img src="${tip.images.small}" class="img-fluid">
         </a>
       `);
     });
