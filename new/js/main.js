@@ -806,7 +806,7 @@ function textTrim() {
             </div>
             <div class="col-md-12 col-lg-12 col-xl-6">
               <div class="slide-content">
-                <h5>${tip.title}</h5>
+                <h5 class="heading-1 text-orange text-uppercase ">${tip.title}</h5>
                 <p>${tip.description}</p>
                 <ul class="viral-stats p-0 m-0 mt-4">
                   <li class="d-flex gap-2 align-items-center">
@@ -849,14 +849,13 @@ function textTrim() {
   }
 
   const initialTips = getRandomTips();
-  renderSmallImages(initialTips); // ⬅️ This ensures small images show
+  renderSmallImages(initialTips); 
   $('#refreshBtn').on('click', () => {
     const newTips = getRandomTips();
     renderSmallImages(newTips);
     $('.customPopup').removeClass('show');
   });
-  
-  // Close button action
+
   $('.btn-close').on('click', () => {
     $('.customPopup').removeClass('show');
   });

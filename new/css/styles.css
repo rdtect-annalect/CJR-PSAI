@@ -742,7 +742,8 @@ position: relative;
 .slide-content{
     padding: 3rem 2rem;
 }
-
+.slide-content h5{
+}
 .customPopup {
     position: fixed;
     width: 100%;
