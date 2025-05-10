@@ -801,7 +801,7 @@ function textTrim() {
           <div class="row flex-lg-row-reverse">
             <div class="col-md-12 col-lg-12 col-xl-6">
               <div class="img-container">
-                <img src="${tip.images.medium}" class="img-fluid rounded" />
+                <img src="${tip.images.medium}" class="img-fluid " />
               </div>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-6">
