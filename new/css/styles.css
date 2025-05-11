@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+:root {
+    --main-white: #FFF9EB;
+}
 html{
     font-size: 85%;
 }
@@ -734,7 +736,7 @@ position: relative;
 }
 
 .figtingWithAISlider{
-    background-color: #FFF9EB;
+    background-color: var(--main-white);
 }
 
 .slide-content{
@@ -867,4 +869,39 @@ span.border.orange{
 
 .dark_cta:not(:first-child) {
     display: none;
+}
+
+#furtherReading-text {
+    line-height: 50px;
+}
+
+#furtherReading-sec {
+    background-color: var(--main-white);
+}
+
+.black-text {
+    color: #111;
+}
+.furtherReading-card-titles {
+    font-size: 1.75rem;
+    }
+
+.furtherReading-card-p {
+    font-size: .9rem;
+    font-weight: 500;
+}
+.furtherReading-card-p .date{
+    font-size: .6rem;
+    font-weight: 300;
+}
+
+.furtherReading-card-cta {
+    top: 0;
+    right: 0;
+    font-size: .6rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    border-radius: 30px;
+    border: 2px solid #111 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0/.15);
 }
