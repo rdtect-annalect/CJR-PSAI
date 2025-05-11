@@ -548,7 +548,7 @@ small: "images/fightingwithAI/Julian.jpg",
     CarouselData.forEach((item, index) => {
       const card = `
         <div class="card" data-index="${index}" data-bs-toggle="modal" data-bs-target="#carouselModal">
-          <img src="${item.images.small}" alt="Card ${index + 1}" class="img-fluid" />
+          <img src="${item.images.small}" alt="Card ${index + 1}" class="img-fluid" loading="lazy" />
           <div class="card-body">
           <h3 class="card-title">${item.title}</h3>
         
@@ -610,7 +610,7 @@ small: "images/fightingwithAI/Julian.jpg",
         const slide = `
           <div class="slick-slide1">
              <div class="ti_img-thumbnail">
-                <img src="${CarouselData[slickIndex].images.medium}" class="img-fluid" alt="Image " />
+                <img src="${CarouselData[slickIndex].images.medium}" class="img-fluid" alt="Image " loading="lazy" />
 
                 <div class="tip_content para-box-wrapper">
                 <h3>${CarouselData[slickIndex].title}</h3>
@@ -757,7 +757,7 @@ function textTrim() {
     tips.forEach((tip, index) => {
       $('#imageGrid').append(`
         <a class="img-${index + 1} image-popup-vertical-fit" href="javascript:void(0)" data-target="#modal-1" data-index="${index}">
-          <img src="${tip.images.small}" class="img-fluid">
+          <img src="${tip.images.small}" class="img-fluid" loading="lazy">
         </a>
       `);
     });
@@ -801,7 +801,7 @@ function textTrim() {
           <div class="row flex-lg-row-reverse">
             <div class="col-md-12 col-lg-12 col-xl-6">
               <div class="img-container">
-                <img src="${tip.images.medium}" class="img-fluid " />
+                <img src="${tip.images.medium}" class="img-fluid " loading="lazy" />
               </div>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-6">
