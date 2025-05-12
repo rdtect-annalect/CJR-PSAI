@@ -175,6 +175,7 @@ section{
         padding: 0 !important;
     }
     .video-as-span {
+        display: none;
         top: 50%;
         width: 100%;
         left: 0%;
