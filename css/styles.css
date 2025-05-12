@@ -296,6 +296,12 @@ header{
 .para-box-wrapper .corner-square.bl { bottom: -3px; left: -3px; }
 .para-box-wrapper .corner-square.br { bottom: -3px; right: -3px; }
 
+.para-box-wrapper .corner-square.further-square {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .CJR_ELMNT_SQUARE img{
     width: 3.125rem;
     height: 3.125rem;
@@ -871,6 +877,7 @@ span.border.orange{
     display: none;
 }
 
+/* FURTHER READING */
 #furtherReading-text {
     line-height: 50px;
 }
@@ -882,12 +889,13 @@ span.border.orange{
 .black-text {
     color: #111;
 }
+
 .furtherReading-card-titles {
     font-size: 1.75rem;
     }
 
 .furtherReading-card-p {
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 500;
 }
 .furtherReading-card-p .date{
@@ -905,3 +913,17 @@ span.border.orange{
     border: 2px solid #111 !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0/.15);
 }
+
+.further-box-wrapper {
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.further-square {
+    width: 7px !important;
+    height: 7px !important;
+}
+a {
+    cursor: pointer;
+}
+/* FURTHER READING END*/
