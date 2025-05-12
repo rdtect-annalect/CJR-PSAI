@@ -48,7 +48,7 @@ h1,h2{
 }
 
 nav.navbar .container-fluid {
-    align-items: baseline;
+    align-items: center;
 }
 .nav-link {
     font-size: 1rem;
@@ -100,9 +100,9 @@ header{
 
 .the-PSAI img {
     position: absolute;
-    top: 10%;
-    width: 60%;
-    left: -13.6%;
+    top: 25%;
+    width: 40%;
+    left: -6%;
 }
 
 .hero-text {
@@ -944,3 +944,16 @@ a {
     right: -4px;
 }
 /* FURTHER READING END*/
+
+.video-as-span {
+    display: inline-block; /* Behaves like a span */
+    position: absolute;
+    top: 23%;
+    width: 40%;
+    left: -3%;
+}
+
+.footer-logo {
+    width: 140px;
+}
+  
