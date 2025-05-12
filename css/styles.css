@@ -926,4 +926,21 @@ span.border.orange{
 a {
     cursor: pointer;
 }
+
+.further-corner.tl {
+    top: -4px;
+    left: -4px;
+}
+.further-corner.tr {
+    top: -4px;
+    right: -4px;
+}
+.further-corner.bl {
+    bottom: -4px;
+    left: -4px;
+}
+.further-corner.br {
+    bottom: -4px;
+    right: -4px;
+}
 /* FURTHER READING END*/
