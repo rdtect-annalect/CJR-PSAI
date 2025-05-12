@@ -537,204 +537,223 @@ small: "images/fightingwithAI/Julian.jpg",
 ];
 
  
-$(document).ready( async function () {
-  // Fetch data
-  async function fetchData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data from ${url}: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-    
-  }
-  CarouselData = await fetchData('./data/carouselData.json');
-  // Example usage
-  const cardsContainer = $('#cardsContainer');
+
   
+  $(document).ready( async function () {
+    
+    CarouselData = await fetch('./data/carouselData.json').then(res => res.json());
 
-  function createCard(item, index) {
-    return `
-      <div class="card" data-index="${index}" data-bs-toggle="modal" data-bs-target="#carouselModal">
-        <img src="${item.images.small}" alt="${item.title}" class="img-fluid" />
-        <div class="card-body">
+    
+    const cardsContainer = $('#cardsContainer');
+    CarouselData.forEach((item, index) => {
+      const card = `
+        <div class="card" data-index="${index}" data-bs-toggle="modal" data-bs-target="#carouselModal">
+          <img src="${item.images.small}" alt="Card ${index + 1}" class="img-fluid"  />
+          <div class="card-body">
           <h3 class="card-title">${item.title}</h3>
-        </div>
-      </div>
-    `;
-  }
-
-CarouselData.forEach((item, index) => {
-  cardsContainer.append(createCard(item, index));
-});
-
-  // Initialize slick slider
-  $('#cardsContainer').slick({
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    arrows: true,
-    dots: false,
-    draggable: false,
-    infinite: false,
-    prevArrow: $('.how-tospot-ai-sec .slider_arrow_left'),
-    nextArrow: $('.how-tospot-ai-sec .slider_arrow_right'),
-    responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 5
-        }
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
-  });
-
-  // Function to open the modal and load slider content
-  function openModal(slickIndex) {
-    $('.modalSlider').empty();
-
-    const slide = `
-      <div class="slick-slide1">
-        <div class="ti_img-thumbnail">
-          <img src="${CarouselData[slickIndex].images.medium}" class="img-fluid" alt="Image" />
-          <div class="tip_content para-box-wrapper">
-            <h3>${CarouselData[slickIndex].title}</h3>
-            <h4>${CarouselData[slickIndex].subtitle}</h4>
-            <hr class="opacity-1" />
-            <p>${CarouselData[slickIndex].description}</p>
-            <div class="corner-square tl"></div>
-            <div class="corner-square tr"></div>
-            <div class="corner-square bl"></div>
-            <div class="corner-square br"></div>
+        
           </div>
         </div>
-      </div>
-    `;
-    $('.modalSlider').append(slide);
-
-    $('.modalSlider').on('init', function () {
-      $('.modalSliderWrapper').addClass('show');
+      `;
+      cardsContainer.append(card);
     });
-  }
+    
+    $('#cardsContainer').slick({
+      slidesToShow: 5,
+      slidesToScroll: 2,
+      arrows: true,
+      dots: false,
+      draggable:false,
+      infinite:false,
+      prevArrow: $('.how-tospot-ai-sec .slider_arrow_left'),
+      nextArrow: $('.how-tospot-ai-sec .slider_arrow_right'),
+      responsive: [
+        {
+          breakpoint: 1600,
+          settings: {
+            slidesToShow: 5
+          }
+        },
 
-  // Click event for opening modal
-  $(document).on('click', '.card', function () {
-    const slickIndex = $(this).closest('.slick-slide').data('slick-index');
-    openModal(slickIndex);
-  });
+        {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2
+            }
+          },
 
-  // Modal related events
-  $('#carouselModal').on('shown.bs.modal', function () {
-    setTimeout(function () {
-      // $('.modalSlider').slick('setPosition');
-    }, 300);
-  });
-
-  $('#carouselModal').on('hidden.bs.modal', function () {
-    $('.modalSlider').empty();
-  });
-
-  // Text truncation for cards
-  function textTrim() {
-    $('#cardsContainer .card .card-body p').each(function () {
-      const text = $(this).text();
-      const truncatedText = text.substring(0, 50) + '...';
-      $(this).text(truncatedText);
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
     });
+    
+    function openModal(slickIndex) {
+    //   $('#modalLoader').show();
+    
+    //   if ($('.modalSlider').hasClass('slick-initialized')) {
+    //     $('.modalSlider').slick('unslick');
+    //   }
+    
+      $('.modalSlider').empty();
+    
+ 
+        const slide = `
+          <div class="slick-slide1">
+             <div class="ti_img-thumbnail">
+                <img src="${CarouselData[slickIndex].images.medium}" class="img-fluid" alt="Image " />
+
+                <div class="tip_content para-box-wrapper">
+                <h3>${CarouselData[slickIndex].title}</h3>
+                 <h4>${CarouselData[slickIndex].subtitle}</h4>
+                 <hr class="opacity-1" />
+                <p>${CarouselData[slickIndex].description}</p>
+                        <div class="corner-square tl"></div>
+              <div class="corner-square tr"></div>
+              <div class="corner-square bl"></div>
+              <div class="corner-square br"></div>
+              </div>
+              </div>
+          
+                        </div>
+        `;
+        $('.modalSlider').append(slide);
+      
+    
+      $('.modalSlider').on('init', function () {
+        // $('#modalLoader').show();
+        $('.modalSliderWrapper').addClass('show');
+      });
+    
+    //   $('.modalSlider').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: true,
+    //     dots: false,
+    //     adaptiveHeight: true,
+    //     infinite: false,
+    //     centerMode: false,
+    //     focusOnSelect: true,
+    //     fade:true,
+    //     initialSlide: slickIndex,
+    //     prevArrow: $('#carouselModal .slider_arrow_left'),
+    //     nextArrow: $('#carouselModal .slider_arrow_right'),
+    //   });
+    }
+    
+    $(document).on('click', '.card', function () {
+      const slickIndex = $(this).closest('.slick-slide').data('slick-index');
+      openModal(slickIndex);
+    });
+    
+
+    $('#carouselModal').on('shown.bs.modal', function () {
+      setTimeout(function () {
+        // $('.modalSlider').slick('setPosition');
+        // $('#modalLoader').hide();
+      }, 300);
+    });
+    
+    $('#carouselModal').on('hidden.bs.modal', function () {
+      if ($('.modalSlider').hasClass('slick-initialized')) {
+        // $('.modalSlider').slick('unslick');
+      }
+      $('.modalSlider').empty();
+    });
+
+    function textTrim() {
+      $('#cardsContainer .card .card-body p').each(function() {
+          const text = $(this).text();
+          const truncatedText = text.substring(0, 50) + '...';
+          $(this).text(truncatedText);
+      });
   }
+    if(window.innerWidth < 1600) {
+        textTrim()
+    }
 
-  if (window.innerWidth < 1600) {
-    textTrim();
-  }
+    $(window).on('resize', function() {
+        textTrim()
+    })
 
-  $(window).on('resize', function () {
-    textTrim();
-  });
 
-  // Header scroll animation
-  var lastScrollTop = 0;
+
+    
+    var lastScrollTop = 0;
   $(window).on("scroll", function () {
     var currentScroll = $(this).scrollTop();
     if (currentScroll > lastScrollTop) {
-      $("header").addClass("hide-header").removeClass("stretched-header");
+      // Scrolling down - hide header
+      $("header").addClass("hide-header");
+      $("header").removeClass("stretched-header");
+
     } else {
-      $("header").removeClass("hide-header").addClass("stretched-header");
+      // Scrolling up - show header
+      $("header").removeClass("hide-header");
+      $("header").addClass("stretched-header");
+
+
     }
     lastScrollTop = currentScroll;
 
-    if (currentScroll < 100) {
+    if(currentScroll < 100) {
       $("header").removeClass("stretched-header");
     }
   });
 
-  // Image gallery mouse movement effect
-  let animationFrame;
-  $('.images-gallery-wrapper').mousemove(function (event) {
-    if (animationFrame) return;
-    animationFrame = requestAnimationFrame(() => {
-      const mouseX = event.pageX;
-      const mouseY = event.pageY;
-  
-      $('.images-gallery img').each(function () {
-        const img = $(this);
-        const randomX = Math.random() * 10 - 5;
-  
-        img.css('transform', `translate(${randomX + (mouseX / 100)}px)`);
-      });
-  
-      animationFrame = null;
+
+  $('.images-gallery-wrapper').mousemove(function(event) {
+    const mouseX = event.pageX;
+    const mouseY = event.pageY;
+
+    $('.images-gallery img').each(function() {
+      const img = $(this);
+      
+      const randomX = Math.random() * 10 - 5;  
+
+      img.css('transform', `translate(${randomX + (mouseX / 100)}px)`);
     });
   });
 
-  // Image popup functionality
-  $(document).on('click', '.image-popup-vertical-fit', function () {
-    const index = $(this).data('index');
-    const targetSelector = $(this).data('target');
-    openModalSlider(index);
-    $(targetSelector).addClass('show');
-    $('html, body').addClass('overflow-hidden');
-  });
 
-  $('.customPopup .btn-close').on('click', function () {
+  $('.image-popup-vertical-fit').on('click', function () {
     $('.customPopup').removeClass('show');
-    $('html, body').removeClass('overflow-hidden');
+    var targetSelector = $(this).data('target'); 
+    $(targetSelector).addClass('show'); 
+    $('.figtingWithAISlider').slick('refresh');
+    $('html, body').addClass('overflow-hidden')
+
   });
 
-  // Get random tips for the image grid
+ 
+
+  
+  $('.customPopup .btn-close').on('click', function () {
+    $('.customPopup').removeClass('show'); 
+    $('html, body').removeClass('overflow-hidden')
+  });
+
+
+  });
+  
   let currentTips = [];
-  const DEFAULT_TIP_COUNT = 9;
-const IMAGE_GRID_SELECTOR = '#imageGrid';
-  function getRandomTips(count = DEFAULT_TIP_COUNT) {
+  function getRandomTips(count = 9) {
     const shuffled = [...FightWithAIData].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   }
-
-  // Render small images
   function renderSmallImages(tips) {
-    currentTips = tips;
+    currentTips = tips; // Save for modal use
     $('#imageGrid').empty();
-
+  
     tips.forEach((tip, index) => {
       $('#imageGrid').append(`
         <a class="img-${index + 1} image-popup-vertical-fit" href="javascript:void(0)" data-target="#modal-1" data-index="${index}">
@@ -742,27 +761,30 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
         </a>
       `);
     });
-
+  
+   
     $('.image-popup-vertical-fit').on('click', function () {
       const index = $(this).data('index');
       const targetSelector = $(this).data('target');
-      openModalSlider(index);
+      
+      openModalSlider(index); 
       $(targetSelector).addClass('show');
       $('html, body').addClass('overflow-hidden');
     });
   }
+  
 
-  // Open modal slider with tips
+  
   function openModalSlider(index) {
     let allSlidesContent = '';
-
+  
     currentTips.forEach((tip, i) => {
       const sourcesHtml = tip.sources.map((url, j) => `
         <a href="${url}" target="_blank" class="dark_cta">
           SOURCE LINK <span class="text-dark-orange d-block">[ ${String(j + 1).padStart(2, '0')} ]</span>
         </a>
       `).join('');
-
+  
       let statsHtml = '';
       if (tip.stats?.likes) {
         statsHtml += `<li>${tip.stats.likes} <span class="text-dark-orange">likes</span></li>`;
@@ -773,18 +795,18 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
       if (tip.stats?.views) {
         statsHtml += `<li>${tip.stats.views} <span class="text-dark-orange">views</span></li>`;
       }
-
+  
       allSlidesContent += `
         <div class="slide-item">
           <div class="row flex-lg-row-reverse">
             <div class="col-md-12 col-lg-12 col-xl-6">
               <div class="img-container">
-                <img src="${tip.images.medium}" class="img-fluid" />
+                <img src="${tip.images.medium}" class="img-fluid " />
               </div>
             </div>
             <div class="col-md-12 col-lg-12 col-xl-6">
               <div class="slide-content">
-                <h5 class="heading-1 text-orange text-uppercase">${tip.title}</h5>
+                <h5 class="heading-1 text-orange text-uppercase ">${tip.title}</h5>
                 <p>${tip.description}</p>
                 <ul class="viral-stats p-0 m-0 mt-4">
                   <li class="d-flex gap-2 align-items-center">
@@ -802,14 +824,14 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
         </div>
       `;
     });
-
+  
     const $slider = $('.figtingWithAISlider');
     $slider.html(allSlidesContent);
-
+  
     if ($slider.hasClass('slick-initialized')) {
       $slider.slick('unslick');
     }
-
+  
     $slider.slick({
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -818,17 +840,16 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
       speed: 1000,
       fade: true,
       infinite: false,
-      initialSlide: index,
+      initialSlide: index, 
       prevArrow: $('.customPopup .slider_arrow_left'),
       nextArrow: $('.customPopup .slider_arrow_right'),
     });
-
+  
     $('.customPopup').addClass('show');
   }
 
   const initialTips = getRandomTips();
-  renderSmallImages(initialTips);
-
+  renderSmallImages(initialTips); 
   $('#refreshBtn').on('click', () => {
     const newTips = getRandomTips();
     renderSmallImages(newTips);
@@ -838,7 +859,6 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
   $('.btn-close').on('click', () => {
     $('.customPopup').removeClass('show');
   });
-
   $(window).on('load', function () {
     // $('.figtingWithAISlider').slick({
     //     slidesToShow: 1,
@@ -851,5 +871,4 @@ const IMAGE_GRID_SELECTOR = '#imageGrid';
     //     prevArrow: $('.customPopup .slider_arrow_left'),
     //     nextArrow: $('.customPopup .slider_arrow_right'),
     // });
-  });
 });

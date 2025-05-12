@@ -548,6 +548,12 @@ footer span.cross.cross-three {
 #cardsContainer .card:hover img{
     transform: scale(1.1);
 }
+
+.card-body p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 #cardsContainer .card .card-body .card-title{
     font-size: 1.5rem;
     font-family: "tt-paplane", sans-serif;
