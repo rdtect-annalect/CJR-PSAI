@@ -1,5 +1,3 @@
-
-
 let CarouselData = [];
 
 let FightWithAIData = [
@@ -591,7 +589,8 @@ small: "images/fightingwithAI/Julian.jpg",
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1
+            slidesToShow: 1,
+            slidesToScroll: 1
           }
         }
       ]

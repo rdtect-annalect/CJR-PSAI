@@ -39,9 +39,12 @@ h1,h2{
 }
   
 .sub-heading{
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: #000;
-    font-weight: 300;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+
 }
 .text-orange{
     color: #FF4F2A;
@@ -991,4 +994,5 @@ a {
   outline: none !important;
   box-shadow: none !important;
 }
+
 

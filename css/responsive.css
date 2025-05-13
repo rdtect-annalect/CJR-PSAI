@@ -57,7 +57,14 @@
         align-items: flex-end;
         /* margin-top: 4rem; */
         gap: 1rem ;
-      }
+    }
+    .tip_content.para-box-wrapper {
+        width: 35%;
+    }
+    .furtherReading-sec {
+        padding-bottom: 5rem;
+        padding-top: 2rem;
+    }
 }
 
 @media (min-width: 992px) {
@@ -115,7 +122,30 @@
 }
 
 @media (max-width: 768px) {
-    
+    .para-box-wrapper p {
+        font-size: .8rem !important;
+    }
+    .tip_content.para-box-wrapper {
+        left: 15px;
+    }
+    .tip_content::after {
+        display: none;
+    }
+    .modalSliderWrapper {
+       position: relative;
+    }
+    .modal-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 70vh;
+    }
+    .modalSliderWrapper, .figtingWithAISlider {
+        width: 100%;
+    }
+    .ti_img-thumbnail {
+        height: 50vh;
+    }
     .footer-dt {
         display: none;
     }
@@ -141,8 +171,8 @@
     }
 
     .tip_content.para-box-wrapper {
-        width: 100%;
-        left: 0;
+        width: 40%;
+        left: 40px;
     }
 
     .footer-links {
@@ -302,9 +332,18 @@
 }
 
 @media (max-width: 600px) {
+    .further-row {
+        padding-left: 13vw;
+        padding-right: 13vw;
+    }
+    #whoCJR {
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+
+    }
     #furtherReading-text-mob {
         font-size: 1.7rem;
-        padding: 0rem !important;
+        padding: 1.5rem 0rem 2rem 0rem !important;
     }
     .p-5 {
         padding: 1rem !important;
@@ -319,5 +358,52 @@
 }
 
 @media (max-width: 576px) {
+    footer span.cross.cross-one {
+        left: 38vw;
+    }
+    .footer-logo {
+        width: 90px;
+    }
+    #cardsContainer .card {
+        height: 55vh;
+    }
+    section:not(:first-child) {
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+    #furtherReading-sec {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
 
+    }
+    .heading-1 {
+        font-size: 1.4rem;
+    }
+    .sub-heading {
+        font-size: .8rem;
+    }
+    .tip_content.para-box-wrapper {
+        width: 45%;
+        left: 10px;
+        padding: 1rem;
+    }
+    .tip_content h3 {
+        font-size: 1rem;
+    }
+    .para-box-wrapper p {
+        position: relative;
+        z-index: 1;
+        font-size: .7rem;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .further-row {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    #cardsContainer .card {
+        height: 40vh;
+    }
 }
