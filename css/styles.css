@@ -339,7 +339,7 @@ header{
 
 .how-tospot-ai-sec .slider_arrows{
     position: absolute;
-    bottom: 4rem;
+    bottom: 6rem;
     left: 50%;
     transform: translateX(-50%);
     align-items: center;

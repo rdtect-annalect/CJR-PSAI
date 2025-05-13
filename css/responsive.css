@@ -22,7 +22,7 @@
 
 
     .h-100vh {
-        min-height: 100vh;
+        min-height: 90vh;
     }
 
     section {
@@ -32,8 +32,17 @@
 }
 
 @media (min-width: 1200px) {
+    .extra-p {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+
+    }
     .mob-only {
         display: none;
+    }
+
+    .further-row {
+        padding-top: 2rem;
     }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
