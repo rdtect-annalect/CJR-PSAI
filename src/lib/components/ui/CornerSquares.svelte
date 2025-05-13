@@ -11,7 +11,7 @@
    */
 
   /** @type {Props} */
-  let { color = "var(--color-secondary)", size = 8, offset = 1, class: className = "" } = $props();
+  let { color = "white", size = 8, offset = 1, class: className = "" } = $props();
 </script>
 
 <div class={`pointer-events-none w-full h-full relative ${className}`}>

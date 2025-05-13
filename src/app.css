@@ -1,24 +1,204 @@
 @font-face {
-  font-family: 'TT_Paplane_Trial_Regular';
+  font-family: "TT_Paplane_Trial_Regular";
   font-weight: 400;
   font-style: normal;
   src: url(/fonts/TT_Paplane_Trial_Regular.ttf);
 }
-@import "tailwindcss";    
+@import "tailwindcss";
 
 @theme {
+  --font-paplane: "TT_Paplane_Trial_Regular", monospace;
+  --font-inter: "Inter", sans-serif;
+  --color-primary: #ff4f2a;
+  --color-secondary: #fff9e6;
+  --color-black: #000000;
   
-    --font-paplane: 'TT_Paplane_Trial_Regular', monospace;
-    --font-inter: 'Inter', sans-serif;
-    --color-primary: #FF4F2A;
-    --color-secondary: #FFF9E6;
-    --color-black: #000000;
 
-    --height-100vh: 100vh;
-    --min-height-screen: 100vh;
+  --height-100vh: 100vh;
+  --min-height-screen: 100vh;
+}
 
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-fadeOut {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.5s ease forwards;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.5s ease forwards;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.5s ease forwards;
+}
+
+.animate-slideInDown {
+  animation: slideInDown 0.5s ease forwards;
+}
+
+.animate-modalIn {
+  animation: modalFadeIn 0.3s ease forwards;
+}
+
+.animate-modalOut {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Animation Delays */
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Global styles */
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling for all browsers */
 }
 
 .app-contents {
   display: contents;
+}
+
+/* Offset for fixed header - adjust this based on your header height */
+:target {
+  scroll-margin-top: 5rem; /* Provides space at the top when scrolling to a target */
 }

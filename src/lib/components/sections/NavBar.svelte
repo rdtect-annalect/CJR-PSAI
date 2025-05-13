@@ -1,18 +1,100 @@
 <script lang="ts">
-  let menuOpen = $state(false);
-  let menuButton: HTMLButtonElement | null = $state(null);
-  let closeButton: HTMLButtonElement | null = $state(null);
+  import { onMount, onDestroy } from "svelte";
+
+  // Menu state grouped logically using standard reactive variables
+  let menu = {
+    isOpen: false,
+    /** @type {HTMLButtonElement | null} */
+    menuButton: null as HTMLButtonElement | null,
+    /** @type {HTMLButtonElement | null} */
+    closeButton: null as HTMLButtonElement | null,
+  };
+
+  // Navbar visibility state grouped
+  let scroll = {
+    isNavbarVisible: true,
+    lastPosition: 0,
+    isScrollingUp: false,
+    threshold: 50, // Minimum scroll distance to trigger hide/show
+  };
+
+  // We'll use standard reactivity until Svelte 5 runes are fully configured
+  $: shouldShowNavbar =
+    scroll.isScrollingUp || scroll.lastPosition < 50 || menu.isOpen;
 
   function toggleMenu() {
-    menuOpen = !menuOpen;
-    setTimeout(() => {
-      if (menuOpen && closeButton) closeButton.focus?.();
-      else if (!menuOpen && menuButton) menuButton.focus?.();
-    }, 10);
+    menu.isOpen = !menu.isOpen;
+
+    if (menu.isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
   }
+
+  // Handle scroll events
+  function handleScroll() {
+    // Ignore scroll events when menu is open
+    if (menu.isOpen) return;
+
+    const currentScrollPosition = window.scrollY;
+    scroll.isScrollingUp = currentScrollPosition < scroll.lastPosition;
+
+    // Only change navbar visibility if we've scrolled a significant amount
+    if (
+      Math.abs(currentScrollPosition - scroll.lastPosition) >
+      scroll.threshold / 3
+    ) {
+      // Always show navbar when at the top or scrolling up
+      scroll.isNavbarVisible =
+        scroll.isScrollingUp || currentScrollPosition < 50;
+    }
+
+    // Update the scroll position
+    scroll.lastPosition = currentScrollPosition;
+  }
+
+  function closeMenu() {
+    if (menu.isOpen) {
+      menu.isOpen = false;
+      document.body.classList.remove("overflow-hidden");
+    }
+  }
+
+  // Function to close menu when clicking a navigation link
+  function handleLinkClick() {
+    closeMenu();
+  }
+
+  // Focus management for the menu
+  function handleMenuButtonFocus() {
+    if (menu.closeButton) menu.closeButton.focus();
+  }
+
+  function handleCloseButtonFocus() {
+    if (menu.menuButton) menu.menuButton.focus();
+  }
+
+  // Add scroll event listener when component mounts
+  onMount(() => {
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+  });
+
+  onDestroy(() => {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  });
 </script>
 
-<nav class="fixed w-full z-50 bg-black/20" aria-label="Main navigation">
+<nav
+  class="fixed w-full z-50 bg-black/20 transition-transform duration-300 ease-in-out"
+  class:translate-y-0={scroll.isNavbarVisible}
+  class:-translate-y-full={!scroll.isNavbarVisible}
+  aria-label="Main navigation"
+>
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <!-- Logo Left -->
     <a href="#hero" class="flex-shrink-0">
@@ -26,12 +108,12 @@
         <a id="scrollButton2" href="#about" class="hover:text-orange">ABOUT</a>
       </li>
       <li>
-        <a id="scrollButton3" href="#musicVideo" class="hover:text-orange"
+        <a id="scrollButton3" href="#music-video" class="hover:text-orange"
           >MUSIC VIDEO</a
         >
       </li>
       <li>
-        <a id="scrollButton4" href="#why" class="hover:text-orange"
+        <a id="scrollButton4" href="#why_psai" class="hover:text-orange"
           >WHY THE PSAI</a
         >
       </li>
@@ -49,11 +131,11 @@
 
     <!-- Mobile menu button (right) -->
     <button
-      bind:this={menuButton}
+      bind:this={menu.menuButton}
       class="block md:hidden text-white focus:outline-none focus:ring-2 focus:ring-orange"
-      onclick={toggleMenu}
+      on:click={toggleMenu}
       aria-label="Toggle navigation"
-      aria-expanded={menuOpen ? "true" : "false"}
+      aria-expanded={menu.isOpen ? "true" : "false"}
       aria-controls="mobile-menu"
     >
       <svg
@@ -73,7 +155,7 @@
     </button>
 
     <!-- Mobile menu (conditional rendering) -->
-    {#if menuOpen}
+    {#if menu.isOpen}
       <div
         id="mobile-menu"
         class="md:hidden fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center"
@@ -82,9 +164,9 @@
       >
         <!-- Close button -->
         <button
-          bind:this={closeButton}
+          bind:this={menu.closeButton}
           class="absolute top-4 right-4 text-white focus:outline-none focus:ring-2 focus:ring-orange"
-          onclick={toggleMenu}
+          on:click={toggleMenu}
           aria-label="Close navigation"
         >
           <svg
@@ -110,7 +192,7 @@
               id="scrollButton1"
               href="#hero"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>HOME</a
+              on:click={toggleMenu}>HOME</a
             >
           </li>
           <li>
@@ -118,23 +200,23 @@
               id="scrollButton2"
               href="#about"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>ABOUT</a
+              on:click={toggleMenu}>ABOUT</a
             >
           </li>
           <li>
             <a
               id="scrollButton3"
-              href="#musicVideo"
+              href="#music-video"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>MUSIC VIDEO</a
+              on:click={toggleMenu}>MUSIC VIDEO</a
             >
           </li>
           <li>
             <a
               id="scrollButton4"
-              href="#why"
+              href="#why_psai"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>WHY THE PSAI</a
+              on:click={toggleMenu}>WHY THE PSAI</a
             >
           </li>
           <li>
@@ -142,7 +224,7 @@
               id="scrollButton5"
               href="#spotAI"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>SPOT AI</a
+              on:click={toggleMenu}>SPOT AI</a
             >
           </li>
           <li>
@@ -150,7 +232,7 @@
               id="scrollButton6"
               href="#whoCJR"
               class="hover:text-orange block py-2 font-paplane"
-              onclick={toggleMenu}>WHO IS CJR</a
+              on:click={toggleMenu}>WHO IS CJR</a
             >
           </li>
         </ul>

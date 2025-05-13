@@ -183,6 +183,15 @@ function attr_style(value, directives) {
   var result = to_style(value);
   return result ? ` style="${escape_html(result, true)}"` : "";
 }
+function slot(payload, $$props, name, slot_props, fallback_fn) {
+  var slot_fn = $$props.$$slots?.[name];
+  if (slot_fn === true) {
+    slot_fn = $$props["children"];
+  }
+  if (slot_fn !== void 0) {
+    slot_fn(payload, slot_props);
+  }
+}
 function bind_props(props_parent, props_now) {
   for (const key in props_now) {
     const initial_value = props_parent[key];
@@ -204,15 +213,17 @@ export {
   HYDRATION_START as a,
   HYDRATION_END as b,
   pop as c,
-  attr as d,
-  ensure_array_like as e,
-  escape_html as f,
-  getContext as g,
-  head as h,
-  attr_class as i,
-  attr_style as j,
-  stringify as k,
-  bind_props as l,
+  current_component as d,
+  attr_class as e,
+  attr as f,
+  ensure_array_like as g,
+  escape_html as h,
+  head as i,
+  slot as j,
+  getContext as k,
+  attr_style as l,
+  stringify as m,
+  bind_props as n,
   push as p,
   render as r,
   setContext as s

@@ -21,7 +21,7 @@
   /** @type {Props} */
   let {
     bgColor = "var(--color-primary)",
-    borderColor = "var(--color-secondary)",
+    borderColor = "white",
     textColor = "var(--color-secondary)",
     showArrows = true,
     showGrid = true,

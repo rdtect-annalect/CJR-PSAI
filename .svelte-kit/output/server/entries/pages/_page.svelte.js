@@ -1,5 +1,5 @@
 import "clsx";
-import { i as attr_class, j as attr_style, k as stringify, f as escape_html, e as ensure_array_like, d as attr, c as pop, p as push, l as bind_props } from "../../chunks/index.js";
+import { e as attr_class, l as attr_style, m as stringify, h as escape_html, g as ensure_array_like, f as attr, c as pop, p as push, n as bind_props } from "../../chunks/index.js";
 import { C as CornerSquares, a as DigitalElements, D as DigitalAccents, G as GridOverlay } from "../../chunks/DigitalAccents.js";
 import { h as fallback } from "../../chunks/utils.js";
 function html(value) {
@@ -153,7 +153,7 @@ function MusicVideo($$payload) {
   $$payload.out += `<!--]--></div> <button class="absolute inset-0 w-full h-full z-10 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]" aria-label="Play video" tabindex="0" style="background: transparent; border: none; padding: 0; margin: 0;"></button></div></section></div>`;
 }
 function WhyPsai($$payload) {
-  $$payload.out += `<section id="why" class="h-screen flex flex-col items-center justify-center py-20 bg-black relative overflow-hidden">`;
+  $$payload.out += `<section id="why_psai" class="h-screen flex flex-col items-center justify-center py-20 bg-black relative overflow-hidden">`;
   GridOverlay($$payload, { color: "rgba(255,255,255,0.04)", size: "40px" });
   $$payload.out += `<!----> <div class="absolute inset-0 pointer-events-none z-10">`;
   DigitalElements($$payload, {
@@ -912,39 +912,45 @@ artisticRealisticImages.forEach((item) => {
 });
 function FightingAI($$payload, $$props) {
   push();
-  let batch = [];
-  let positionLayouts = [];
-  function getPositionStyle(index) {
-    if (positionLayouts.length === 0) return "";
-    const pos = positionLayouts[index % positionLayouts.length];
-    let style = `
-      width: ${pos.width}; 
-      height: ${pos.height}; 
-      top: ${pos.top}; 
-      z-index: ${pos.zIndex};
-      transform: rotate(${pos.rotate}deg) scale(${pos.scale});
-      animation: floating ${5 + index % 3}s ease-in-out infinite;
-      animation-delay: ${-1 * (index % 5)}s;
-    `;
-    if (pos.left) style += `left: ${pos.left};`;
-    if (pos.right) style += `right: ${pos.right};`;
-    return style;
-  }
-  const each_array = ensure_array_like(batch);
-  $$payload.out += `<section id="fighting-ai" class="withAI section-full bg-secondary flex flex-col items-center justify-center py-16 relative svelte-1vmk23d"><div class="text-center mb-12 relative z-20 svelte-1vmk23d"><div class="flex justify-center items-center svelte-1vmk23d"><h2 class="heading-1 font-paplane text-4xl md:text-5xl text-primary svelte-1vmk23d">FIGHTING AI</h2> <div class="relative mx-3 svelte-1vmk23d"><h2 class="font-paplane text-4xl md:text-5xl text-primary svelte-1vmk23d"><span class="border-2 border-primary px-5 rounded-[20px] inline-block svelte-1vmk23d">WITH AI</span></h2></div></div> <h3 class="sub-heading text-xl mt-4 text-center font-paplane text-black svelte-1vmk23d">Learn about the images featured in The PSAi</h3></div> <div class="images-gallery-wrapper relative w-full max-w-6xl mx-auto mb-8 px-4 svelte-1vmk23d"><div class="images-gallery relative h-[600px] svelte-1vmk23d"><!--[-->`;
+  let gallery = (
+    // 0 means random from all batches
+    // Track which batch we're on for UI
+    {
+      items: [],
+      positionLayouts: []
+    }
+  );
+  const each_array = ensure_array_like(gallery.items);
+  $$payload.out += `<section id="fighting-ai" class="withAI section-full bg-secondary flex flex-col items-center justify-center py-16 relative"><div class="text-center mb-12 relative z-20"><div class="flex justify-center items-center"><h2 class="heading-1 font-paplane text-4xl md:text-5xl text-primary">FIGHTING AI</h2> <div class="relative mx-3"><h2 class="font-paplane text-4xl md:text-5xl text-primary"><span class="border-2 border-primary px-5 rounded-[20px] inline-block">WITH AI</span></h2></div></div> <h3 class="sub-heading text-xl mt-4 text-center font-paplane text-black">Learn about the images featured in The PSAi</h3></div> <div class="gallery-area mt-12 relative w-full h-[500px] md:h-[600px] overflow-hidden"><div class="relative w-full h-full gallery-container svelte-10uof19"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
     let item = each_array[i];
-    $$payload.out += `<button type="button" class="absolute cursor-pointer rounded-lg overflow-hidden shadow-xl transition-all duration-500 ease-out hover:scale-105 hover:z-10 border-0 p-0 m-0 transform-gpu svelte-1vmk23d"${attr_style(getPositionStyle(i))}${attr("aria-label", `View details for ${item.title}`)}><div class="absolute inset-0 bg-primary opacity-0 hover:opacity-20 transition-opacity duration-300 ease-in-out z-10 svelte-1vmk23d"></div> <img${attr("src", item.images.small)}${attr("alt", item.title)} class="w-full h-full object-cover transition-all duration-500 ease-out hover:scale-110 transform-gpu svelte-1vmk23d"></button>`;
+    $$payload.out += `<button class="absolute rounded overflow-hidden shadow-xl cursor-pointer transition-all duration-500 hover:z-10 hover:shadow-2xl transform hover:scale-105 gallery-item svelte-10uof19"${attr_style(`width: ${gallery.positionLayouts[i % gallery.positionLayouts.length].width}; 
+                  height: ${gallery.positionLayouts[i % gallery.positionLayouts.length].height}; 
+                  top: ${gallery.positionLayouts[i % gallery.positionLayouts.length].top}; 
+                  left: ${gallery.positionLayouts[i % gallery.positionLayouts.length].left}; 
+                  z-index: ${gallery.positionLayouts[i % gallery.positionLayouts.length].zIndex}; 
+                  transform: rotate(${gallery.positionLayouts[i % gallery.positionLayouts.length].rotate}deg) scale(${gallery.positionLayouts[i % gallery.positionLayouts.length].scale}); 
+                  transition-delay: ${i * 0.05}s;`)}${attr("aria-label", `View details for ${item.title}`)}><img${attr("src", item.images.small)}${attr("alt", item.title)} class="w-full h-full object-cover"></button>`;
   }
-  $$payload.out += `<!--]--></div></div> <div class="text-center mb-10 svelte-1vmk23d"><button id="seeMoreBtn" class="dark_cta mt-2 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-xl px-8 py-2 font-medium flex items-center justify-center gap-2 shadow-md font-paplane svelte-1vmk23d" aria-label="See more images"><span class="svelte-1vmk23d">SEE MORE</span></button></div> `;
+  $$payload.out += `<!--]--></div></div> <div class="text-center mb-10"><button id="seeMoreBtn" class="dark_cta mt-2 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors rounded-xl px-8 py-2 font-medium flex items-center justify-center gap-2 shadow-md font-paplane" aria-label="See more images"><span>SEE MORE</span></button></div> `;
   {
     $$payload.out += "<!--[!-->";
   }
   $$payload.out += `<!--]--></section>`;
   pop();
 }
-function AboutCJR($$payload) {
-  $$payload.out += `<section id="whoCJR" class="relative w-full min-h-screen flex flex-col items-center justify-center bg-black py-40 md:py-48 overflow-hidden">`;
+function AboutCJR($$payload, $$props) {
+  push();
+  let ui = {
+    isVisible: false
+  };
+  let content = {
+    title: "ABOUT COLUMBIA JOURNALISM REVIEW"
+  };
+  $$payload.out += `<section id="whoCJR"${attr_class("relative w-full min-h-screen flex flex-col items-center justify-center bg-black py-40 md:py-48 overflow-hidden", void 0, {
+    "opacity-0": true,
+    "animate-fadeIn": ui.isVisible
+  })}>`;
   GridOverlay($$payload, { color: "rgba(255,255,255,0.04)", size: "32px" });
   $$payload.out += `<!----> `;
   DigitalAccents($$payload, {
@@ -954,7 +960,7 @@ function AboutCJR($$payload) {
   });
   $$payload.out += `<!----> <div class="container mx-auto px-4 relative z-20"><div class="mb-16">`;
   SectionTitle($$payload, {
-    title: "ABOUT COLUMBIA JOURNALISM REVIEW",
+    title: content.title,
     color: "orange",
     fontSize: "text-6xl md:text-7xl tracking-[0.22em]",
     class: "text-center font-paplane font-extrabold drop-shadow-lg"
@@ -1006,23 +1012,113 @@ function AboutCJR($$payload) {
     }
   });
   $$payload.out += `<!----></div></div></section>`;
+  pop();
 }
 function SpotAICard($$payload, $$props) {
   push();
   let image = fallback($$props["image"], () => ({ src: "", alt: "", tipNumber: 1 }), true);
-  $$payload.out += `<div class="spot-ai-card relative overflow-hidden rounded-3xl border-4 border-[#FF5F33] shadow-lg svelte-1volc4x"><div class="absolute top-5 left-1/2 -translate-x-1/2 bg-[#333333]/80 text-white border-2 border-white rounded-full py-1 px-8 z-10"><span class="font-papplane font-bold uppercase tracking-[0.25em] text-[14px] leading-tight">TIP ${escape_html(String(image.tipNumber).padStart(2, "0"))}</span></div> <img${attr("src", image.src)}${attr("alt", image.alt)} class="w-full h-full object-cover" draggable="false"></div>`;
-  bind_props($$props, { image });
+  let title = fallback($$props["title"], "");
+  let subtitle = fallback($$props["subtitle"], "");
+  let description = fallback($$props["description"], "");
+  $$payload.out += `<div class="card spot-ai-card relative overflow-hidden rounded-3xl border-0 cursor-pointer svelte-bb2x9z" role="button" tabindex="0"${attr("aria-label", `${title}: ${subtitle}`)} data-bs-toggle="modal" data-bs-target="#carouselModal"><img${attr("src", image.src)}${attr("alt", image.alt)} class="w-full h-full object-cover img-fluid svelte-bb2x9z" draggable="false"> <div class="card-body svelte-bb2x9z"><h3 class="card-title svelte-bb2x9z">${escape_html(title)}</h3> <div class="sr-only"><h4>${html(subtitle)}</h4> <p>${escape_html(description)}</p></div></div></div>`;
+  bind_props($$props, { image, title, subtitle, description });
   pop();
 }
+const spotAIData = [
+  {
+    "title": "Tip 01",
+    "subtitle": "Check hands and fingers",
+    "description": "AI often struggles with realistic hand placement and finger details, including extra fingers and warped hands.",
+    "images": {
+      "small": "images/spot-ai/small/1.png",
+      "medium": "images/spot-ai/large/1.png"
+    }
+  },
+  {
+    "title": "Tip 02 ",
+    "subtitle": "Look at facial features",
+    "description": "Check for asymmetry in facial features, odd eye placement, unnatural skin textures, hair that’s perfectly smooth and clean, or expressions that don't match the situation.",
+    "images": {
+      "small": "images/spot-ai/small/2.png",
+      "medium": "images/spot-ai/large/2.png"
+    }
+  },
+  {
+    "title": "Tip 03 ",
+    "subtitle": "Scan the background",
+    "description": "Look for blurry or distorted background elements, or faces and objects that don't fit the scene.",
+    "images": {
+      "small": "images/spot-ai/small/3.png",
+      "medium": "images/spot-ai/large/3.png"
+    }
+  },
+  {
+    "title": "Tip 04 ",
+    "subtitle": "Spot<br/> contextual<br/> errors",
+    "description": "Pay attention to details that might not make sense within the image. If it seems like it isn’t real, it probably isn’t.",
+    "images": {
+      "small": "images/spot-ai/small/4.png",
+      "medium": "images/spot-ai/large/4.png"
+    }
+  },
+  {
+    "title": "Tip 05 ",
+    "subtitle": "Look for<br/> distorted<br/> logos or text",
+    "description": "Look for minor details that appear off, like distorted logos, warped numbers and words that don’t make sense.",
+    "images": {
+      "small": "images/spot-ai/small/5.png",
+      "medium": "images/spot-ai/large/5.png"
+    }
+  },
+  {
+    "title": "Tip 06 ",
+    "subtitle": "Pay attention<br/> to lighting<br/> and shadows",
+    "description": "Observe if shadows fall in an illogical way or if lighting seems inconsistent across the image.",
+    "images": {
+      "small": "images/spot-ai/small/6.png",
+      "medium": "images/spot-ai/large/6.png"
+    }
+  },
+  {
+    "title": "Tip 07 ",
+    "subtitle": "Check<br/> textures<br/> and patterns",
+    "description": "Check for unnatural repetition of patterns in clothing, hair, or other textures.",
+    "images": {
+      "small": "images/spot-ai/small/7.png",
+      "medium": "images/spot-ai/large/7.png"
+    }
+  },
+  {
+    "title": "Tip 08 ",
+    "subtitle": "Are there<br/> digital<br/> artifacts?",
+    "description": "Pixelation, strange colors, blurriness in unexpected places, or objects that are blended together can indicate AI manipulation.",
+    "images": {
+      "small": "images/spot-ai/small/8.png",
+      "medium": "images/spot-ai/large/8.png"
+    }
+  },
+  {
+    "title": "Tip 09 ",
+    "subtitle": "Reverse<br/>  image<br/>  search",
+    "description": "Use a search engine to see if the image appears elsewhere online and check for potential sources or inconsistencies.",
+    "images": {
+      "small": "images/spot-ai/small/9.png",
+      "medium": "images/spot-ai/large/9.png"
+    }
+  },
+  {
+    "title": "Tip 10 ",
+    "subtitle": "Check the<br/> source",
+    "description": "Be cautious of images from websites known for generating or sharing AI-generated content. ",
+    "images": {
+      "small": "images/spot-ai/small/10.png",
+      "medium": "images/spot-ai/large/10.png"
+    }
+  }
+];
 function SpotAI($$payload, $$props) {
   push();
-  const imageFiles = Array.from({ length: 5 }, (_, i) => `${i + 1}.jpg`);
-  const images = imageFiles.map((name, i) => ({
-    id: i + 1,
-    src: `/images/spot-ai/large/${name}`,
-    alt: `AI Detection Example ${i + 1}`,
-    loaded: false
-  }));
+  const carouselItems = spotAIData;
   let currentGroup = 0;
   let isTransitioning = false;
   let cardsPerGroup = 5;
@@ -1032,14 +1128,14 @@ function SpotAI($$payload, $$props) {
   if (typeof window !== "undefined") {
     updateCardsPerGroup();
   }
-  const totalGroups = () => Math.ceil(images.length / cardsPerGroup);
+  const totalGroups = () => Math.ceil(carouselItems.length / cardsPerGroup);
   const groupStart = () => currentGroup * cardsPerGroup;
-  const groupImages = () => images.slice(groupStart(), groupStart() + cardsPerGroup);
+  const groupItems = () => carouselItems.slice(groupStart(), groupStart() + cardsPerGroup);
   const totalGroupsVal = () => totalGroups();
-  const groupImagesArr = () => groupImages();
-  const each_array = ensure_array_like(groupImagesArr());
+  const groupItemsArr = () => groupItems();
+  const each_array = ensure_array_like(groupItemsArr());
   const each_array_1 = ensure_array_like(Array(totalGroupsVal()));
-  $$payload.out += `<section id="spotAI" class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden bg-[#FF5F33] py-20 md:py-32">`;
+  $$payload.out += `<section id="spotAI" class="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#FF5F33] py-16 md:py-24">`;
   GridOverlay($$payload, {
     color: "rgba(255,255,255,0.08)",
     size: "40px",
@@ -1101,20 +1197,23 @@ function SpotAI($$payload, $$props) {
     pos: "bottom-[25%] left-[5%]",
     color: "white"
   });
-  $$payload.out += `<!----></div></div> <div class="relative z-20 flex flex-col items-center w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8"><div class="mb-16"><h2 class="font-paplane text-6xl md:text-7xl font-extrabold uppercase text-center text-white tracking-[0.22em]">HOW TO SPOT AI</h2> <p class="text-white text-center mt-2 font-paplane text-lg tracking-wide">Signs to look for</p></div> <div class="relative flex flex-col items-center w-full max-w-5xl mx-auto"><div class="hidden md:block"><button class="absolute -left-6 lg:-left-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-black rounded-none flex items-center justify-center shadow-md hover:bg-black/80 focus:outline-none z-20" aria-label="Previous group"${attr("disabled", isTransitioning, true)} tabindex="0"><span class="text-white text-2xl">&lt;</span></button> <button class="absolute -right-6 lg:-right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-black rounded-none flex items-center justify-center shadow-md hover:bg-black/80 focus:outline-none z-20" aria-label="Next group"${attr("disabled", isTransitioning, true)} tabindex="0"><span class="text-white text-2xl">></span></button></div> <div class="relative w-full px-0 py-6 flex flex-col items-center"><div class="flex flex-row justify-start md:justify-center items-stretch gap-4 w-full overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide"><!--[-->`;
+  $$payload.out += `<!----></div></div> <div class="relative z-20 flex flex-col items-center w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8"><div class="mb-16"><h2 class="font-paplane text-6xl md:text-7xl font-extrabold uppercase text-center text-white tracking-[0.22em]">HOW TO SPOT AI</h2> <p class="text-white text-center mt-2 font-paplane text-lg tracking-wide">Signs to look for</p></div> <div class="relative flex flex-col items-center w-full max-w-5xl mx-auto"><div class="slider_arrows white mt-0 hidden md:flex justify-between absolute w-full top-1/2 -translate-y-1/2 px-4 z-20"><div class="slider_arrow_left"><button${attr("disabled", isTransitioning, true)} aria-label="Previous group" tabindex="0" class="bg-transparent hover:opacity-80 focus:outline-none"><svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z" fill="#FF4F2A"></path></svg></button></div> <div class="dash"><svg width="155" height="1" viewBox="0 0 155 1" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A" stroke-dasharray="2 2"></line></svg></div> <div class="slider_arrow_right"><button${attr("disabled", isTransitioning, true)} aria-label="Next group" tabindex="0" class="bg-transparent hover:opacity-80 focus:outline-none"><svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z" fill="#FF4F2A"></path></svg></button></div></div> <div class="relative w-full px-0 py-6 flex flex-col items-center"><div class="flex flex-row justify-start md:justify-center items-stretch gap-4 w-full overflow-x-auto md:overflow-visible pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide"><!--[-->`;
   for (let i = 0, $$length = each_array.length; i < $$length; i++) {
-    let img = each_array[i];
-    $$payload.out += `<div class="snap-center w-[140px] sm:w-[160px] md:w-[180px] flex-shrink-0">`;
+    let item = each_array[i];
+    $$payload.out += `<div class="snap-center w-[175px] sm:w-[200px] md:w-[220px] flex-shrink-0">`;
     SpotAICard($$payload, {
+      title: item.title,
+      subtitle: item.subtitle,
+      description: item.description,
       image: {
-        src: img.src,
-        alt: img.alt,
-        tipNumber: groupStart() + i + 1
+        src: item.images.medium,
+        alt: `Tip ${i + 1}`,
+        tipNumber: parseInt(item.title.replace("Tip ", "")) || groupStart() + i + 1
       }
     });
     $$payload.out += `<!----></div>`;
   }
-  $$payload.out += `<!--]--></div> <div class="flex md:hidden justify-center w-full mt-8 gap-8"><button class="w-12 h-12 bg-black flex items-center justify-center shadow-lg hover:bg-black/80 focus:outline-none z-20" aria-label="Previous group"${attr("disabled", isTransitioning, true)}><span class="text-white text-2xl">&lt;</span></button> <button class="w-12 h-12 bg-black flex items-center justify-center shadow-lg hover:bg-black/80 focus:outline-none z-20" aria-label="Next group"${attr("disabled", isTransitioning, true)}><span class="text-white text-2xl">></span></button></div></div> <div class="flex items-center justify-center gap-1 mt-10"><!--[-->`;
+  $$payload.out += `<!--]--></div> <div class="slider_arrows white flex md:hidden justify-center w-full mt-8"><div class="slider_arrow_left"><button${attr("disabled", isTransitioning, true)} aria-label="Previous group" class="bg-transparent hover:opacity-80 focus:outline-none"><svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z" fill="#FF4F2A"></path></svg></button></div> <div class="dash mx-4"><svg width="155" height="1" viewBox="0 0 155 1" fill="none" xmlns="http://www.w3.org/2000/svg"><line y1="0.5" x2="155" y2="0.5" stroke="#FF4F2A" stroke-dasharray="2 2"></line></svg></div> <div class="slider_arrow_right"><button${attr("disabled", isTransitioning, true)} aria-label="Next group" class="bg-transparent hover:opacity-80 focus:outline-none"><svg width="18" height="36" viewBox="0 0 18 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.0779896 30.0169L6.07539 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.9662 0L0 6.01434L12.0026 17.9726L0.0779896 30.0169Z" fill="#FF4F2A"></path></svg></button></div></div></div> <div class="flex items-center justify-center gap-1 mt-10"><!--[-->`;
   for (let idx = 0, $$length = each_array_1.length; idx < $$length; idx++) {
     each_array_1[idx];
     $$payload.out += `<button${attr_class("w-4 h-4 rounded-full border border-white transition-all duration-200 focus:outline-none mx-1", void 0, {
@@ -1122,7 +1221,15 @@ function SpotAI($$payload, $$props) {
       "bg-transparent": idx !== currentGroup
     })}${attr("aria-label", `Go to group ${idx + 1}`)}${attr("disabled", isTransitioning, true)} tabindex="0"></button>`;
   }
-  $$payload.out += `<!--]--></div> <div class="mt-6 text-xs font-paplane text-white opacity-80 text-center tracking-widest">© Columbia Journalism Review</div></div></div></section>`;
+  $$payload.out += `<!--]--></div> <div class="mt-6 text-xs font-paplane text-white opacity-80 text-center tracking-widest">© Columbia Journalism Review</div></div></div> <div id="carouselModal" class="modal fade" tabindex="-1" aria-labelledby="carouselModalLabel" aria-hidden="true"><div class="modal-dialog modal-xl modal-fullscreen-lg-down"><div class="modal-content bg-transparent border-0"><div class="modal-header border-0"><button type="button" class="btn-close btn-close-white" aria-label="Close"></button></div> <div class="modal-body p-0"><div class="modalSliderWrapper"><div class="modalLoader" id="modalLoader"></div> <div class="modalSlider">`;
+  {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]--></div></div></div></div></div></div> `;
+  {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]--></section>`;
   pop();
 }
 function FurtherReadingCard($$payload, $$props) {

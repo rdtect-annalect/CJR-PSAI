@@ -31,21 +31,17 @@
       maxWidth="max-w-6xl"
     >
       <!-- Card content -->
-      <div class="flex flex-col items-center w-full text-center font-inter font-light leading-[2] text-sm md:text-base m-0">
+      <div class="flex flex-col items-center w-full text-center font-inter leading-[2] text-sm md:text-base m-0 uppercase">
         <p class="mb-6">
-          For more than a century, photography has been one of journalists' greatest tools to establish truth and trust. 
+          FOR MORE THAN A CENTURY, PHOTOGRAPHY HAS BEEN ONE OF JOURNALISTS' GREATEST TOOLS TO ESTABLISH TRUTH AND TRUST. 
           
-          But AI-generated images are making it increasingly difficult to distinguish real from synthetic media. 
+          BUT AI-GENERATED IMAGES ARE MAKING IT INCREASINGLY DIFFICULT TO DISTINGUISH REAL FROM SYNTHETIC MEDIA. 
         </p>
         <p>
-          The PSAi is a campaign that uses viral AI images to teach people how to spot AI images—and highlight the role we all play in spreading fakes.
+          THE PSAI IS A CAMPAIGN THAT USES VIRAL AI IMAGES TO TEACH PEOPLE HOW TO SPOT AI IMAGES—AND HIGHLIGHT THE ROLE WE ALL PLAY IN SPREADING FAKES.
         </p>
       </div>
     </ContentCard>
     
-    <!-- Attribution element similar to WhyPsai -->
-    <div class="mt-6 text-xs font-paplane text-secondary uppercase tracking-widest">
-      © Columbia Journalism Review
-    </div>
   </div>
 </section>

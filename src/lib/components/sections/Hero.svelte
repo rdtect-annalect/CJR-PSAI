@@ -4,7 +4,7 @@
   <div class="absolute inset-0 w-full h-full z-0">  
     <!-- For better visual continuity, we should refactor video to play forward + backward and loop -->
     <video class="w-full h-full object-cover" loop muted autoplay playsinline preload="auto" >  
-      <source src="/video/CJR_MACRON_MOVING.webm" type="video/webm" />  
+      <source src="/video/CJR_HEADER_1.webm" type="video/webm" />  
     </video>  
       
     <!-- Digital Overlay GIFs (exactly as in original) -->  

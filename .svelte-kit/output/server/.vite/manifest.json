@@ -88,7 +88,7 @@
       "_DigitalAccents.js"
     ],
     "css": [
-      "_app/immutable/assets/_layout.CDKcx6v3.css"
+      "_app/immutable/assets/_layout.CiSNpl93.css"
     ]
   },
   "src/routes/+page.svelte": {
@@ -102,7 +102,7 @@
       "_utils.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.C_lQmErc.css"
+      "_app/immutable/assets/_page.BEfwNQ3x.css"
     ]
   }
 }

@@ -1,11 +1,43 @@
-import { d as attr, e as ensure_array_like, f as escape_html, c as pop, p as push, h as head } from "../../chunks/index.js";
+import { d as current_component, e as attr_class, f as attr, c as pop, p as push, g as ensure_array_like, h as escape_html, i as head, j as slot } from "../../chunks/index.js";
 import { G as GridOverlay, D as DigitalAccents, C as CornerSquares, a as DigitalElements } from "../../chunks/DigitalAccents.js";
-function NavBar($$payload) {
-  $$payload.out += `<nav class="fixed w-full z-50 bg-black/20" aria-label="Main navigation"><div class="container mx-auto px-4 py-3 flex justify-between items-center"><a href="#hero" class="flex-shrink-0"><img src="/images/CJR-Logo.svg" alt="Logo" class="h-10 w-auto"></a> <ul class="hidden md:flex items-center space-x-8 font-paplane text-secondary text-sm"><li><a id="scrollButton2" href="#about" class="hover:text-orange">ABOUT</a></li> <li><a id="scrollButton3" href="#musicVideo" class="hover:text-orange">MUSIC VIDEO</a></li> <li><a id="scrollButton4" href="#why" class="hover:text-orange">WHY THE PSAI</a></li> <li><a id="scrollButton5" href="#spotAI" class="hover:text-orange">SPOT AI</a></li> <li><a id="scrollButton6" href="#whoCJR" class="hover:text-orange">WHO IS CJR</a></li></ul> <button class="block md:hidden text-white focus:outline-none focus:ring-2 focus:ring-orange" aria-label="Toggle navigation"${attr("aria-expanded", "false")} aria-controls="mobile-menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button> `;
+function onDestroy(fn) {
+  var context = (
+    /** @type {Component} */
+    current_component
+  );
+  (context.d ??= []).push(fn);
+}
+function NavBar($$payload, $$props) {
+  push();
+  let scroll = {
+    isNavbarVisible: true,
+    lastPosition: 0,
+    isScrollingUp: false,
+    threshold: 50
+    // Minimum scroll distance to trigger hide/show
+  };
+  function handleScroll() {
+    const currentScrollPosition = window.scrollY;
+    scroll.isScrollingUp = currentScrollPosition < scroll.lastPosition;
+    if (Math.abs(currentScrollPosition - scroll.lastPosition) > scroll.threshold / 3) {
+      scroll.isNavbarVisible = scroll.isScrollingUp || currentScrollPosition < 50;
+    }
+    scroll.lastPosition = currentScrollPosition;
+  }
+  onDestroy(() => {
+    if (typeof window !== "undefined") {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  });
+  $$payload.out += `<nav${attr_class("fixed w-full z-50 bg-black/20 transition-transform duration-300 ease-in-out", void 0, {
+    "translate-y-0": scroll.isNavbarVisible,
+    "-translate-y-full": !scroll.isNavbarVisible
+  })} aria-label="Main navigation"><div class="container mx-auto px-4 py-3 flex justify-between items-center"><a href="#hero" class="flex-shrink-0"><img src="/images/CJR-Logo.svg" alt="Logo" class="h-10 w-auto"></a> <ul class="hidden md:flex items-center space-x-8 font-paplane text-secondary text-sm"><li><a id="scrollButton2" href="#about" class="hover:text-orange">ABOUT</a></li> <li><a id="scrollButton3" href="#musicVideo" class="hover:text-orange">MUSIC VIDEO</a></li> <li><a id="scrollButton4" href="#why_psai" class="hover:text-orange">WHY THE PSAI</a></li> <li><a id="scrollButton5" href="#spotAI" class="hover:text-orange">SPOT AI</a></li> <li><a id="scrollButton6" href="#whoCJR" class="hover:text-orange">WHO IS CJR</a></li></ul> <button class="block md:hidden text-white focus:outline-none focus:ring-2 focus:ring-orange" aria-label="Toggle navigation"${attr("aria-expanded", "false")} aria-controls="mobile-menu"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button> `;
   {
     $$payload.out += "<!--[!-->";
   }
   $$payload.out += `<!--]--></div></nav>`;
+  pop();
 }
 function Footer($$payload, $$props) {
   push();
@@ -78,17 +110,18 @@ function Footer($$payload, $$props) {
   pop();
 }
 function _layout($$payload, $$props) {
-  let { children } = $$props;
+  push();
   head($$payload, ($$payload2) => {
     $$payload2.title = `<title>CJR PSAI</title>`;
     $$payload2.out += `<link rel="icon" href="/favicon.png"> <meta name="description" content="The PSAi - A campaign that uses viral AI images to teach people how to spot AI images">`;
   });
   NavBar($$payload);
-  $$payload.out += `<!----> <main class="flex-grow">`;
-  children($$payload);
+  $$payload.out += `<!----> <main class="flex-grow"><!---->`;
+  slot($$payload, $$props, "default", {});
   $$payload.out += `<!----></main> `;
   Footer($$payload);
   $$payload.out += `<!---->`;
+  pop();
 }
 export {
   _layout as default

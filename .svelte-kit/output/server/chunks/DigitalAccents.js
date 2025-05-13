@@ -1,4 +1,4 @@
-import { d as attr, i as attr_class, j as attr_style, k as stringify } from "./index.js";
+import { f as attr, e as attr_class, l as attr_style, m as stringify } from "./index.js";
 function DigitalElements($$payload, $$props) {
   let {
     type = "arrow",
