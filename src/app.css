@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'TT_Paplane_Trial_Regular';
+  font-weight: 400;
+  font-style: normal;
+  src: url(/fonts/TT_Paplane_Trial_Regular.ttf);
+}
+@import "tailwindcss";    
+
+@theme {
+  
+    --font-paplane: 'TT_Paplane_Trial_Regular', monospace;
+    --font-inter: 'Inter', sans-serif;
+    --color-primary: #FF4F2A;
+    --color-secondary: #FFF9E6;
+    --color-black: #000000;
+
+    --height-100vh: 100vh;
+    --min-height-screen: 100vh;
+
+}
+
+.app-contents {
+  display: contents;
+}
