@@ -283,6 +283,10 @@ header{
 .para-box-wrapper.black-border{
     border-color: #000;
 }
+
+.para-box-wrapper.offWhite-border{
+    border-color: #FFF9EB;
+}
 .corner-square.white{
     background-color: #fff;
 }
@@ -290,6 +294,11 @@ header{
 .corner-square.black{
     background-color: #000;
 }
+
+.corner-square.offWhite{
+    background-color: #FFF9EB;
+}
+
 
 .para-box-wrapper .corner-square.tl { top: -3px; left: -3px; }
 .para-box-wrapper .corner-square.tr { top: -3px; right: -3px; }
