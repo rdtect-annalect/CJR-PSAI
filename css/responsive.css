@@ -90,7 +90,7 @@
 }
 
 @media (max-width: 768px) {
-
+    
     .footer-dt {
         display: none;
     }
@@ -254,7 +254,7 @@
     }
 
     section:not(:first-child) {
-        padding: 3rem 2rem !important;
+        padding: 3rem 2rem ;
     }
 
     .the-PSAI img {
@@ -276,3 +276,23 @@
     }
 }
 
+@media (max-width: 600px) {
+    #furtherReading-text-mob {
+        font-size: 1.7rem;
+        padding: 0rem !important;
+    }
+    .p-5 {
+        padding: 1rem !important;
+    }
+
+    .whyThis-matter-sec {
+        height: unset;
+        padding-top: 10rem !important;
+        padding-bottom: 10rem !important;
+    }
+    
+}
+
+@media (max-width: 576px) {
+
+}

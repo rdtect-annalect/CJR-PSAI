@@ -725,7 +725,7 @@ position: relative;
 .custom-modal .btn-close{
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 30px;
     z-index: 2;
     background-color: #fff;
     opacity: 1;
