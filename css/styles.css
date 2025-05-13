@@ -50,6 +50,8 @@ h1,h2{
 nav.navbar .container-fluid {
     align-items: center;
 }
+
+
 .nav-link {
     font-size: 1rem;
     text-transform: uppercase;
@@ -63,6 +65,9 @@ nav.navbar .container-fluid {
     color: #fff;
 }
 
+#nav-button {
+    border: none;
+}
 
 header{
     position: fixed;
@@ -841,9 +846,13 @@ position: relative;
 }
 
 .navbar-toggler-icon svg {
-    fill: #ff6600;
+    fill: #ff6600 !important;
     width: 30px;
     height: 30px;
+}
+
+.navbar-toggler-icon {
+    background-image: none !important;
 }
 
 .video-wrapper {
@@ -976,3 +985,10 @@ a {
 #music-video {
     min-height: unset;
 }
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+

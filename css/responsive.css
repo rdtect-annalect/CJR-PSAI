@@ -20,10 +20,6 @@
         padding: 0 5.5rem;
     }
 
-    .nav-item:not(:last-child) {
-        margin-right: 3rem;
-    }
-
 
     .h-100vh {
         min-height: 100vh;
@@ -64,6 +60,11 @@
       }
 }
 
+@media (min-width: 992px) {
+    .nav-item:not(:last-child) {
+        margin-right: 3rem;
+    }
+}
 @media (min-width: 769px) {
 
     .footer-m {
@@ -86,6 +87,30 @@
         min-height: 100vh;
         overflow: hidden;
         height: 100%;
+    }
+}
+
+
+@media (max-width: 991px) {
+    
+    .navbar-collapse {
+        background-color: #000000a3;
+        width: 100vw !important;
+        left: 0;
+        right: 0;
+        position: absolute;
+        top: 100%;
+        background: #00000063; /* Optional: match your navbar background */
+        z-index: 999;
+    }
+
+    .navbar-collapse {
+        justify-content: center !important;
+        text-align: center;
+    }
+    .navbar-nav {
+        justify-content: center !important;
+        width: 100%;
     }
 }
 
