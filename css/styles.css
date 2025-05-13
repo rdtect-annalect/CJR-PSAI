@@ -371,19 +371,26 @@ font-family: "tt-paplane", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+
 }
 
 .footer-links {
     display: flex;
     gap: 5rem;
     flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+
 
 .footer-links a {
     color: #FF4F2A;
     text-decoration: none;
     font-size: 1.25rem;
-    padding: 5rem 0;
+    /* padding: 5rem 0; */
     text-transform: uppercase;
 }
 span.cross {
