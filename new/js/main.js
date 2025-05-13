@@ -590,9 +590,9 @@ CarouselData.forEach((item, index) => {
         }
       },
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
-          slidesToShow: 2
+          slidesToShow: 3
         }
       },
       {
