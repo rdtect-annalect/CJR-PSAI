@@ -7,6 +7,11 @@ let currentBatchIndex = 0;
 let batches = [];
 let positionLayouts = [];
 
+// Global mouse position for parallax
+let lastParallaxEvent = { x: window.innerWidth/2, y: window.innerHeight/2 };
+// Smoothed mouse coordinates to prevent jitter
+let smoothMouse = { x: window.innerWidth/2, y: window.innerHeight/2 };
+
 /**
  * Get the corrected image path by removing '../' prefix if it exists
  * This ensures paths are relative to the site root
@@ -159,7 +164,6 @@ function renderSmallImages(items) {
       '    padding: 0;' +
       '    margin: 0;' +
       '    overflow: hidden;' +
-      '    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s ease;' +
       '  }' +
       '  .gallery-item:hover {' +
       '    z-index: 50 !important;' +
@@ -192,36 +196,6 @@ function renderSmallImages(items) {
   const container = $('<div class="image-collage"></div>');
   gallery.append(container);
   
-  // --- Tick-based mouse sampling for clear mouse attraction ---
-  let sampledMouse = { x: 0, y: 0 };
-  let targetMouse = { x: 0, y: 0 };
-  let containerRect = container[0].getBoundingClientRect();
-
-  // Update containerRect on resize
-  $(window).on('resize', function() {
-    containerRect = container[0].getBoundingClientRect();
-  });
-
-  // Track mouse position but don't animate directly
-  container.on('mousemove', function(e) {
-    const centerX = containerRect.width / 2;
-    const centerY = containerRect.height / 2;
-    sampledMouse.x = (e.clientX - containerRect.left - centerX) / centerX;
-    sampledMouse.y = (e.clientY - containerRect.top - centerY) / centerY;
-  });
-  container.on('mouseleave', function() {
-    sampledMouse.x = 0;
-    sampledMouse.y = 0;
-  });
-
-  // Sample the mouse every 200ms for responsive attraction
-  setInterval(() => {
-    targetMouse.x = sampledMouse.x;
-    targetMouse.y = sampledMouse.y;
-  }, 200);
-
-  // --- End tick-based mouse sampling ---
-  
   // Generate position layouts if not already set
   if (!positionLayouts.length) {
     positionLayouts = generatePositionLayouts();
@@ -246,6 +220,7 @@ function renderSmallImages(items) {
         ' data-scale="' + pos.scale + '"' +
         ' data-title="' + (item.title || 'Untitled') + '"' +
         ' data-index="' + i + '"' +
+        ' data-parallax="' + randomSensitivity + '"' +
       '/>'
     );
     // Add click handler to open Bootstrap modal
@@ -500,120 +475,54 @@ function adjustSectionHeight() {
   );
 }
 
-// Throttle function to limit how often mouse movement is processed
-const throttle = (func, limit) => {
-  let lastCall = 0;
-  return function(...args) {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      func.apply(this, args);
-    }
-  };
-};
+// Capture mousemove for parallax
+document.addEventListener('mousemove', (e) => {
+  lastParallaxEvent.x = e.pageX;
+  lastParallaxEvent.y = e.pageY;
+});
 
-// Cache for mouse position to smooth out rapid movements
-let lastMouseX = 0;
-let lastMouseY = 0;
-let mouseUpdateRequired = true;
-
-/**
- * Ultra-smooth mouse movement handler with optimized animation
- * @param {Event} e - Mouse move event
- */
-function handleMouseMovement(e) {
-  // Update mouse position cache with lerp smoothing
-  const currentX = e.clientX;
-  const currentY = e.clientY;
-  
-  // Smooth mouse coordinates with 20% blending for fluid motion
-  lastMouseX = lastMouseX * 0.2 + currentX * 0.8;
-  lastMouseY = lastMouseY * 0.2 + currentY * 0.8;
-  
-  mouseUpdateRequired = true;
-}
-
-// Actual animation loop for smoother performance by decoupling
-// mouse tracking from animation rendering
+// Animation loop for parallax
 function updateAnimations() {
   requestAnimationFrame(updateAnimations);
 
-  const container = $('.image-collage');
-  if (!container.length) return;
+  const items = $('.image-collage .gallery-item');
+  if (!items.length) return;
 
-  const rect = container[0].getBoundingClientRect();
-  // Use tick-sampled mouse position (relative to container center)
-  const mouseX = rect.left + rect.width / 2 + targetMouse.x * (rect.width / 2);
-  const mouseY = rect.top + rect.height / 2 + targetMouse.y * (rect.height / 2);
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  // Smooth mouse movement for easing jitter
+  const easeFactor = 0.12;
+  smoothMouse.x += (lastParallaxEvent.x - smoothMouse.x) * easeFactor;
+  smoothMouse.y += (lastParallaxEvent.y - smoothMouse.y) * easeFactor;
 
-  // Batch CSS updates for performance
-  const items = container.find('.gallery-item');
+  // Center relative to the collage container
+  const containerElem = document.querySelector('.image-collage');
+  const rect = containerElem.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+  const dxGlobal = smoothMouse.x - centerX;
+  const dyGlobal = smoothMouse.y - centerY;
+
   items.each(function() {
     const $item = $(this);
-    
-    // Use native DOM for better performance
-    const el = this;
-    const rotate = $item.data('rotate');
-    const scale = $item.data('scale');
-    const individualSensitivity = $item.data('sensitivity');
-    
-    // Calculate position using more efficient methods
-    const itemRect = el.getBoundingClientRect();
-    const itemCenterX = itemRect.left + itemRect.width/2 - rect.left;
-    const itemCenterY = itemRect.top + itemRect.height/2 - rect.top;
-    
-    // Vector FROM item TO mouse (for attraction)
-    const dx = mouseX - itemCenterX;
-    const dy = mouseY - itemCenterY;
-    
-    // Optimized distance calculation
-    const distanceSq = dx * dx + dy * dy;
-    const distance = Math.sqrt(distanceSq);
-    
-    // Direct, strong attraction toward mouse pointer
-    const moveX = dx * individualSensitivity * 6;
-    const moveY = dy * individualSensitivity * 6;
-    
-    // Fast, snappy transition
-    const transitionDuration = 0.18; 
-    
-    // Apply transform with hardware acceleration
-    // Using will-change sparingly for performance
-    if (!el._hasSetWillChange) {
-      $item.css('will-change', 'transform');
-      el._hasSetWillChange = true;
-    }
-    
-    $item.css({
-      'transform': `translate3d(${moveX}px, ${moveY}px, 0) rotate(${rotate}deg) scale(${scale})`,
-      'transition': `transform ${transitionDuration}s cubic-bezier(0.2, 0.9, 0.3, 0.95)`
-    });
+    const rotate = $item.data('rotate') || 0;
+    const scale = $item.data('scale') || 1;
+    // Depth factor for parallax
+    const depth = parseFloat($item.data('parallax')) || 1;
+    // Max movement to stay within container
+    const maxMove = parseFloat($item.data('maxMove')) || 30;
+    // Soft raw movement then clamp
+    const rawX = (dxGlobal * depth) / 20;
+    const rawY = (dyGlobal * depth) / 20;
+    let x = Math.max(Math.min(rawX, maxMove), -maxMove);
+    let y = Math.max(Math.min(rawY, maxMove), -maxMove);
+    // Apply transform directly (no CSS transition)
+    $item.css('transform', `translate3d(${x}px, ${y}px, 0) rotate(${rotate}deg) scale(${scale})`);
   });
 }
 
-// Start animation loop
+// Start the animation
 updateAnimations();
-
-/**
- * Reset item positions when mouse leaves container with optimized animation
- */
-function resetItemPositions() {
-  // Use requestAnimationFrame for smooth reset animation
-  requestAnimationFrame(() => {
-    $('.gallery-item').each(function() {
-      const $item = $(this);
-      // Use data() instead of attr() for better performance
-      const rotate = $item.data('rotate'); 
-      const scale = $item.data('scale');
-      
-      // Reset to original rotation and scale with hardware acceleration
-      $item.css({
-        'transform': `translate3d(0, 0, 0) rotate(${rotate}deg) scale(${scale})`,
-        'transition': 'transform 0.8s cubic-bezier(0.19, 1, 0.22, 1)'
-      });
-    });
-  });
-}
 
 // Export only the initFightingAI function
 export { initFightingAI };
