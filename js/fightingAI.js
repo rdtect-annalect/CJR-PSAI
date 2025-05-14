@@ -85,24 +85,24 @@ function generatePositionLayouts() {
   // Create a wider spread layout with less overlap (with 15% increased widths)
   const positions = [
     // Left side positions
-    { width: '20.7%', height: '25vh', top: '5%', left: '2%', zIndex: randomZIndex() },  // 18% * 1.15
-    { width: '23%', height: '28vh', top: '32%', left: '5%', zIndex: randomZIndex() },   // 20% * 1.15
-    { width: '18.4%', height: '22vh', top: '62%', left: '8%', zIndex: randomZIndex() }, // 16% * 1.15
+    { width: '20.7%', height: '15vh', top: '5%', left: '2%', zIndex: randomZIndex() },  // 18% * 1.15
+    { width: '23%', height: '18vh', top: '20%', left: '5%', zIndex: randomZIndex() },   // 20% * 1.15
+    { width: '18.4%', height: '22vh', top: '52%', left: '8%', zIndex: randomZIndex() }, // 16% * 1.15
     
     // Middle-left positions
-    { width: '25.3%', height: '25vh', top: '15%', left: '26%', zIndex: randomZIndex() }, // 22% * 1.15
+    { width: '25.3%', height: '20vh', top: '15%', left: '26%', zIndex: randomZIndex() }, // 22% * 1.15
     { width: '21.85%', height: '20vh', top: '45%', left: '30%', zIndex: randomZIndex() }, // 19% * 1.15
     
     // Center positions
-    { width: '27.6%', height: '32vh', top: '55%', left: '50%', zIndex: randomZIndex() }, // 24% * 1.15
-    { width: '24.15%', height: '26vh', top: '12%', left: '52%', zIndex: randomZIndex() }, // 21% * 1.15
+    { width: '27.6%', height: '22vh', top: '50%', left: '50%', zIndex: randomZIndex() }, // 24% * 1.15
+    { width: '24.15%', height: '20vh', top: '12%', left: '52%', zIndex: randomZIndex() }, // 21% * 1.15
     
     // Middle-right positions
-    { width: '23%', height: '24vh', top: '38%', left: '70%', zIndex: randomZIndex() },  // 20% * 1.15
+    { width: '23%', height: '20vh', top: '38%', left: '70%', zIndex: randomZIndex() },  // 20% * 1.15
     
     // Right side positions
-    { width: '19.55%', height: '22vh', top: '8%', left: '78%', zIndex: randomZIndex() }, // 17% * 1.15
-    { width: '21.85%', height: '28vh', top: '65%', left: '76%', zIndex: randomZIndex() } // 19% * 1.15
+    { width: '19.55%', height: '15vh', top: '8%', left: '78%', zIndex: randomZIndex() }, // 17% * 1.15
+    { width: '21.85%', height: '15vh', top: '55%', left: '76%', zIndex: randomZIndex() } // 19% * 1.15
   ];
   
   // Helper function for random z-index

@@ -238,7 +238,20 @@ header {
     object-fit: cover;
 }
 
-/* Positioning classes for specific images if needed - legacy. REMOVED for modern dynamic collage. */
+/* Make Fighting with AI collage images smaller */
+.fightingAI .images-gallery img,
+.image-collage .gallery-item {
+  max-width: 80% !important;
+  max-height: 80% !important;
+}
+
+@media (max-width: 991px) {
+  .fightingAI .images-gallery img,
+  .image-collage .gallery-item {
+    max-width: 60% !important;
+    max-height: 60% !important;
+  }
+}
 
 @keyframes bounceDown {
 
@@ -500,10 +513,6 @@ header {
 .slider_arrows.white svg path {
     fill: #fff;
 
-}
-
-.slider_arrows.white svg line {
-    stroke: #fff;
 }
 
 .slider_arrows {

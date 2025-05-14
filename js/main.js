@@ -28,13 +28,20 @@ function initUIEnhancements() {
   });
   
   // Smooth scroll and section snap
+  
   // Enable scroll snap on <html> and all <section> elements for proper section snapping
+  //  $('html').css({
+  //   'scroll-behavior': 'smooth',
+  //   'scroll-snap-type': 'y mandatory'
+  // });
+  // $('section').css({
+  //   'scroll-snap-align': 'start'
+  // });
+
+
+  // (Removed scroll snap CSS for html and section)
   $('html').css({
-    'scroll-behavior': 'smooth',
-    'scroll-snap-type': 'y mandatory'
-  });
-  $('section').css({
-    'scroll-snap-align': 'start'
+    'scroll-behavior': 'smooth'
   });
 
   // Anchor navigation: just smooth scroll (no snap disabling)
