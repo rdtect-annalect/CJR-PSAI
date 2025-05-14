@@ -632,8 +632,8 @@ footer span.cross.cross-three {
 }
 
 .heading-1 .border {
-    border: 2px solid #fff !important;
-    border-radius: 20px;
+    border: 3.5px solid #fff !important;
+    border-radius: 24px !important;
     opacity: 1;
     padding: 0 20px;
 }
