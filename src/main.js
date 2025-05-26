@@ -1,80 +1,121 @@
-// Import services and components with simplified imports
+/**
+ * @file main.js
+ * @description PSAi application initialization using component architecture
+ */
+
+// Import all components through the centralized index
 import {
-  // Services
+  // Core services
   appService,
   eventBus,
+  
+  // Services
   ModalService,
   
   // UI Components
-  NavbarComponentComponent,
-  HeroComponent,
-  VideoComponent,
+  NavbarComponent,
+  ParallaxVideo,
+  ScrollAnimations,
+  MatrixOverlay,
+  ParticleSystem,
   
   // Feature Components
   SpotAICarousel,
   FightingAIGallery,
-  ReadMoreSection
-} from "./lib/index.js";
+  ReadMoreSection,
+  
+  // Utilities
+  animate
+} from './lib/index.js';
 
-/**
- * Initialize the application with all required components
- * Uses a clean registration approach for better testability
- */
-function initializeApplication() {
-  console.log("🚀 Initializing PSAi Application...");
+function initApp() {
+  console.log('🚀 Starting PSAi...');
 
-  // Configure the app
-  const debug =
-    window.location.hostname === "localhost" ||
-    window.location.search.includes("debug=true");
+  // Set debug mode
+  appService.debug = location.hostname === 'localhost' || location.search.includes('debug');
 
-  appService.config.debug = debug;
+  // Simple navbar scroll behavior
+  let lastScrollY = window.scrollY;
+  const navbar = document.querySelector('[data-navbar]');
+  
+  if (navbar) {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          navbar.classList.add('navbar-hidden');
+        } else {
+          // Scrolling up
+          navbar.classList.remove('navbar-hidden');
+        }
+      } else {
+        // At top
+        navbar.classList.remove('navbar-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+  }
 
-  // Register all components with the app service
-  appService.registerComponent("modal", new ModalService());
-  appService.registerComponent("navbar", new NavbarComponent());
-  appService.registerComponent("hero", new HeroComponent({
-    logoSelector: ".the-PSAI img", // Changed from video to img
-    topGifSelector: ".coders-gifs .top-img",
-    bottomGifSelector: ".coders-gifs .bottom-img"
-  }));
-  appService.registerComponent("spotAI", new SpotAICarousel());
-  appService.registerComponent("fightingAI", new FightingAIGallery());
-  appService.registerComponent("readMore", new ReadMoreSection());
-  appService.registerComponent("video", new VideoComponent('#videoContainer'));
-
-  // Initialize the app (this will initialize all registered components)
+  // Register components
   appService
-    .init()
-    .then(() => {
-      console.log("✅ PSAi Application ready!");
+    .register('modal', new ModalService())
+    .register('navbar', new NavbarComponent())
+    .register('parallax', new ParallaxVideo({
+      speed: 0.3  // Subtle parallax effect
+    }))
+    .register('scrollAnimations', new ScrollAnimations())
+    .register('matrixOverlay', new MatrixOverlay())
+    .register('particles', new ParticleSystem({
+      selector: '.particle-container',
+      particleCount: 70,
+      connectionDistance: 150,
+      visibilityDistance: 350,
+      primaryColor: 'rgba(255, 255, 255, 0.8)',
+      secondaryColor: 'rgba(237, 9, 119, 0.8)',
+      zIndex: 100
+    }))
+    .register('spotAI', new SpotAICarousel({
+      containerSelector: '#spotAI',
+      carouselSelector: '#spot-ai-carousel',
+      prevBtnSelector: '.carousel-btn.prev',
+      nextBtnSelector: '.carousel-btn.next',
+      dataPath: '/src/data/carouselData.json',
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      enableAutoPlay: true,
+      autoPlayInterval: 8000, // Slower as requested (8 seconds)
+      pauseOnHover: true,
+      showModalOnClick: true
+    }))
+    .register('fightingAI', new FightingAIGallery())
+    .register('readMore', new ReadMoreSection({
+      containerSelector: '#reading',
+      dataPath: '/src/data/readMore.json'
+    }))
+   
 
-      // Notify the application is ready via event bus
-      eventBus.emit("app:ready", { timestamp: Date.now() });
-    })
-    .catch((error) => {
-      console.error("❌ Failed to initialize PSAi Application:", error);
-      eventBus.emit("app:error", { error });
-    });
+  // Initialize app
+  appService.init()
+    .then(() => console.log('✅ PSAi ready!'))
+    .catch(err => console.error('❌ Init failed:', err));
 
-  // Expose for debugging and console access
-  window.psaiApp = appService;
+  // Global cleanup
+  window.addEventListener('beforeunload', () => appService.destroy());
 
-  // Global cleanup on page unload
-  window.addEventListener("beforeunload", () => {
-    appService.destroy();
-  });
-
-  return appService;
+  // Expose for debugging
+  if (appService.debug) {
+    window.psai = { appService, eventBus };
+  }
 }
 
-// Initialize when DOM is ready
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initializeApplication);
-} else {
-  // DOM already loaded
-  initializeApplication();
-}
+// Initialize when ready
+document.readyState === 'loading' 
+  ? document.addEventListener('DOMContentLoaded', initApp)
+  : initApp();
 
-// Export for potential module usage
-export { initializeApplication, appService, eventBus };
+export { appService, eventBus };

@@ -1,0 +1,79 @@
+/* Content Card Patterns and Grid Background */
+.content-card {
+  position: relative;
+  overflow: visible;
+  border: 2px solid #fff;
+  outline: 1px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -1px;
+  will-change: transform;
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+/* Grid background pattern - matches the design in BOX.png */
+.content-card--grid-bg {
+  background-color: rgba(255, 255, 255, 0.03);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center center;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Corner squares positioned exactly like in the BOX.png reference */
+.content-card__corner {
+  position: absolute;
+  width: 8px;
+  /* Smaller size to match reference */
+  height: 8px;
+  background-color: #fff;
+  z-index: 5;
+  /* Ensure corners appear above other elements */
+  border: none;
+}
+
+/* Precise corner positioning accounting for border */
+.content-card__corner--top-left {
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.content-card__corner--top-right {
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.content-card__corner--bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: translate(-50%, 50%);
+}
+
+.content-card__corner--bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: translate(50%, 50%);
+}
+
+/* Specific card variant for About section */
+.content-card--about {
+  border-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Media query for better mobile display */
+@media (max-width: 767.98px) {
+  .content-card__corner {
+    width: 8px;
+    height: 8px;
+  }
+
+  .content-card--grid-bg {
+    background-size: 20px 20px;
+  }
+}

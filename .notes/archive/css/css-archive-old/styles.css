@@ -1,0 +1,2353 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+@import "./content-card-patterns.css";
+
+@font-face {
+  font-family: "tt-paplane";
+  src: url("assets/fonts/TT_Paplane_Trial_Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Component-specific styles are now directly included in this file */
+
+/* === CSS VARIABLES AND CONFIGURATION === */
+:root {
+  /* Color palette */
+  --main-white: #fff9eb;
+  --main-orange: #ff4f2a;
+  --main-black: #000;
+  --bg-dark: rgba(0, 0, 0, 0.9);
+
+  /* Typography */
+  --font-primary: "Inter", sans-serif;
+  --font-display: "tt-paplane", sans-serif;
+
+  /* Layout */
+  --navbar-height: 70px;
+
+  /* Transitions */
+  --transition-fast: all 0.2s ease;
+  --transition-default: all 0.3s ease;
+  --transition-slow: all 0.4s ease;
+  --navbar-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Breakpoints - simplified to three standard breakpoints */
+  --breakpoint-mobile: 0;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 992px;
+
+  /* Z-index scale */
+  --zindex-dropdown: 1000;
+  --zindex-sticky: 1020;
+  --zindex-fixed: 1030;
+  --zindex-modal-backdrop: 1040;
+  --zindex-modal: 1050;
+  --zindex-popover: 1060;
+  --zindex-tooltip: 1070;
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+}
+
+/* === MEDIA QUERY STANDARDIZATION === */
+/* 
+ * We're using just three breakpoints for simplicity and maintainability:
+ * 
+ * 1. Mobile: up to 767px 
+ *    @media (max-width: 767.98px) {}
+ *
+ * 2. Tablet: 768px to 991px
+ *    @media (min-width: 768px) and (max-width: 991.98px) {}
+ *
+ * 3. Desktop: 992px and above
+ *    @media (min-width: 992px) {}
+ *
+ * When working with media queries, follow these principles:
+ * 1. Mobile-first approach: Start with base styles, then add complexity for larger screens
+ * 2. Use Bootstrap utilities for responsive adjustments when possible
+ * 3. Group related media queries for better maintainability
+ */
+
+/* We've removed other breakpoints from Bootstrap to simplify to just three */
+
+/* Standard breakpoint examples */
+
+/* Mobile (up to 767px) */
+@media (max-width: 767.98px) {
+  /* Mobile styles */
+}
+
+/* Tablet (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Tablet styles */
+}
+
+/* Desktop (992px and up) */
+@media (min-width: 992px) {
+  /* Desktop styles */
+}
+
+/* ===== GALLERY STYLES ===== */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.gallery-item {
+  position: absolute;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  z-index: 2;
+  transform: scale(1.05) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Performance optimizations */
+.gallery-item,
+.gallery-item * {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE TYPOGRAPHY ===== */
+html {
+  font-size: 85%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: var(--main-black);
+  /* Removed padding-top to allow hero section to start at the top */
+  padding-top: 0;
+}
+
+/* ===== TYPOGRAPHY ===== */
+/* Base typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  color: var(--main-black);
+}
+
+p {
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+/* ===== NAVBAR STYLES ===== */
+/* ===== HEADER & NAVIGATION ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  transition: var(--navbar-transition);
+  will-change: transform, background-color;
+  backface-visibility: hidden;
+  padding-top: 1rem;
+}
+
+/* Navbar base styles */
+.navbar {
+  background-color: transparent;
+  padding: var(--spacing-md) 0;
+  transition: var(--navbar-transition);
+  will-change: transform, background-color, padding;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* Navbar container */
+.navbar .container-fluid {
+  align-items: center;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Navbar brand */
+.navbar-brand {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+/* ===== NAVIGATION LINKS ===== */
+/* Nav-link styles consolidated in modern navbar section (see lines 1457-1489) */
+
+/* Navbar toggler button */
+.navbar-toggler {
+  border: none;
+  padding: var(--spacing-sm);
+  transition: var(--transition-fast);
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide header on scroll down */
+.hide-header {
+  transform: translateY(-100%);
+}
+
+/* Mobile menu styles */
+/* Mobile and Tablet */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: var(--navbar-bg);
+    margin: var(--spacing-md) -1rem -0.5rem;
+    padding: var(--spacing-md);
+    border-radius: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Performance optimizations */
+/* ===== PREFERS-REDUCED-MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .navbar,
+  .navbar *,
+  header {
+    transition: none !important;
+  }
+}
+
+/* Heading classes */
+/* === TYPOGRAPHY: HEADINGS === */
+/* Common heading properties */
+.heading-1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--main-white);
+  font-size: 2.5rem;
+  letter-spacing: 8px;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--main-white);
+  font-size: 1.75rem;
+  letter-spacing: 6px;
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--main-white);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.heading-4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--main-black);
+  font-size: 1.25rem;
+  letter-spacing: 4px;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+/* === TYPOGRAPHY: SUBHEADINGS === */
+.sub-heading {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--main-black);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* === COLOR UTILITIES === */
+/* Custom text colors - use Bootstrap utilities when possible
+   - For common text alignment: text-center, text-end
+   - For transforms: text-uppercase, text-lowercase
+   - For colors: text-primary, text-white, etc. */
+
+/* Only custom color not in Bootstrap */
+.text-orange {
+  color: var(--main-orange);
+}
+
+nav.navbar .container-fluid {
+  align-items: center;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: transparent;
+  transition: var(--transition-default);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+}
+
+/* Navbar toggler */
+#nav-button {
+  border: none;
+  padding: var(--spacing-sm);
+  transition: var(--transition-fast);
+}
+
+#nav-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.25);
+}
+
+.navbar-toggler-icon {
+  background-image: none !important;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-toggler-icon svg {
+  fill: var(--main-orange) !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+/* Medium devices (tablets, 768px - 991.98px) */
+/* Tablet (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Navigation */
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100vw !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 999;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    justify-content: center !important;
+    text-align: center;
+    margin: var(--spacing-md) -1rem -0.5rem;
+    padding: var(--spacing-md);
+    border-radius: 0.25rem;
+  }
+
+  .navbar-nav {
+    justify-content: center !important;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem !important;
+    text-align: center;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  /* Mobile menu link hover state */
+  .nav-link:hover {
+    text-decoration: underline;
+    color: var(--main-white);
+  }
+}
+
+/* Small devices (mobile, less than 768px) */
+@media (max-width: 767.98px) {
+  html {
+    font-size: 80%;
+  }
+
+  /* Navigation */
+  .navbar-collapse {
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100vw !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 999;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    justify-content: center !important;
+    text-align: center;
+    margin: var(--spacing-md) -1rem -0.5rem;
+    padding: var(--spacing-md);
+    border-radius: 0.25rem;
+  }
+
+  .navbar-nav {
+    justify-content: center !important;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .nav-item {
+    margin: 0.5rem 0;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem !important;
+    text-align: center;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  .navbar .container-fluid {
+    padding: 0 var(--spacing-md);
+  }
+
+  .navbar-brand img {
+    max-height: 30px;
+  }
+
+  /* Typography */
+  .heading-1 {
+    font-size: 2rem;
+    letter-spacing: 4px;
+  }
+
+  .heading-2,
+  .heading-3,
+  .heading-4 {
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+  }
+}
+
+.nav-link.active {
+  color: var(--main-orange) !important;
+  text-decoration: underline;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: transform 0.3s ease;
+  z-index: 999;
+  padding-top: 1rem;
+}
+
+/* Hero Video */
+.hero-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.the-PSAI {
+  position: absolute;
+  z-index: 2; /* Ensure it's above the video */
+}
+
+/* Desktop styles (lg and up) */
+@media (min-width: 992px) {
+  .the-PSAI {
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+    max-width: 60%;
+    text-align: left;
+  }
+
+  .the-PSAI img {
+    margin: 0;
+    max-width: 80%;
+
+    height: auto;
+  }
+}
+
+/* Mobile & Tablet styles */
+@media (max-width: 991.98px) {
+  .the-PSAI {
+    top: 55%; /* Position a bit lower on mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  .the-PSAI img {
+    max-width: 100%;
+    min-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.hero-text {
+  position: absolute;
+  bottom: 16%;
+  right: 11%;
+  z-index: 2;
+  color: #fff;
+  line-height: 17.5px;
+}
+
+.top-left {
+  top: -0.313rem;
+  left: -0.313rem;
+}
+
+.top-right {
+  top: -0.313rem;
+  right: 0;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: -0.313rem;
+}
+
+.watch-button svg {
+  width: 100%;
+  height: 100%;
+  fill: #fff;
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 ratio (9/16 = 0.5625 = 56.25%) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.whyThis-matter-sec {
+  background: #000;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  will-change: background-position;
+  backface-visibility: hidden;
+}
+
+.whyThis-matter-sec::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+/* === COMPONENTS: CONTENT CARD === */
+/* Semantic content card component with BEM methodology */
+
+/* Base card */
+.content-card {
+  border: 1px solid var(--main-border, #c4b8a7);
+  position: relative;
+  background-color: transparent !important;
+}
+
+/* Corners embellishment */
+.content-card__corner {
+  content: "";
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  border-color: var(--main-border, #c4b8a7);
+  z-index: 2;
+}
+
+.content-card__corner--top-left {
+  top: -1px;
+  left: -1px;
+  border-left: 1px solid;
+  border-top: 1px solid;
+}
+
+.content-card__corner--top-right {
+  top: -1px;
+  right: -1px;
+  border-right: 1px solid;
+  border-top: 1px solid;
+}
+
+.content-card__corner--bottom-left {
+  bottom: -1px;
+  left: -1px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.content-card__corner--bottom-right {
+  bottom: -1px;
+  right: -1px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+/* Light variant */
+.content-card--light {
+  border-color: var(--main-border-light, rgba(255, 255, 255, 0.7));
+  color: var(--main-white);
+}
+
+.content-card--light .content-card__corner {
+  border-color: var(--main-border-light, rgba(255, 255, 255, 0.7));
+}
+
+/* Responsive styles */
+@media (max-width: 767.98px) {
+  .content-card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .content-card--about {
+    padding: 2rem 3rem !important;
+  }
+}
+
+/* === COMPONENTS: FOOTER === */
+/* Simplified footer component with essential styles */
+.btn-orange {
+  background-color: var(--main-orange);
+  color: var(--main-white);
+  border-color: var(--main-orange);
+  border-radius: var(--border-radius-sm, 0.25rem);
+}
+
+.btn-outline-orange {
+  background-color: transparent;
+  color: var(--main-orange);
+  border: 2px solid var(--main-orange);
+  border-radius: var(--border-radius-sm, 0.25rem);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-orange:hover,
+.btn-outline-orange:focus {
+  background-color: var(--main-orange);
+  color: var(--main-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer {
+  background-color: var(--main-black);
+  color: var(--main-white);
+  padding: 3rem 0 2rem;
+  position: relative;
+}
+
+/* Footer sections */
+.footer-section {
+  margin-bottom: 2rem;
+}
+
+/* Footer logo */
+.footer-logo {
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.footer-logo img {
+  max-width: 150px;
+}
+
+/* Footer links */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--main-orange);
+}
+
+/* Footer section titles */
+.footer-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--main-white);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--main-orange);
+}
+
+/* Social media links */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  transition: all var(--transition-fast);
+}
+
+.footer-social a:hover {
+  background-color: var(--main-orange);
+  color: var(--main-white);
+  transform: translateY(-3px);
+}
+
+/* Bottom bar with copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767.98px) {
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-title {
+    text-align: center;
+  }
+
+  .footer-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* === UTILITIES: COLORS & BACKGROUNDS === */
+
+/* ===== NAVBAR COMPONENT ===== */
+/* Main navbar - following BEM methodology patterns */
+
+/* Base navbar styles */
+#mainNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zindex-fixed, 1030);
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+#mainNavbar .navbar-logo {
+  height: 50px;
+  width: auto;
+}
+
+/* Navbar links - general styles */
+#mainNavbar .navbar-nav {
+  align-items: center;
+}
+
+#mainNavbar .nav-link {
+  color: var(--main-white);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  position: relative;
+}
+
+/* Hover and focus states */
+#mainNavbar .nav-link:hover,
+#mainNavbar .nav-link:focus {
+  color: var(--main-orange);
+  background: rgba(255, 79, 42, 0.1);
+}
+
+/* Active state for desktop */
+#mainNavbar .nav-link.active,
+#mainNavbar .nav-item.active .nav-link {
+  color: var(--main-orange) !important;
+  font-weight: 600;
+}
+
+/* Active state indicator - underline for active nav items */
+#mainNavbar .nav-link.active::after,
+#mainNavbar .nav-item.active .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background-color: var(--main-orange);
+  border-radius: 2px;
+}
+
+/* Navbar toggler (mobile menu button) */
+#mainNavbar .navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+#mainNavbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Custom hamburger menu - animated toggle icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--main-orange);
+  border-radius: 2px;
+}
+
+/* Active state for hamburger (transforms to X) */
+#mainNavbar .navbar-toggler[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+#mainNavbar .navbar-toggler[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+#mainNavbar .navbar-toggler[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* === NAVBAR RESPONSIVE STYLES === */
+/* Consolidated media queries for navbar */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  /* Responsive navbar for medium screens */
+  .navbar-nav {
+    gap: 0 !important;
+    justify-content: space-between !important;
+  }
+
+  .nav-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 1 auto !important;
+  }
+
+  .nav-link {
+    padding: 0.3rem 0.2rem !important;
+    margin: 0 !important;
+    font-size: 0.85rem !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  /* Navbar collapse styling */
+  .navbar-collapse {
+    background: rgba(0, 0, 0, 0.95);
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1040;
+  }
+
+  /* Navbar navigation on mobile/tablet */
+  .navbar-nav {
+    padding: 0.5rem 0;
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .nav-item {
+    margin: 0.75rem 0;
+    transition: transform 0.2s ease;
+    text-align: center;
+  }
+
+  .nav-item:active {
+    transform: scale(0.98);
+  }
+
+  /* Links styling on mobile */
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus {
+    background: rgba(255, 79, 42, 0.1);
+    color: var(--main-orange);
+  }
+
+  /* Active state on mobile */
+  .nav-link.active,
+  .nav-link:active,
+  .nav-item.active .nav-link {
+    color: var(--main-orange) !important;
+    font-weight: 600;
+    position: relative;
+  }
+
+  /* Adjust hamburger position */
+  .navbar-toggler {
+    z-index: 1050;
+    padding: 0.5rem;
+    color: #fff;
+  }
+
+  .navbar-toggler-icon {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Other responsive styles */
+  header {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Slider components */
+  .fightingWithAISlider {
+    background-color: #fdf9eb;
+    color: #000;
+  }
+
+  .slider__person-name,
+  .slider__person-label,
+  .slider__context-label,
+  .viral-stats li span {
+    color: #000;
+  }
+
+  .dark_cta {
+    background-color: var(--main-orange);
+    color: #000;
+  }
+
+  .slide-content {
+    padding: 20px;
+    height: auto;
+  }
+
+  /* Layout adjustments */
+  section:not(:first-child):not(.whyThis-matter-sec) {
+    padding: 3rem 2rem !important;
+  }
+
+  .the-PSAI img {
+    width: 100%;
+    bottom: 5rem;
+    top: auto;
+    left: auto;
+  }
+
+  /* Background elements */
+  .coders-gifs img {
+    position: absolute;
+    width: 0rem;
+    z-index: -1;
+  }
+
+  .bg-coding-img {
+    content: "";
+    position: absolute;
+    background-image: url("assets/images/CJR_Codes_White_02.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 20%;
+    height: 100%;
+    pointer-events: none;
+    background-position: top left;
+  }
+
+  /* Video section */
+  section#music-video {
+    margin: 3.5rem auto;
+    text-align: center;
+  }
+
+  /* Video fallback for when iframe is blocked or JS is disabled */
+  .video-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 300px;
+    background-color: var(--main-light-bg, #f0f0f0);
+    text-align: center;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg, 0.5rem);
+  }
+
+  .video-fallback p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .video-fallback a {
+    color: var(--main-orange);
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+  }
+
+  .video-fallback a:hover,
+  .video-fallback a:focus {
+    color: var(--main-orange-dark, #cc3000);
+  }
+
+  .video-as-span {
+    top: 50%;
+    width: 100%;
+    left: 0%;
+  }
+}
+
+/* ===== Large Desktop (1440px and up) ===== */
+/* Desktop (large screens) */
+@media (min-width: 992px) {
+  html {
+    font-size: 100%;
+  }
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl {
+    max-width: 1520px;
+  }
+
+  .section-padding {
+    padding: 6rem 0;
+  }
+
+  .hero-content {
+    padding: 10rem 0;
+  }
+
+  .content-card {
+    padding: 3rem;
+  }
+
+  .navbar {
+    padding: 2rem 0;
+  }
+
+  .content-card--about {
+    margin-top: 5rem;
+  }
+
+  section:not(.video-section) {
+    min-height: 100vh;
+  }
+}
+
+/* ===== TABLET AND MOBILE (less than 992px) ===== */
+/* Mobile and Tablet */
+@media (max-width: 991.98px) {
+  /* Navbar collapse styles consolidated in navbar section */
+
+  /* customPopup responsive styles moved to consolidated section */
+
+  .whyThis-matter-sec {
+    padding: 0;
+  }
+
+  .footer-links {
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    flex-direction: column;
+  }
+
+  .footer-wrapper {
+    flex-direction: column;
+    padding: 4rem 0;
+  }
+
+  .footer-links a {
+    padding: 0;
+  }
+
+  .cross {
+    display: none;
+  }
+
+  span.cross.cross-one {
+    left: 4rem;
+    display: block;
+  }
+
+  .heading-1 .border,
+  .heading-2 .border {
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  .bg-coding-img.bg-orange {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .bg-coding-img::after,
+  .bg-coding-img::before {
+    width: 50%;
+  }
+
+  #imageGrid {
+    position: static;
+    height: auto;
+  }
+
+  #imageGrid a {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    margin-bottom: 10px;
+  }
+
+  #imageGrid a img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  .images-gallery a {
+    position: static;
+    width: 100% !important;
+    height: 300px !important;
+    margin: auto;
+    gap: 20px;
+  }
+
+  .whyThis-matter-sec {
+    padding: 0;
+  }
+}
+
+/* Scrolled state */
+#mainNavbar.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero section adjustment */
+.hero-section {
+  position: relative;
+  margin-top: 0;
+  padding-top: 0;
+  /* Ensure the hero section starts at the top of the viewport */
+  /* The fixed navbar will naturally overlay it */
+  top: 0;
+  z-index: 0;
+  overflow: hidden; /* Prevent any potential scrollbars */
+}
+
+/* Hero Video Styles */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Ensure video covers the full height */
+.min-vh-100 {
+  min-height: 100vh;
+}
+/* Fallback for browsers that don't support video backgrounds */
+@supports not (object-fit: cover) {
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+  }
+
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2;
+    text-align: center;
+  }
+}
+
+.navbar-nav {
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--main-white);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--main-orange);
+}
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: var(--main-orange);
+}
+
+.nav-link:hover::after,
+.nav-link:focus::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Navbar container */
+.navbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Accessibility Utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* === UTILITIES: CUSTOM COLORS & BACKGROUNDS === */
+/* Custom color utilities not provided by Bootstrap */
+.text-orange {
+  color: var(--main-orange) !important;
+}
+
+.text-yellow {
+  color: var(--pale-yellow) !important;
+}
+
+.text-brown {
+  color: var(--main-brown) !important;
+}
+
+/* Background colors */
+.bg-orange {
+  background-color: var(--main-orange) !important;
+}
+
+.bg-yellow {
+  background-color: var(--pale-yellow) !important;
+}
+
+/* === BACKGROUND UTILITIES === */
+/* Use Bootstrap utilities when possible:
+   - bg-transparent (already in Bootstrap)
+   - bg-dark, bg-light, etc.
+   
+   Only custom colors specific to this project are kept below */
+
+/* Custom brand colors - not available in Bootstrap */
+.bg-orange {
+  background-color: var(--main-orange) !important;
+}
+
+.bg-pale-yellow {
+  background-color: var(--pale-yellow, #fdf9eb) !important;
+}
+
+/* === COMPONENTS: SLIDER === */
+/* Comprehensive slider styles using BEM methodology */
+
+/* Slider controls/arrows */
+.slider_arrows {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing-lg) 0;
+}
+
+/* Position variant for how-to-spot section */
+.how-tospot-ai-sec .slider_arrows {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* White variant for arrows */
+.slider_arrows.white svg path {
+  fill: var(--main-white);
+  stroke: var(--main-white);
+}
+
+/* Dash component */
+.slider_arrows .dash {
+  margin: 0 var(--spacing-lg);
+  display: flex;
+  align-items: center;
+}
+
+.slider_arrows .dash svg {
+  display: block;
+}
+
+.slider_arrows.white .dash svg line {
+  stroke: var(--main-white);
+}
+
+.slider_arrow_left svg,
+.slider_arrow_right svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+}
+
+/* Slider typography */
+.slider__main-title,
+.slider__image-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  font-family: var(--font-display, "tt-paplane", sans-serif);
+}
+
+.slider__person-label,
+.slider__context-label {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.slider__person-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #000;
+}
+
+/* === COMPONENTS: FOOTER === */
+/* Site footer with full-width design and crosses decoration */
+footer {
+  /* Colors */
+  color: var(--main-white);
+  background-color: var(--main-black);
+
+  /* Typography */
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+
+  /* Layout */
+  width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  padding-top: var(--spacing-lg) !important;
+  padding-bottom: var(--spacing-lg) !important;
+  min-height: 120px;
+  /* Ensure enough height for crosses */
+
+  /* Positioning */
+  position: relative;
+  overflow: hidden;
+  /* Prevent overflow */
+  bottom: 0;
+  /* Ensure flush with bottom */
+  left: 0;
+  /* Full bleed left */
+  right: 0;
+  /* Full bleed right */
+  border: none;
+  /* No border */
+
+  /* Note: Vertical padding replaced by Bootstrap py-5 */
+}
+
+/* Footer decorative cross elements - combined BEM with legacy selectors
+   NOTE: Update HTML to use .footer__cross classes when possible */
+.footer__cross,
+span.cross {
+  position: absolute;
+  top: 1.2rem;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+}
+
+/* Cross position variants */
+.footer__cross--one,
+footer span.cross.cross-one {
+  left: 10%;
+}
+
+.footer__cross--two,
+footer span.cross.cross-two {
+  left: 50%;
+}
+
+.footer__cross--three,
+footer span.cross.cross-three {
+  left: 90%;
+}
+
+.white-logo img {
+  filter: brightness(0) invert(1);
+}
+
+.cross-wrapper .cross:nth-child(1) {
+  top: 10%;
+  left: 20%;
+}
+
+.cross-wrapper .cross:nth-child(2) {
+  top: 10%;
+  right: 35%;
+}
+
+.how-tospot-ai-sec {
+  padding: 3rem 0;
+}
+
+.custom-spinner {
+  color: #ff6600;
+}
+
+/* === UTILITIES: SCROLLBAR === */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff6600;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* === TYPOGRAPHY: RESPONSIVE ADJUSTMENTS === */
+
+/* Modern responsive typography using clamp() to reduce media queries */
+
+h1,
+.h1 {
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2.5rem);
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.3rem, 1.1rem + 0.8vw, 2rem);
+}
+
+h4,
+.h4 {
+  font-size: clamp(1.2rem, 1rem + 0.5vw, 1.5rem);
+}
+
+.display-1 {
+  font-size: clamp(3rem, 2rem + 5vw, 6rem);
+}
+
+.display-2 {
+  font-size: clamp(2.5rem, 2rem + 3vw, 5rem);
+}
+
+.display-3 {
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+}
+
+.lead {
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.25rem);
+}
+
+/* Images gallery */
+.images-gallery-wrapper {
+  position: relative;
+}
+
+.images-gallery {
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.images-gallery a {
+  position: absolute;
+  display: block;
+  height: 12rem;
+  transition: transform 0.3s ease;
+}
+
+/* Mobile override */
+/* Mobile (up to 767px) */
+@media (max-width: 767.98px) {
+  .images-gallery {
+    height: auto;
+  }
+
+  .images-gallery a {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+}
+
+#cardsContainer .card {
+  background-color: transparent;
+  margin: 10px;
+  border: 0;
+  position: relative;
+  height: 65vh;
+  overflow: hidden;
+  max-width: 322px;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 0;
+}
+
+#cardsContainer .card img {
+  border-radius: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+  position: relative;
+  z-index: 0;
+  transform: scale(1.1);
+}
+
+#cardsContainer .card:hover img {
+  transform: scale(1.2);
+}
+
+/* Gradient overlay directly on card image for extra readability */
+#cardsContainer .card img::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 75%
+  );
+  display: block;
+}
+
+/* Card body - consolidated duplicated styles */
+#cardsContainer .card .card-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 10px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.5) 75%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Card title - removed duplication */
+#cardsContainer .card .card-body .card-title {
+  font-size: 1.5rem;
+  font-family: "tt-paplane", sans-serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 4px 15px;
+  text-align: center;
+  display: inline-block;
+  border: 2px solid #fff;
+  border-radius: 15px;
+}
+
+/* Card paragraph */
+#cardsContainer .card .card-body p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.bg-coding-img::after,
+.bg-coding-img::before {
+  content: "";
+  position: absolute;
+  background-image: url("../images/CJR_Codes_White_02.gif");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 20%;
+  height: 100%;
+  pointer-events: none;
+  background-position: top left;
+}
+
+.bg-coding-img.black::after,
+.bg-coding-img.black::before {
+  filter: brightness(0);
+}
+
+.bg-coding-img::before {
+  background-position: bottom right;
+  bottom: 0;
+  right: 0;
+}
+
+.bg-coding-img::after {
+  top: 0;
+  left: 0;
+}
+
+/* === SPOT AI MODAL COMPONENT === */
+.custom-modal .modal-dialog {
+  min-width: 90%;
+}
+
+.custom-modal .modal-content {
+  border-radius: 0;
+  height: 90vh;
+  margin: 0;
+  background: transparent;
+  border: 0;
+}
+
+.ti_img-thumbnail {
+  height: 90vh;
+  position: relative;
+}
+
+/* Tip content positioning styles consolidated with main tip_content.content-card (line 884) */
+
+/* Corner squares for the modal content */
+.corner-square {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+}
+
+.corner-square.orange {
+  background-color: var(--main-orange);
+}
+
+.corner-square.tl {
+  top: -4px;
+  left: -4px;
+}
+
+.corner-square.tr {
+  top: -4px;
+  right: -4px;
+}
+
+.corner-square.bl {
+  bottom: -4px;
+  left: -4px;
+}
+
+.corner-square.br {
+  bottom: -4px;
+  right: -4px;
+}
+
+/* Tip content styling */
+.tip-badge {
+  display: inline-block;
+  border: 2px solid var(--main-orange);
+  border-radius: 20px;
+  padding: 5px 1.5rem;
+  font-size: 1rem;
+  color: var(--main-orange);
+  font-family: monospace, "Courier New", Courier;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 1px;
+}
+
+.feature-title {
+  font-family: monospace, "Courier New", Courier;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  margin: 0 0 1rem 0;
+  color: white;
+  font-weight: 400;
+}
+
+.tip-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  color: white;
+}
+
+/* All margin-top for content-card--about is managed by Bootstrap mt-5 */
+
+/* Tip content styles consolidated in lines 919-932 */
+
+.ti_img-thumbnail img {
+  position: absolute;
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+/* Tip content headings - using BEM methodology */
+.tip_content__heading {
+  font-family: var(--font-display, "tt-paplane", sans-serif);
+  text-transform: uppercase;
+}
+
+.tip_content__heading--primary {
+  display: inline-block;
+  border: 2px solid var(--main-orange, #ff6600);
+  border-radius: 20px;
+  padding: 5px 1.5rem;
+  font-size: 1.5rem;
+  color: var(--main-orange, #ff6600);
+  letter-spacing: 5px;
+}
+
+.tip_content__heading--secondary {
+  margin: 1em 0;
+}
+
+/* Note: Update HTML to use these classes instead of h3/h4 selectors */
+
+.custom-modal .btn-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  margin: 0 0.5rem 0.5rem 0;
+  z-index: 100;
+  background-color: #fff;
+  opacity: 1;
+  filter: none;
+}
+
+.tip_content hr {
+  opacity: 1;
+  border-width: 2px;
+  width: 60%;
+}
+
+.orange-icon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 50px;
+  max-height: 25px;
+  object-fit: contain;
+  margin: 2rem;
+}
+
+/* Fighting with AI CSS*/
+
+.viral-stats {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  align-items: center;
+}
+
+/* === REMOVED: CUSTOM POPUP === */
+/* These components were removed as they don't appear in the HTML */
+
+/* Renamed from misspelled figtingWithAISlider to match HTML */
+.fightingWithAISlider {
+  background-color: var(--main-white);
+  overflow-y: hidden;
+}
+
+.slide-content {
+  padding: 5rem 6rem;
+  object-fit: cover;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slider typography styles moved to consolidated slider section (line 1534) */
+
+.viral-stats li {
+  font-family: "tt-paplane", sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.viral-stats li img {
+  font-family: "tt-paplane", sans-serif;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 5px;
+}
+
+.dark_cta {
+  background-color: #000;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+.navbar-toggler-icon svg {
+    fill: #ff6600;
+    width: 30px;
+    height: 30px;
+}
+*/
+/* Custom orange toggler icon for Bootstrap navbar */
+.navbar-toggler {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+  /* Inline SVG in HTML is now the only icon source */
+}
+
+.navbar-toggler-icon svg {
+  width: 2rem;
+  height: 2rem;
+  display: block;
+  margin: auto;
+}
+
+.navbar-toggler .icon-hamburger {
+  display: block;
+}
+
+.navbar-toggler .icon-close {
+  display: none;
+}
+
+.navbar-toggler.open .icon-hamburger {
+  display: none;
+}
+
+.navbar-toggler.open .icon-close {
+  display: block;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slick-arrow.slick-disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+#imageGrid {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+}
+
+#imageGrid a {
+  position: absolute;
+  display: block;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#imageGrid a:hover {
+  transform: scale(1.05) !important;
+  transition: transform 0.3s ease;
+}
+
+span.border.orange {
+  border-color: #ff6600 !important;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 200px, 500px;
+  display: inline-block;
+}
+
+span.border.oranges {
+  border-color: #ff6600 !important;
+  width: fit-content;
+  margin: 20, auto;
+  padding: 200px, 500px;
+  display: inline-block;
+}
+
+.coders-gifs img {
+  position: absolute;
+  width: 18rem;
+  z-index: 3;
+}
+
+.coders-gifs .top_img {
+  right: 0;
+  top: 8rem;
+}
+
+.coders-gifs .bottom_img {
+  left: 0;
+  bottom: 3rem;
+}
+
+.dark_cta:not(:first-child) {
+  display: none;
+}
+
+/* FURTHER READING */
+#furtherReading-text {
+  line-height: 50px;
+  margin-bottom: 2.5rem;
+  /* Add space below header */
+}
+
+#furtherReading-sec {
+  /* background-color: #000 !important; */
+  background-color: #fdf9eb !important;
+}
+
+.black-text {
+  color: #111;
+}
+
+.furtherReading-card-titles {
+  font-size: 1.75rem;
+}
+
+.furtherReading-card-p {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.furtherReading-card-p .date {
+  font-size: 0.6rem;
+  font-weight: 300;
+}
+
+.furtherReading-card-cta {
+  top: 0;
+  right: 0;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  border-radius: 30px;
+  border: 2px solid #111 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0/0.15);
+}
+
+a {
+  cursor: pointer;
+}
+
+/* === END FURTHER READING SECTION === */
+
+.further-corner.tl {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  /* === POSITION UTILITIES === */
+  /* This could be replaced with Bootstrap position utilities:
+       - position-absolute top-0 start-0 (for top-left)
+    */
+}
+
+.further-corner.tr {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  /* === POSITION UTILITIES === */
+  /* This could be replaced with Bootstrap position utilities:
+       - position-absolute top-0 end-0 (for top-right)
+    */
+}
+
+.further-corner.bl {
+  position: absolute;
+  bottom: -4px;
+  left: -4px;
+  /* === POSITION UTILITIES === */
+  /* This could be replaced with Bootstrap position utilities:
+       - position-absolute bottom-0 start-0 (for bottom-left)
+    */
+}
+
+.further-corner.br {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  /* === POSITION UTILITIES === */
+  /* This could be replaced with Bootstrap position utilities:
+       - position-absolute bottom-0 end-0 (for bottom-right)
+    */
+}
+
+/* === UTILITIES: POSITIONING === */
+/* 
+Positioning utilities using BEM-inspired naming
+Bootstrap alternatives are documented for future updates
+
+Recommended usage:
+1. Use Bootstrap position utilities when possible:
+   - position-relative, position-absolute, position-fixed
+   - top-0, bottom-0, start-0, end-0
+   - translate-middle (for centering)
+
+2. These custom utilities are maintained for backward compatibility
+*/
+
+/* --- Position Base Classes --- */
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+/* --- Position Combinations --- */
+/* These classes combine position: absolute with edge positioning */
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Bootstrap alternative: position-absolute top-0 start-0 */
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* Bootstrap alternative: position-absolute top-0 end-0 */
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* Bootstrap alternative: position-absolute bottom-0 start-0 */
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* Bootstrap alternative: position-absolute bottom-0 end-0 */
+}
+
+/* --- Z-Index Utilities --- */
+.z-index-1 {
+  z-index: 1;
+}
+
+.z-index-10 {
+  z-index: 10;
+}
+
+.z-index-100 {
+  z-index: 100;
+}
+
+.z-index-1000 {
+  z-index: 1000;
+}
+
+/* === UTILITIES: OUTLINE === */
+/* Control outlines and borders - consolidates utility classes and BEM components */
+.no-outline,
+.no-border,
+.content-card--nooutline {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Footer logo - combines BEM component with legacy support
+   NOTE: Update HTML to use .footer__logo class when possible */
+.footer__logo,
+.footer-logo {
+  width: 140px;
+}

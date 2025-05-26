@@ -1,0 +1,257 @@
+@layer components {
+  /* v1.0.0 Expertise Section Component */
+
+  /* EXPERTISE SECTION */
+  #expertise {
+    background-color: var(--secondary-bg);
+    position: relative;
+  }
+
+  .expertise-divider {
+    position: absolute;
+    top: -120px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1;
+  }
+
+  .expertise-divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 120px;
+  }
+
+  .expertise-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
+  .expertise-intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .expertise-container {
+    margin-bottom: 3rem;
+  }
+
+  /* Expertise Panels */
+  .expertise-panel {
+    margin-bottom: 4rem;
+  }
+
+  .expertise-panel-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .expertise-icon {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-right: 1rem;
+  }
+
+  .expertise-panel-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .expertise-panel-header h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent);
+  }
+
+  /* Expertise Grid */
+  .expertise-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 576px) {
+    .expertise-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .expertise-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .expertise-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: 1.5rem;
+    transition: var(--transition-base);
+    height: 100%;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .expertise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .expertise-card-icon {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .expertise-card h4 {
+    margin-bottom: 0.75rem;
+    font-size: 1.2rem;
+  }
+
+  .expertise-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Expertise Categories */
+  .expertise-categories {
+    margin-top: 4rem;
+  }
+
+  .expertise-category {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .expertise-category:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .category-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .category-icon {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-right: 1rem;
+  }
+
+  .category-title h4 {
+    margin-bottom: 0;
+    font-size: 1.4rem;
+  }
+
+  /* Role Checkboxes */
+  .role-checkboxes {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-bottom: 1.5rem;
+  }
+
+  .role-checkbox {
+    position: relative;
+  }
+
+  .role-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .role-label {
+    display: block;
+    padding: 0.75rem 1rem;
+    background-color: rgba(45, 45, 45, 0.5);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition-base);
+    text-align: center;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .role-input:checked + .role-label {
+    background-color: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .role-checkbox:hover .role-label {
+    background-color: rgba(45, 45, 45, 0.8);
+    transform: translateY(-2px);
+  }
+
+  .role-input:focus-visible + .role-label {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* Selected Expertise */
+  .expertise-chip {
+    display: inline-block;
+    background-color: var(--card-bg);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    font-size: 0.9rem;
+    transition: var(--transition-base);
+  }
+
+  .expertise-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+    background-color: var(--accent);
+    color: white;
+  }
+
+  .expertise-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .roles-cta .selected-count {
+    display: inline-block;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .expertise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .role-checkboxes {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+}

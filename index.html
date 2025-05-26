@@ -59,7 +59,7 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="about">
+    <section id="about" class="about particle-container">
       <div class="container">
         <h2 class="hidden">About The PSAI</h2>
         <article class="card text-content">
@@ -74,15 +74,16 @@
     </section>
 
     <!-- Music Video -->
-    <section id="music-video" class="music-video container">
-      <h2 class="hidden">The PSAI Music Video</h2>
-
-      <figure class="video">
-        <iframe src="https://www.youtube.com/embed/Zq296QMIPLg?si=ie4EjHYKG7rO5w91" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-      </figure>
+    <section id="music-video" class="music-video">
+      <div class="video-container">
+        <h2 class="hidden">The PSAI Music Video</h2>
+        <figure class="video">
+          <iframe src="https://www.youtube.com/embed/Zq296QMIPLg?si=ie4EjHYKG7rO5w91" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+        </figure>
+      </div>
     </section>
 
     <!-- Fighting AI -->
@@ -115,27 +116,32 @@
 
 
     <!-- Spot AI -->
-    <section id="spot-ai" class="spot-ai container">
-      <h2>How to spot AI</h2>
-      <p class="subtitle">Signs to look out for</p>
-      <div class="carousel" data-carousel>
-        <div class="carousel-track">
-          <!-- Carousel items will be dynamically populated -->
+    <section id="spotAI" class="spot-ai">
+      <div class="container">
+        <h2>How to spot AI</h2>
+        <p class="subtitle">Signs to look out for</p>
+        
+        <!-- Slick-like carousel with data attributes for configuration -->
+        <div id="spot-ai-carousel" class="carousel-container" data-carousel='{"slidesToShow": 5, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 5000}'>
+          <!-- Carousel items will be dynamically populated here -->
         </div>
+        
         <div class="carousel-controls">
           <button class="carousel-btn prev" aria-label="Previous">
             <svg width="18" height="36" viewBox="0 0 18 36">
-              <path
-                d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z"
-                fill="currentColor" />
+              <path d="M17.922 5.98305L11.9246 -5.31127e-07L1.27123 10.746C0.452341 11.5672 2.03821e-06 12.6856 1.93633e-06 13.851L0.0233987 22.2194C0.0233985 23.3847 0.491336 24.4953 1.31023 25.3165L12.0338 36L18 29.9857L5.9974 18.0274L17.922 5.98305Z" fill="currentColor" />
             </svg>
           </button>
-          <div class="carousel-dots"></div>
+
+          <div class="dash">
+            <svg width="155" height="2" viewBox="0 0 155 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line y1="0.5" x2="155" y2="0.5" stroke="currentColor" stroke-dasharray="2 2" />
+            </svg>
+          </div>
+
           <button class="carousel-btn next" aria-label="Next">
             <svg width="18" height="36" viewBox="0 0 18 36">
-              <path
-                d="M0.0772705 30.0177L6.0754 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.96615 0L-1.11224e-07 6.01501L12.0026 17.9733L0.0772705 30.0177Z"
-                fill="currentColor" />
+              <path d="M0.0772705 30.0177L6.0754 36L16.7288 25.254C17.5477 24.4328 18 23.3144 18 22.149L17.9766 13.7806C17.9766 12.6153 17.5087 11.5047 16.6898 10.6835L5.96615 0L-1.11224e-07 6.01501L12.0026 17.9733L0.0772705 30.0177Z" fill="currentColor" />
             </svg>
           </button>
         </div>
@@ -144,7 +150,7 @@
 
     <!-- Further Reading -->
     <section id="reading" class="reading container">
-      <h2>Further Reading</h2>
+      <h2>HOW AI IS RESHAPING <span class="highlight">JOURNALISM</span></h2>
       <div class="articles-grid" data-articles>
         <!-- Articles will be dynamically loaded -->
       </div>
@@ -200,10 +206,14 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJWXG1W4EV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-CJWXG1W4EV');
   </script>
+
+  
+
+  
 </body>
 
 </html>

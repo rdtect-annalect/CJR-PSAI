@@ -1,0 +1,65 @@
+@layer components {
+  /* v1.0.0 Clients Section Component */
+
+  /* CLIENTS SECTION */
+  #clients {
+    background-color: var(--primary-bg);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .clients-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+  }
+
+  @media (min-width: 576px) {
+    .clients-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 992px) {
+    .clients-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .client-logo {
+    opacity: 0.7;
+    transition: var(--transition-base);
+    filter: grayscale(100%);
+    max-width: 150px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .client-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .client-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Ensure proper contrast for dark-colored logos when in grayscale */
+  .client-logo:nth-child(2) img,
+  /* PwC */
+  .client-logo:nth-child(9) img {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Responsive adjustments for client logos */
+  @media (max-width: 768px) {
+    .client-logo {
+      max-width: 120px;
+    }
+  }
+}

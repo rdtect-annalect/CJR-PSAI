@@ -1,0 +1,127 @@
+@layer responsive {
+  /* v1.0.0 Responsive Helpers */
+
+  /* Breakpoint Variables */
+  :root {
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+  }
+
+  /* Modern Range Queries */
+
+  /* Small devices */
+  @media (width < 576px) {
+    .container {
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .hidden-xs {
+      display: none !important;
+    }
+  }
+
+  /* Medium devices */
+  @media (576px <= width < 768px) {
+    .container {
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+
+    .hidden-sm {
+      display: none !important;
+    }
+
+    /* Responsive grid */
+    .sm-grid-1 {
+      grid-template-columns: 1fr;
+    }
+
+    .sm-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Large devices */
+  @media (768px <= width < 992px) {
+    .container {
+      padding-left: var(--space-lg);
+      padding-right: var(--space-lg);
+    }
+
+    .hidden-md {
+      display: none !important;
+    }
+
+    /* Responsive grid */
+    .md-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .md-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* Extra large devices */
+  @media (992px <= width) {
+    .hidden-lg {
+      display: none !important;
+    }
+
+    /* Responsive grid */
+    .lg-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .lg-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* Responsive spacing adjustments */
+  @media (width < 768px) {
+    section {
+      padding: clamp(3rem, 8vh, 5rem) var(--space-md);
+    }
+
+    .section-title {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  /* Responsive typography */
+  @media (width < 576px) {
+    body {
+      font-size: 0.95rem;
+    }
+  }
+
+  /* Touch device optimizations */
+  @media (hover: none) {
+    /* Disable hover effects on touch devices */
+    .hover-lift:hover,
+    .hover-scale:hover {
+      transform: none;
+    }
+
+    /* Increase tap target sizes */
+    .btn {
+      padding: 0.9rem 2rem;
+    }
+
+    .nav-links a {
+      padding: 0.8rem 1rem;
+    }
+  }
+}

@@ -2,7 +2,10 @@
  * HeroComponent - Hero section animations
  * Manages animations for the hero section including floating elements
  */
-import { BaseComponent, PSAI } from "../../psai.js";
+import BaseComponent from "../base/BaseComponent.js";
+import { animate, spring, presets } from "../../utils/anime.js";
+import { $, observe } from "../../utils/dom.js";
+import appService from "../../services/AppService.js";
 import eventBus from '../../services/EventBus.js';
 
 /**
@@ -158,23 +161,38 @@ export class HeroComponent extends BaseComponent {
       const intensity = floatIntensity * (0.8 + Math.random() * 0.4); // 80-120% of base intensity
       
       const animate = () => {
-        const instance = window.anime({
-          targets: el,
-          translateX: [
-            { value: baseX + (Math.random() * 2 - 1) * intensity },
-            { value: baseX + (Math.random() * 2 - 1) * intensity },
-            { value: baseX }
-          ],
-          translateY: [
-            { value: baseY + (Math.random() * 2 - 1) * intensity },
-            { value: baseY + (Math.random() * 2 - 1) * intensity },
-            { value: baseY }
-          ],
-          rotate: [
-            { value: (Math.random() * 2 - 1) * 2 },
-            { value: (Math.random() * 2 - 1) * 2 },
-            { value: 0 }
-          ],
+        // Generate random offsets for the animation
+        const x1 = baseX + (Math.random() * 2 - 1) * intensity;
+        const x2 = baseX + (Math.random() * 2 - 1) * intensity;
+        const y1 = baseY + (Math.random() * 2 - 1) * intensity;
+        const y2 = baseY + (Math.random() * 2 - 1) * intensity;
+        const r1 = (Math.random() * 2 - 1) * 2;
+        const r2 = (Math.random() * 2 - 1) * 2;
+        
+        // Create keyframes for the animation
+        const keyframes = [
+          { 
+            translateX: x1,
+            translateY: y1,
+            rotate: r1,
+            duration: duration / 3
+          },
+          { 
+            translateX: x2,
+            translateY: y2,
+            rotate: r2,
+            duration: duration / 3
+          },
+          { 
+            translateX: baseX,
+            translateY: baseY,
+            rotate: 0,
+            duration: duration / 3
+          }
+        ];
+        
+        // Start the animation
+        const instance = animate(el, keyframes, {
           duration: duration,
           easing: 'easeInOutSine',
           loop: true,

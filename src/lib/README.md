@@ -2,82 +2,85 @@
 
 ## Overview
 
-This directory contains the core JavaScript components, services, and utilities for the PSAI application. The architecture follows modern JavaScript patterns and best practices, emphasizing maintainability, performance, and clean code.
+This directory contains the core JavaScript components, services, and utilities for the PSAI application. The architecture follows a simple component-based approach with clean separation of concerns.
 
 ## Directory Structure
 
 ```
 src/lib/
 ├── components/            # UI and feature components
-│   ├── ui/                # UI components (Navbar, Hero)
+│   ├── base/              # Base component classes
+│   ├── ui/                # UI components (Navbar, Hero, etc.)
 │   └── features/          # Feature components (SpotAICarousel, FightingAIGallery)
 ├── services/              # Service classes
-│   ├── EventBus.js        # Event bus for cross-component communication
+│   ├── AppService.js      # Core application service
+│   ├── EventBus.js        # Event bus for component communication
 │   └── ModalService.js    # Modal management service
-├── deprecated/            # Legacy code kept for reference
-└── psai.js                # Core library with consolidated utilities for easy importing
+├── anime.js               # Animation utilities using AnimeJS
+├── BaseComponent.js       # Base component class
+├── dom.js                 # DOM manipulation utilities
+└── index.js               # Centralized exports
 ```
 
 ## Architecture
 
-### Modern Class-based Architecture
+### Component-Based Structure
 
-The PSAI library uses a streamlined, class-based architecture with a single source of truth for utilities:
+PSAI uses a straightforward component architecture with simple imports from centralized index.js:
 
 ```javascript
-// Import all core utilities from a single file
-import { PSAI, BaseComponent, appService } from './psai.js';
+// Import services and components
+import {
+  appService,
+  eventBus,
+  NavbarComponent,
+  HeroComponent
+} from './lib/index.js';
 ```
 
-### PSAI Core Utilities
-
-The `PSAI` class provides all core utilities in a clean, organized structure:
-
-- `PSAI.DOM`: DOM manipulation utilities (select, create, etc.)
-- `PSAI.Animation`: Animation utilities using AnimeJS v4
-- `PSAI.Events`: Event handling utilities (add, debounce, throttle)
-- `PSAI.Data`: Data loading and processing utilities
-
-### Component Architecture
+### BaseComponent
 
 All components extend `BaseComponent` which provides:
 
-- Promise-based lifecycle management (init, destroy)
-- Automatic resource cleanup
-- Event listener management
-- Timer and animation frame tracking
+- Promise-based initialization via `init()` method
+- Resource cleanup via `destroy()` method
+- Event listener management with automatic cleanup
+- Timer and animation management
 
-### Service Architecture
+### Core Services
 
-- `EventBus`: Centralized event system for cross-component communication
-- `AppService`: Application service that registers and initializes components
-- `ModalService`: Manages modals with consistent behavior and accessibility
+- `appService`: Manages component registration and lifecycle
+- `eventBus`: Handles cross-component communication
+- `ModalService`: Manages modal dialogs
 
-### Event-Driven Communication
+### Event Communication
 
-Components communicate through the EventBus service:
+Components communicate through the eventBus:
 
 ```javascript
 // Publishing an event
-eventBus.emit('my-event', { data: 'example' });
+eventBus.emit('modal:open', modalId);
 
 // Subscribing to an event
-const unsubscribe = eventBus.on('my-event', (data) => {
-  // Handle event
+eventBus.on('app:ready', () => {
+  console.log('App is ready');
 });
-
-// Cleaning up when done
-unsubscribe();
 ```
 
 ### Memory Management
 
-All components implement proper cleanup in their `destroy` method:
+Components handle cleanup in their `destroy` method:
 
-- Event listeners
-- Timers and intervals
-- Animation frames
-- IntersectionObserver instances
+```javascript
+// In BaseComponent's destroy method
+destroy() {
+  // Clean up event listeners
+  this._listeners?.forEach(listener => {
+    listener.element.removeEventListener(listener.event, listener.handler);
+  });
+  this._listeners = [];
+}
+```
 
 ## Core Utilities
 
@@ -85,13 +88,13 @@ All components implement proper cleanup in their `destroy` method:
 
 ```javascript
 // Select elements
-const element = PSAI.DOM.select('.my-selector');
-const elements = PSAI.DOM.select('.my-items', document, true);
+const element = $('.my-selector');
+const elements = $('.my-items', true);
 
 // Create elements
-const div = PSAI.DOM.create('div', {
+const div = create('div', {
   className: 'my-class',
-  text: 'Hello World',
+  textContent: 'Hello World',
   style: { color: 'red' }
 });
 ```
@@ -100,174 +103,136 @@ const div = PSAI.DOM.create('div', {
 
 ```javascript
 // Create animations
-PSAI.Animation.create(element, {
+anime({
+  targets: element,
   translateY: [20, 0],
   opacity: [0, 1],
   duration: 600
 });
 
-// Create spring animations
-PSAI.Animation.spring(element, {
-  translateY: 0,
-  duration: 800
-});
-```
-
-### Event Utilities
-
-```javascript
-// Add event with automatic cleanup
-const cleanup = PSAI.Events.add(element, 'click', handleClick);
-
-// Create debounced function
-const debouncedResize = PSAI.Events.debounce(handleResize, 200);
-
-// Create throttled function
-const throttledScroll = PSAI.Events.throttle(handleScroll, 100);
-```
-
-### Data Utilities
-
-```javascript
-// Load JSON data
-const data = await PSAI.Data.load('/path/to/data.json');
-```
-
-## Migration Guide
-
-Follow these steps to migrate components from the old architecture to the new streamlined architecture:
-
-### 1. Update Imports
-
-**Old**:
-```javascript
-import BaseComponent from "../base/BaseComponent.js";
-import { loadData } from "../../utils/dataUtils.js";
-import { select, selectAll } from "../../core/dom.js";
-import { animate } from "../../core/animation.js";
-```
-
-**New**:
-```javascript
-import { BaseComponent, PSAI } from "../../psai.js";
-import eventBus from "../../services/EventBus.js";
-```
-
-### 2. Update DOM Methods
-
-**Old**:
-```javascript
-const element = select(".my-selector");
-const elements = selectAll(".my-items");
-```
-
-**New**:
-```javascript
-const element = PSAI.DOM.select(".my-selector");
-const elements = PSAI.DOM.select(".my-items", document, true);
-```
-
-### 3. Update Animation Code
-
-**Old**:
-```javascript
-animate(element, {
-  translateY: [20, 0],
+// Use scroll trigger animations
+scrollTrigger({
+  targets: element,
+  translateY: [50, 0],
   opacity: [0, 1],
-  duration: 600
+  threshold: 0.2
 });
 ```
 
-**New**:
+### Event Handling
+
 ```javascript
-PSAI.Animation.create(element, {
-  translateY: [20, 0],
-  opacity: [0, 1],
-  duration: 600
-});
+// In BaseComponent extensions
+this.on(element, 'click', this.handleClick.bind(this));
+
+// Using EventBus
+eventBus.on('app:ready', this.initialize.bind(this));
+eventBus.emit('component:loaded', { id: this.id });
 ```
 
-### 4. Update Data Loading
+## Implementation Guide
 
-**Old**:
+### Creating a New Component
+
 ```javascript
-const data = await loadData('/path/to/data.json');
+// Import the BaseComponent and necessary utilities
+import { BaseComponent } from '../BaseComponent.js';
+import { $ } from '../dom.js';
+import anime from '../anime.js';
+
+export default class MyComponent extends BaseComponent {
+  constructor(options = {}) {
+    super();
+    this.options = options;
+    this.container = null;
+  }
+  
+  init() {
+    // Find the container
+    this.container = $(this.options.selector || '.my-component');
+    if (!this.container) return Promise.resolve(this);
+    
+    // Set up event listeners with automatic cleanup
+    this.on(this.container, 'click', this.handleClick.bind(this));
+    
+    // Return promise for async initialization
+    return Promise.resolve(this);
+  }
+  
+  handleClick(e) {
+    // Component logic
+    console.log('Component clicked');
+  }
+  
+  destroy() {
+    // Custom cleanup logic
+    
+    // Call parent destroy to handle common cleanup
+    super.destroy();
+  }
+}
 ```
 
-**New**:
+### Registering Components
+
 ```javascript
-const data = await PSAI.Data.load('/path/to/data.json');
+// In main.js
+import { appService } from './lib/index.js';
+import MyComponent from './lib/components/features/MyComponent.js';
+
+// Register component
+appService.register('myComponent', new MyComponent({
+  selector: '.my-component-container'
+}));
+
+// Initialize all components
+appService.init()
+  .then(() => console.log('Application ready'));
 ```
-
-### 5. Update Event Handling
-
-**Old**:
-```javascript
-this.on(element, "click", this.handleClick);
-```
-
-**New**:
-```javascript
-// In components extending BaseComponent
-this.on(element, "click", this.handleClick);
-
-// Or using PSAI utilities directly
-const cleanup = PSAI.Events.add(element, "click", this.handleClick);
-```
-
-### Animation
-
-Enhanced animation utilities built on AnimeJS v4:
-
-- Hardware-accelerated animations
-- Physics-based animations with springs
-- Standardized easing functions
-- Performance optimizations
-
-### DOM
-
-Simplified DOM manipulation:
-
-- Element selection and creation
-- Attribute management
-- Class manipulation
-- IntersectionObserver utilities
-
-### Events
-
-Robust event handling:
-
-- EventEmitter with memory safety
-- Event tracking for automatic cleanup
-- Debounce and throttle utilities
 
 ## Usage Example
 
 ```javascript
-import { 
-  appService, 
-  NavbarComponent, 
-  HeroComponent 
+import {
+  appService,
+  eventBus,
+  ModalService,
+  NavbarComponent,
+  HeroComponent,
+  ParticleSystem
 } from './lib/index.js';
 
-// Register components
-appService.registerComponent('navbar', new NavbarComponent());
-appService.registerComponent('hero', new HeroComponent());
+// Set debug mode
+appService.debug = location.hostname === 'localhost';
 
-// Initialize application
+// Register components
+appService
+  .register('modal', new ModalService())
+  .register('navbar', new NavbarComponent())
+  .register('hero', new HeroComponent({
+    logoSelector: '.the-PSAI img',
+    topGifSelector: '.coders-gifs .top-img',
+    bottomGifSelector: '.coders-gifs .bottom-img'
+  }))
+  .register('particles', new ParticleSystem({
+    selector: '.particle-container',
+    particleCount: 70
+  }));
+
+// Initialize all components
 appService.init()
-  .then(() => {
-    console.log('Application initialized successfully');
-  })
-  .catch(error => {
-    console.error('Initialization failed:', error);
-  });
+  .then(() => console.log('✅ Application ready!'))
+  .catch(err => console.error('❌ Init failed:', err));
+
+// Global cleanup
+window.addEventListener('beforeunload', () => appService.destroy());
 ```
 
 ## Best Practices
 
-1. **Always clean up resources**: Use the destroy() method to release references
-2. **Use event delegation**: Prefer delegated events for better performance
-3. **Avoid direct DOM manipulation**: Use the DOM utilities for consistency
-4. **Leverage hardware acceleration**: Use transform and opacity for animations
-5. **Follow Promise patterns**: Properly handle async operations with catch blocks
+1. **Return Promises from init()**: Always return Promise.resolve(this) from component init methods
+2. **Clean up in destroy()**: Call super.destroy() in component destroy methods
+3. **Use the event bus**: For cross-component communication
+4. **Register all components before init**: Add all components to appService before calling init()
+5. **Use options objects**: Pass configuration through constructor options
+6. **Handle element absence**: Check if target elements exist before attaching behavior

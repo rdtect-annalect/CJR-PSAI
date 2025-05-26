@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="KaN Talent Search: Executive search and talent integration services. We find and integrate leaders for immediate business impact."
+    />
+    <link rel="canonical" href="https://www.kansearch.com" />
+    <title>KaN Talent Search - Executive Search & Leadership Integration</title>
+
+    <!-- Reset CSS Cache and Load All Files in Correct Order -->
+    <!-- 1. Base Layer - Consolidated and Optimized -->
+    <link rel="stylesheet" href="css/base.css?v=1.0.4" />
+
+    <!-- 2. Effects Layer -->
+    <link rel="stylesheet" href="css/effects.css?v=1.0.4" />
+
+    <!-- 3. Section Layers -->
+    <link rel="stylesheet" href="css/sections/header.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/hero.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/problem.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/solution.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/services.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/why-us.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/expertise.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/clients.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/contact.css?v=1.0.4" />
+    <link rel="stylesheet" href="css/sections/footer.css?v=1.0.4" />
+
+    <!-- 4. Responsive Layer -->
+    <link rel="stylesheet" href="css/responsive.css?v=1.0.4" />
+
+    <!-- 5. Overrides Layer (Must be last) -->
+    <link rel="stylesheet" href="css/overrides.css?v=1.0.4" />
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="nav-container">
+        <div class="logo">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 433 459"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="logo-svg"
+          >
+            <path
+              d="M67.7706 138.024L90.3041 251.659L0.170758 269.36L67.7706 138.024Z"
+              fill="#D7E026"
+            />
+            <path
+              d="M246.949 435.358L113.462 367.399L227.828 343.157L246.949 435.358Z"
+              fill="#EE4599"
+            />
+            <path
+              d="M318.98 206.754L411.836 191.046L342.152 321.597L318.98 206.754Z"
+              fill="#ED0977"
+            />
+            <path
+              d="M163.745 22.9284L296.483 92.3383L181.86 115.332L163.745 22.9284Z"
+              fill="#F283B5"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M205.046 229.578L67.4639 137.995L90.4634 252.577L113.463 367.16L205.046 229.578Z"
+              fill="#37B04A"
+            />
+            <path
+              d="M296.628 91.9962L67.4639 137.995L205.046 229.578L296.628 91.9962Z"
+              fill="#44C8F5"
+            />
+            <path
+              d="M113.463 367.16L342.627 321.161L205.046 229.578L113.463 367.16Z"
+              fill="#C82127"
+            />
+            <path
+              d="M205.046 229.578L342.627 321.161L319.628 206.578L205.046 229.578Z"
+              fill="#ED0977"
+            />
+            <path
+              d="M296.628 91.9962L205.046 229.578L319.628 206.578L296.628 91.9962Z"
+              fill="#D7E026"
+            />
+            <g
+              transform="translate(205.046, 229.578) scale(1.2) translate(-90, -90)"
+            >
+              <circle
+                cx="90"
+                cy="90"
+                r="85"
+                stroke="#333333"
+                stroke-width="6"
+                fill="white"
+                fill-opacity="0.15"
+              />
+              <circle
+                cx="90"
+                cy="90"
+                r="80"
+                stroke="#555555"
+                stroke-width="1"
+                fill="none"
+                stroke-opacity="0.5"
+              />
+              <path
+                d="M150 150 L185 185"
+                stroke="#333333"
+                stroke-width="10"
+                stroke-linecap="round"
+              />
+              <path
+                d="M60 60 Q75 75, 90 60"
+                stroke="white"
+                stroke-width="4"
+                fill="none"
+                stroke-opacity="0.8"
+              />
+            </g>
+          </svg>
+          <span>KaN</span> Talent Search
+        </div>
+        <nav class="main-nav">
+          <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#problem">Challenge</a></li>
+            <li><a href="#solution">Solution</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#expertise">Expertise</a></li>
+            <!-- <li><a href="#clients">Clients</a></li> -->
+            <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section id="hero">
+        <div class="hero-bg">
+          <div class="abstract-background">
+            <canvas id="connectLines" class="connect-lines"></canvas>
+            <div class="particles-container" id="particlesContainer"></div>
+          </div>
+
+          <div class="magnifier" id="magnifier">
+            <div class="magnifier-content" id="magnifierContent">
+              <!-- KaN Logo SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg"></svg>
+            </div>
+            <div class="kan-search-text" id="kanSearchText">
+              <div class="kan">KaN</div>
+              <div class="search">SEARCH</div>
+            </div>
+            <div class="whirlwind" id="whirlwind">
+              <div class="whirl-particle w1"></div>
+              <div class="whirl-particle w2"></div>
+              <div class="whirl-particle w3"></div>
+              <div class="whirl-particle w4"></div>
+              <div class="whirl-particle w5"></div>
+              <div class="whirl-particle w6"></div>
+              <div class="whirl-particle w7"></div>
+              <div class="whirl-particle w8"></div>
+            </div>
+            <div class="magnifier-handle"></div>
+            <div class="magnifier-glass-effect"></div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="glass-card fade-in">
+            <div class="hero-content">
+              <div class="hero-tagline fade-in fade-in-1">
+                Strategic Executive Search
+              </div>
+              <h1 class="fade-in fade-in-2">
+                Find Leaders Who
+                <span class="highlight-text">Deliver Results</span> from Day One
+              </h1>
+              <p class="fade-in fade-in-3">
+                KaN Talent Search combines deep industry expertise with proven
+                methodology to find and integrate high-impact leaders who
+                transform your business.
+              </p>
+              <div class="hero-buttons fade-in fade-in-4">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+              </div>
+            </div>
+          </div>
+          <div class="hero-scroll-indicator fade-in fade-in-5">
+            <div class="mouse">
+              <div class="wheel"></div>
+            </div>
+            <div>Scroll to discover</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM SECTION -->
+      <section id="problem">
+        <div class="container">
+          <div class="section-label fade-in">The Challenge</div>
+          <h2 class="section-title fade-in">
+            Why Executive <span class="highlight-text">Productivity Fails</span>
+          </h2>
+
+          <div class="problem-container">
+            <div class="problem-stats fade-in fade-in-1">
+              <div class="stat-card">
+                <div class="stat-number">
+                  <span class="counter" data-count="50">0</span>%
+                </div>
+                <div class="stat-label">New executives fail in 18 months</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">
+                  <span class="counter" data-count="15">0</span>×
+                </div>
+                <div class="stat-label">
+                  Cost of a failed hire (vs. annual salary)
+                </div>
+                <div class="stat-source">Harvard Business Review</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">
+                  <span class="counter" data-count="63">0</span>%
+                </div>
+                <div class="stat-label">Report poor onboarding experience</div>
+              </div>
+            </div>
+
+            <div class="problem-content fade-in fade-in-2">
+              <h3>Common Failure Points</h3>
+              <ul class="problem-list">
+                <li>
+                  <span class="bullet-icon">📋</span>
+                  <div>
+                    <strong>Unclear Expectations</strong>
+                    <p>
+                      Role ambiguity and misaligned success measures lead to
+                      strategic misalignment.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="bullet-icon">🔄</span>
+                  <div>
+                    <strong>Poor Onboarding Process</strong>
+                    <p>
+                      Inadequate integration hampering knowledge transfer and
+                      relationship building.
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <span class="bullet-icon">👥</span>
+                  <div>
+                    <strong>Cultural Mismatch</strong>
+                    <p>
+                      Behavioral and value disconnects causing friction and
+                      reduced team cohesion.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="promise-block fade-in fade-in-3">
+            <h3><span class="promise-icon">⚡</span> Our Promise</h3>
+            <p>
+              At KaN Talent Search, we don't just fill positions — we make
+              leaders business-ready faster with our
+              <strong>Coach-Approach™ Framework</strong>.
+            </p>
+            <p>
+              Our commitment is to your organization's
+              <span class="highlight-text">productivity</span>, not just
+              placements.
+            </p>
+            <a href="#solution" class="text-button"
+              >See our solution <span class="arrow">→</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUTION SECTION -->
+      <section id="solution">
+        <div class="container">
+          <div class="section-label fade-in">Our Approach</div>
+          <h2 class="section-title fade-in">
+            Right-Fit <span class="highlight-text">Hiring Framework</span>
+          </h2>
+
+          <div class="solution-timeline">
+            <div class="timeline-line"></div>
+
+            <div class="solution-step fade-in fade-in-1">
+              <div class="step-number">01</div>
+              <div class="solution-card card-hover-accent">
+                <div class="icon icon-grow">🔍</div>
+                <h3>Deep Talent Mapping</h3>
+                <div class="card-content">
+                  <p>
+                    We identify and engage with high-potential candidates long
+                    before you need them.
+                  </p>
+                  <ul class="feature-list">
+                    <li>Comprehensive market analysis</li>
+                    <li>Passive candidate engagement</li>
+                    <li>Network cultivation strategy</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="solution-step fade-in fade-in-2">
+              <div class="step-number">02</div>
+              <div class="solution-card">
+                <div class="icon">⚙️</div>
+                <h3>Precision Selection</h3>
+                <div class="card-content">
+                  <p>
+                    Our rigorous assessment process focuses on cultural
+                    alignment and performance indicators.
+                  </p>
+                  <ul class="feature-list">
+                    <li>Evidence-based interviews</li>
+                    <li>Cultural compatibility profiling</li>
+                    <li>Success pattern matching</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="solution-step fade-in fade-in-3">
+              <div class="step-number">03</div>
+              <div class="solution-card">
+                <div class="icon">🚀</div>
+                <h3>Accelerated Onboarding</h3>
+                <div class="card-content">
+                  <p>
+                    We reduce time-to-productivity with structured integration
+                    plans for each leader.
+                  </p>
+                  <ul class="feature-list">
+                    <li>30-60-90 day success roadmap</li>
+                    <li>Stakeholder relationship planning</li>
+                    <li>Early wins identification</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="solution-step fade-in fade-in-4">
+              <div class="step-number">04</div>
+              <div class="solution-card">
+                <div class="icon">📊</div>
+                <h3>Ongoing Success Tracking</h3>
+                <div class="card-content">
+                  <p>
+                    Regular check-ins and performance metrics ensure sustainable
+                    leadership success.
+                  </p>
+                  <ul class="feature-list">
+                    <li>Quarterly performance reviews</li>
+                    <li>Adaptation coaching as needed</li>
+                    <li>Long-term retention monitoring</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="centered-link-container fade-in fade-in-5">
+            <a href="#services" class="btn btn-primary">See Our Services</a>
+            <a href="#contact" class="btn btn-secondary">Discuss Your Needs</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES SECTION -->
+      <section id="services">
+        <div class="container">
+          <div class="section-label fade-in">Our Offerings</div>
+          <h2 class="section-title fade-in">
+            Premium <span class="highlight-text">Services</span> We Deliver
+          </h2>
+
+          <div class="services-tabs fade-in">
+            <button class="service-tab active" data-service="executive">
+              Executive Search
+            </button>
+            <button class="service-tab" data-service="staffing">
+              On-Demand Staffing
+            </button>
+          </div>
+
+          <div class="services-container">
+            <!-- Executive Search Service -->
+            <div class="service-panel active" id="executive-panel">
+              <div class="service-header fade-in fade-in-1">
+                <div class="service-icon-wrapper">
+                  <div class="service-icon">👑</div>
+                </div>
+                <div class="service-intro">
+                  <h3>Executive Search</h3>
+                  <p>
+                    Our comprehensive executive search process identifies and
+                    secures top-tier talent for your most critical leadership
+                    positions.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-features fade-in fade-in-2">
+                <div class="feature-card">
+                  <div class="feature-icon">💼</div>
+                  <h4>C-Suite & Executive Leadership</h4>
+                  <p>
+                    Strategic placement of CEOs, CFOs, CTOs, and other C-suite
+                    roles with emphasis on leadership style and cultural
+                    alignment.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">🔍</div>
+                  <h4>Specialized & Technical Leadership</h4>
+                  <p>
+                    Domain-specific talent identification for specialized
+                    technical and business functions where expertise is
+                    critical.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">📊</div>
+                  <h4>Post-placement Coaching</h4>
+                  <p>
+                    Structured integration programs and leadership coaching to
+                    ensure successful transitions and accelerated impact.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">📈</div>
+                  <h4>Performance Optimization</h4>
+                  <p>
+                    Ongoing measurement and coaching to ensure executive
+                    performance aligns with organizational objectives.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-cta fade-in fade-in-3">
+                <a href="#contact" class="btn btn-primary"
+                  >Discuss Executive Search</a
+                >
+              </div>
+            </div>
+
+            <!-- On-Demand Staffing Service -->
+            <div class="service-panel" id="staffing-panel">
+              <div class="service-header fade-in fade-in-1">
+                <div class="service-icon-wrapper">
+                  <div class="service-icon">⏱️</div>
+                </div>
+                <div class="service-intro">
+                  <h3>On-Demand Staffing</h3>
+                  <p>
+                    Access our pre-vetted network of high-performing
+                    professionals for project-based needs and interim
+                    leadership.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-features fade-in fade-in-2">
+                <div class="feature-card">
+                  <div class="feature-icon">👨‍💼</div>
+                  <h4>Fractional CXOs and Executives</h4>
+                  <p>
+                    Part-time executive leadership for startups, restructuring,
+                    or organizations in transition requiring flexibility.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">💻</div>
+                  <h4>Project-based Specialists</h4>
+                  <p>
+                    Highly skilled professionals for time-bound projects,
+                    strategic initiatives, or specialized technical
+                    requirements.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">🔄</div>
+                  <h4>Interim Leadership</h4>
+                  <p>
+                    Temporary leadership during transitions, mergers,
+                    geographical expansion, or unexpected departures.
+                  </p>
+                </div>
+
+                <div class="feature-card">
+                  <div class="feature-icon">🚀</div>
+                  <h4>Rapid Deployment</h4>
+                  <p>
+                    Streamlined onboarding process designed to have leaders
+                    engaged and producing results within two weeks.
+                  </p>
+                </div>
+              </div>
+
+              <div class="service-cta fade-in fade-in-3">
+                <a href="#contact" class="btn btn-primary"
+                  >Explore On-Demand Options</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY US SECTION -->
+      <section id="why-us">
+        <div class="container">
+          <div class="section-label fade-in">Our Advantages</div>
+          <h2 class="section-title fade-in">
+            Why Choose <span class="highlight-text">KaN</span> Talent Search?
+          </h2>
+
+          <div class="why-us-intro fade-in">
+            <p>
+              When you partner with KaN, you're choosing a strategic ally
+              committed to transforming your leadership team through proven
+              methodology and deep expertise.
+            </p>
+          </div>
+
+          <div class="why-us-grid">
+            <div class="why-us-card fade-in fade-in-1">
+              <div class="why-us-icon-container">
+                <span class="why-us-icon">⚡</span>
+              </div>
+              <h3>Productivity-first approach</h3>
+              <div class="why-us-divider"></div>
+              <p>
+                Our unique methodology focuses on accelerating leadership
+                productivity
+              </p>
+              <ul class="why-us-points">
+                <li>Proven onboarding framework</li>
+                <li>Performance metrics tracking</li>
+                <li>Integration acceleration</li>
+              </ul>
+            </div>
+
+            <div class="why-us-card fade-in fade-in-2">
+              <div class="why-us-icon-container">
+                <span class="why-us-icon">🎯</span>
+              </div>
+              <h3>Decades of expertise</h3>
+              <div class="why-us-divider"></div>
+              <p>
+                Over 20 years of successful executive placements across
+                industries
+              </p>
+              <ul class="why-us-points">
+                <li>Industry-specific knowledge</li>
+                <li>Global talent network</li>
+                <li>Proven track record</li>
+              </ul>
+            </div>
+
+            <div class="why-us-card fade-in fade-in-3">
+              <div class="why-us-icon-container">
+                <span class="why-us-icon">🤝</span>
+              </div>
+              <h3>Seamless experience</h3>
+              <div class="why-us-divider"></div>
+              <p>End-to-end support throughout the entire hiring journey</p>
+              <ul class="why-us-points">
+                <li>Dedicated account manager</li>
+                <li>Regular progress updates</li>
+                <li>Transparent communication</li>
+              </ul>
+            </div>
+
+            <div class="why-us-card fade-in fade-in-4">
+              <div class="why-us-icon-container">
+                <span class="why-us-icon">🔄</span>
+              </div>
+              <h3>Continuous support</h3>
+              <div class="why-us-divider"></div>
+              <p>Long-term partnership focused on sustained success</p>
+              <ul class="why-us-points">
+                <li>Post-placement coaching</li>
+                <li>Performance monitoring</li>
+                <li>Ongoing optimization</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="why-us-cta fade-in">
+            <a href="#contact" class="btn btn-primary"
+              >Experience the KaN Difference</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERTISE SECTION -->
+      <section id="expertise">
+        <div class="container">
+          <div class="section-label fade-in">Our Specialties</div>
+          <h2 class="section-title fade-in">
+            Industry <span class="highlight-text">Expertise</span> & Focus
+          </h2>
+
+          <div class="expertise-intro fade-in">
+            <p>
+              KaN Talent Search brings specialized knowledge across diverse
+              industries and roles, ensuring precise alignment with your unique
+              talent requirements.
+            </p>
+          </div>
+
+          <div class="expertise-container">
+            <!-- Industries Panel -->
+            <div class="expertise-panel fade-in fade-in-1">
+              <div class="expertise-panel-header">
+                <div class="expertise-icon" aria-label="Industries">
+                  <!-- Modern briefcase-network SVG icon -->
+                  <svg
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="vertical-align: middle"
+                  >
+                    <rect
+                      x="3"
+                      y="7"
+                      width="18"
+                      height="13"
+                      rx="2.5"
+                      fill="var(--accent)"
+                      fill-opacity="0.12"
+                    />
+                    <rect
+                      x="7"
+                      y="3"
+                      width="10"
+                      height="4"
+                      rx="1.5"
+                      fill="var(--accent)"
+                      fill-opacity="0.18"
+                    />
+                    <rect
+                      x="7"
+                      y="3"
+                      width="10"
+                      height="4"
+                      rx="1.5"
+                      stroke="var(--accent)"
+                      stroke-width="1.5"
+                    />
+                    <rect
+                      x="3"
+                      y="7"
+                      width="18"
+                      height="13"
+                      rx="2.5"
+                      stroke="var(--accent)"
+                      stroke-width="1.5"
+                    />
+                    <circle cx="8.5" cy="15.5" r="1.5" fill="var(--accent)" />
+                    <circle cx="15.5" cy="15.5" r="1.5" fill="var(--accent)" />
+                    <rect
+                      x="11"
+                      y="13"
+                      width="2"
+                      height="5"
+                      rx="1"
+                      fill="var(--accent)"
+                    />
+                  </svg>
+                </div>
+                <h3>Industries We Serve</h3>
+              </div>
+
+              <div class="expertise-grid">
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">📺</div>
+                  <h4>Media & Entertainment</h4>
+                  <p>
+                    Content creators, streaming platforms, and traditional media
+                    leadership
+                  </p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">🎨</div>
+                  <h4>Advertising & Marketing</h4>
+                  <p>
+                    Creative agencies, digital marketing, and brand development
+                    leadership
+                  </p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">💊</div>
+                  <h4>Healthcare & Wellness</h4>
+                  <p>
+                    Provider networks, health tech, and wellness organizations
+                  </p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">💰</div>
+                  <h4>Finance & Banking</h4>
+                  <p>
+                    Traditional banking, fintech, and financial services
+                    leadership
+                  </p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">💻</div>
+                  <h4>Technology & Innovation</h4>
+                  <p>SaaS, technology platforms, and innovative startups</p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">🛍️</div>
+                  <h4>Consumer & Retail</h4>
+                  <p>Consumer products, retail operations, and e-commerce</p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">🛠️</div>
+                  <h4>Professional Services</h4>
+                  <p>
+                    Consulting firms, service providers, and specialized
+                    consultancies
+                  </p>
+                </div>
+
+                <div class="expertise-card">
+                  <div class="expertise-card-icon">🌎</div>
+                  <h4>Global Expansion</h4>
+                  <p>
+                    Specialized talent acquisition for GCC and international
+                    markets
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Roles Panel -->
+            <div class="expertise-panel fade-in fade-in-2">
+              <div class="expertise-panel-header">
+                <div class="expertise-icon">💼</div>
+                <h3>Leadership</h3>
+              </div>
+              <p class="section-subtext">
+                Is your organization looking for solid Leadership level talent?
+              </p>
+
+              <div class="expertise-categories">
+                <div class="expertise-category">
+                  <div class="category-title">
+                    <div class="category-icon">👑</div>
+                    <h4>Executive Leadership</h4>
+                  </div>
+                  <div class="role-checkboxes">
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="CEO"
+                        class="role-input"
+                        data-role="CEO"
+                      />
+                      <span class="role-label">CEO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="CFO"
+                        class="role-input"
+                        data-role="CFO"
+                      />
+                      <span class="role-label">CFO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="CTO"
+                        class="role-input"
+                        data-role="CTO"
+                      />
+                      <span class="role-label">CTO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="CIO"
+                        class="role-input"
+                        data-role="CIO"
+                      />
+                      <span class="role-label">CIO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="CMO"
+                        class="role-input"
+                        data-role="CMO"
+                      />
+                      <span class="role-label">CMO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="COO"
+                        class="role-input"
+                        data-role="COO"
+                      />
+                      <span class="role-label">COO</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Board"
+                        class="role-input"
+                        data-role="Board Member"
+                      />
+                      <span class="role-label">Board Members</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="expertise-category">
+                  <div class="category-title">
+                    <div class="category-icon">⏱️</div>
+                    <h4>Flexible Leadership</h4>
+                  </div>
+                  <div class="role-checkboxes">
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Fractional"
+                        class="role-input"
+                        data-role="Fractional CXO"
+                      />
+                      <span class="role-label">Fractional CXOs</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Interim"
+                        class="role-input"
+                        data-role="Interim Executive"
+                      />
+                      <span class="role-label">Interim Executives</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Project"
+                        class="role-input"
+                        data-role="Project Leader"
+                      />
+                      <span class="role-label">Project Leaders</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Advisory"
+                        class="role-input"
+                        data-role="Advisory Role"
+                      />
+                      <span class="role-label">Advisory Roles</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="expertise-category">
+                  <div class="category-title">
+                    <div class="category-icon">💡</div>
+                    <h4>Specialized Talent</h4>
+                  </div>
+                  <div class="role-checkboxes">
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="VP"
+                        class="role-input"
+                        data-role="VP & Director Level"
+                      />
+                      <span class="role-label">VP & Director Level</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Technical"
+                        class="role-input"
+                        data-role="Technical Specialist"
+                      />
+                      <span class="role-label">Technical Specialists</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Creative"
+                        class="role-input"
+                        data-role="Creative Director"
+                      />
+                      <span class="role-label">Creative Directors</span>
+                    </label>
+                    <label class="role-checkbox">
+                      <input
+                        type="checkbox"
+                        name="role"
+                        value="Functional"
+                        class="role-input"
+                        data-role="Functional Leader"
+                      />
+                      <span class="role-label">Functional Leaders</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="expertise-cta fade-in">
+            <a href="#contact" class="btn btn-secondary default-cta"
+              >Discuss Your Specific Needs</a
+            >
+            <button
+              type="button"
+              class="btn btn-primary roles-cta hidden"
+              id="requestSelectedRolesBtn"
+              aria-label="Request for Selected Roles"
+            >
+              Request for Selected Roles <span class="selected-count">(0)</span>
+            </button>
+            <!-- Accessibility: changed from <a> to <button> for correct semantics -->
+          </div>
+        </div>
+      </section>
+
+      <!-- CLIENTS SECTION -->
+      <!-- <section id="clients">
+            <div class="container">
+                <h2 class="fade-in">🌍 Trusted by Global Leaders</h2>
+                <div class="clients-grid">
+                    <div class="client-logo fade-in fade-in-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/HSBC_logo_%282018%29.svg" alt="HSBC Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/PricewaterhouseCoopers_Logo.svg" alt="PwC Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-1">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_UNICEF.svg" alt="UNICEF Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/BBDO.svg" alt="BBDO Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Omnicom_Group_logo.svg" alt="Omnicom Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-2">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Pfizer_%282021%29.svg" alt="Pfizer Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/d/d4/Baker_McKenzie_logo.svg" alt="Baker McKenzie Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/TBWA_New_Branding_Logo.svg/250px-TBWA_New_Branding_Logo.svg.png" alt="TBWA Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Deloitte.svg" alt="Deloitte Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" loading="lazy">
+                    </div>
+                    <div class="client-logo fade-in fade-in-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Unilever_text_logo.svg" alt="Unilever Logo" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+      <!-- CONTACT SECTION -->
+      <section id="contact">
+        <div class="container">
+          <div class="section-label fade-in">Reach Out</div>
+          <h2 class="section-title fade-in">
+            Let's Find the
+            <span class="highlight-text">Right Talent</span> Together
+          </h2>
+
+          <div class="contact-wrapper">
+            <div class="contact-content fade-in fade-in-1">
+              <div class="contact-intro">
+                <p>
+                  Ready to transform your leadership hiring? Our team is here to
+                  help you build high-performing teams with the right
+                  executives.
+                </p>
+              </div>
+
+              <div class="contact-info-cards">
+                <div class="contact-card">
+                  <div class="contact-icon">📧</div>
+                  <div class="contact-detail">
+                    <h4>Email Us</h4>
+                    <a href="mailto:connect@kansearch.com" class="contact-link"
+                      >connect@kansearch.com</a
+                    >
+                  </div>
+                </div>
+
+                <div class="contact-card">
+                  <div class="contact-icon">📱</div>
+                  <div class="contact-detail">
+                    <h4>Call Us</h4>
+                    <a href="tel:+918886954540" class="contact-link"
+                      >+91 88869 54540</a
+                    >
+                  </div>
+                </div>
+
+                <div class="contact-card">
+                  <div class="contact-icon">🌎</div>
+                  <div class="contact-detail">
+                    <h4>Global Offices</h4>
+                    <div class="location-tags">
+                      <span>Hyderabad</span>
+                      <span>New York</span>
+                      <span>Bangalore</span>
+                      <span>Chennai</span>
+                      <span>Gurgaon</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="contact-card mother-site-card">
+                  <div class="contact-icon">🏢</div>
+                  <div class="contact-detail">
+                    <h4>Holding Company</h4>
+                    <a
+                      href="https://www.kanassociates.com/"
+                      target="_blank"
+                      rel="noopener"
+                      class="contact-link"
+                    >
+                      <div class="mother-site">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 433 459"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="card-logo-svg"
+                        >
+                          <path
+                            d="M67.7706 138.024L90.3041 251.659L0.170758 269.36L67.7706 138.024Z"
+                            fill="#D7E026"
+                          />
+                          <path
+                            d="M246.949 435.358L113.462 367.399L227.828 343.157L246.949 435.358Z"
+                            fill="#EE4599"
+                          />
+                          <path
+                            d="M318.98 206.754L411.836 191.046L342.152 321.597L318.98 206.754Z"
+                            fill="#ED0977"
+                          />
+                          <path
+                            d="M163.745 22.9284L296.483 92.3383L181.86 115.332L163.745 22.9284Z"
+                            fill="#F283B5"
+                          />
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M205.046 229.578L67.4639 137.995L90.4634 252.577L113.463 367.16L205.046 229.578Z"
+                            fill="#37B04A"
+                          />
+                          <path
+                            d="M296.628 91.9962L67.4639 137.995L205.046 229.578L296.628 91.9962Z"
+                            fill="#44C8F5"
+                          />
+                          <path
+                            d="M113.463 367.16L342.627 321.161L205.046 229.578L113.463 367.16Z"
+                            fill="#C82127"
+                          />
+                          <path
+                            d="M205.046 229.578L342.627 321.161L319.628 206.578L205.046 229.578Z"
+                            fill="#ED0977"
+                          />
+                          <path
+                            d="M296.628 91.9962L205.046 229.578L319.628 206.578L296.628 91.9962Z"
+                            fill="#D7E026"
+                          />
+                        </svg>
+                        <span>KaN Associates</span>
+                      </div>
+                      <div class="visit-site">Visit Official Website →</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-cta">
+                <button
+                  type="button"
+                  class="btn btn-secondary schedule-call-btn"
+                  id="scheduleCallBtn"
+                  aria-label="Schedule a Call"
+                >
+                  Schedule a Call
+                </button>
+                <!-- Accessibility: changed from <a> to <button> for correct semantics -->
+              </div>
+            </div>
+
+            <div class="contact-form-wrapper fade-in fade-in-2">
+              <form
+                id="contact-form"
+                class="contact-form"
+                action="https://formspree.io/connect@kansearch.com"
+                method="POST"
+              >
+                <h3>Send Us a Message</h3>
+
+                <div class="selected-roles-wrapper">
+                  <div class="roles-header">
+                    <label class="selected-roles-label" title="Click 'Select Roles' to choose the roles you're interested in">Selected Roles:</label>
+                    <a
+                      href="#expertise"
+                      class="select-roles-btn"
+                      id="selectRolesBtn"
+                      >Select Roles <span class="btn-icon">↓</span></a
+                    >
+                  </div>
+                  <div id="selectedRoles" class="selected-roles">
+                    <span class="no-roles-message">No roles selected yet. Click "Select Roles" to choose positions you're interested in.</span>
+                  </div>
+                  <input
+                    type="hidden"
+                    name="selected_roles"
+                    id="selectedRolesInput"
+                  />
+                </div>
+
+                <div class="floating-label-group">
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="floating-input"
+                    placeholder="Your full name"
+                  />
+                  <label for="name" class="floating-label required">Full Name</label>
+                  <div class="error-message">Please enter your full name</div>
+                </div>
+
+                <div class="floating-label-group">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="floating-input"
+                    placeholder="your@email.com"
+                  />
+                  <label for="email" class="floating-label required"
+                    >Email Address</label
+                  >
+                  <div class="error-message">Please enter a valid email address</div>
+                </div>
+
+                <div class="floating-label-group">
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="floating-input"
+                    placeholder="Your company name"
+                  />
+                  <label for="company" class="floating-label"
+                    >Company (Optional)</label
+                  >
+                </div>
+
+                <div class="floating-label-group">
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows="4"
+                    required
+                    class="floating-input"
+                    placeholder="Tell us about your needs"
+                  ></textarea>
+                  <label for="message" class="floating-label required"
+                    >How can we help you?</label
+                  >
+                  <div class="error-message">Please provide some details about your request</div>
+                </div>
+
+                <div class="form-footer">
+                  <button type="submit" class="btn btn-primary submit-btn" id="contact-submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-icon">→</span>
+                  </button>
+                  <p class="form-note">We'll get back to you within 24 hours</p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-brand">
+              <h3 class="footer-logo">KaN<span>Talent Search</span></h3>
+              <p class="footer-tagline">
+                Productivity-Driven Executive Search & Leadership Solutions
+              </p>
+              <div class="footer-social">
+                <a href="#" class="social-link" aria-label="LinkedIn"
+                  ><i class="social-icon">in</i></a
+                >
+                <a href="#" class="social-link" aria-label="Twitter"
+                  ><i class="social-icon">𝕏</i></a
+                >
+                <a href="#" class="social-link" aria-label="Instagram"
+                  ><i class="social-icon">📷</i></a
+                >
+              </div>
+            </div>
+
+            <div class="footer-nav">
+              <h4>Navigation</h4>
+              <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#problem">The Problem</a></li>
+                <li><a href="#solution">Our Solution</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Choose Us</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <ul>
+                <li><i class="footer-icon">📍</i> Hyderabad, Telangana</li>
+                <li><i class="footer-icon">📱</i> +91 88869 54540</li>
+                <li><i class="footer-icon">✉️</i> connect@kansearch.com</li>
+              </ul>
+            </div>
+
+            <div class="footer-subscribe">
+              <h4>Stay Connected</h4>
+              <p>
+                Subscribe to our newsletter for industry insights and leadership
+                trends.
+              </p>
+              <div class="subscribe-form">
+                <input
+                  type="email"
+                  class="subscribe-input"
+                  placeholder="Your email address"
+                  aria-label="Subscribe with email"
+                />
+                <button class="subscribe-btn">Subscribe</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">
+            &copy; 2025 KaN Talent Search. All rights reserved.
+          </p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+          <p class="disclaimer">
+            Confidential – Not for Public Consumption or Distribution
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- CSS Verification Script -->
+    <script>
+      // Add a class to the body once CSS has loaded to help with debugging
+      document.addEventListener("DOMContentLoaded", () => {
+        // Check if basic styles applied
+        setTimeout(() => {
+          const bodyBg = getComputedStyle(document.body).backgroundColor;
+          if (bodyBg === "rgb(18, 18, 18)" || bodyBg === "#121212") {
+            document.body.classList.add("styled");
+          } else {
+            console.warn(
+              "CSS may not be loading correctly - background color check failed"
+            );
+          }
+        }, 100);
+      });
+    </script>
+    <script type="module" src="src/utils/CSSValidator.js"></script>
+    <script type="module" src="src/index.js" defer></script>
+  </body>
+</html>

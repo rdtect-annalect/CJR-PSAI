@@ -1,0 +1,187 @@
+@layer components {
+  /* v1.0.0 Problem Section Component */
+  
+  /* PROBLEM SECTION */
+  #problem {
+    background-color: var(--secondary-bg);
+    position: relative;
+  }
+  
+  /* Problem container layout */
+  .problem-container {
+    display: grid;
+    gap: 3rem;
+  }
+  
+  @media (min-width: 992px) {
+    .problem-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+  
+  /* Statistics cards */
+  .problem-stats {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  @media (min-width: 576px) {
+    .problem-stats {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+  
+  .stat-card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .stat-card:hover::before {
+    transform: scaleX(1);
+  }
+  
+  .stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-source {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  
+  /* Improved problem list */
+  .problem-list {
+    margin-top: 1.5rem;
+  }
+  
+  .problem-list h3 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .problem-list li {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .problem-list li:hover {
+    transform: translateX(5px);
+  }
+  
+  .bullet-icon {
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    color: var(--accent);
+    font-size: 1.2rem;
+  }
+  
+  .problem-list li strong {
+    font-weight: 600;
+    color: var(--primary-text);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  
+  .problem-list li p {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  /* Promise block styling */
+  .promise-block {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    margin-top: 3rem;
+    border-left: 4px solid var(--accent);
+    transition: var(--transition-base);
+  }
+  
+  .promise-block:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+  }
+  
+  .promise-block p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+  
+  .promise-block h3 {
+    color: var(--primary-text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .promise-icon {
+    margin-right: 0.75rem;
+    display: inline-block;
+  }
+  
+  .text-button {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: var(--transition-base);
+  }
+  
+  .text-button .arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .text-button:hover .arrow {
+    transform: translateX(5px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .problem-stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .promise-block {
+      padding: 1.5rem;
+    }
+  }
+}

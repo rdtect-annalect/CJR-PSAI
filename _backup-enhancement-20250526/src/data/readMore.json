@@ -1,0 +1,58 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "HOW WE'RE USING AI",
+      "authors": "BY MIKE ANANNY & MATT PEARCE",
+      "date": "May 12, 2025",
+      "link": "https://www.cjr.org/feature-2/how-were-using-ai-tech-gina-chua-nicholas-thompson-emilia-david-zach-seward-millie-tran.php",
+      "titleLines": ["HOW", "We're", "Using", "AI", "-"]
+    },
+    {
+      "id": 2,
+      "title": "GETTING MY NEWS FROM CHATGPT",
+      "authors": "BY LAURA PRESTON",
+      "date": "May 13, 2025",
+      "link": "https://www.cjr.org/feature-2/getting-my-news-from-chatgpt-ai.php",
+      "titleLines": ["GETTING", "MY NEWS", "FROM", "CHATGPT", "-"]
+    },
+    {
+      "id": 3,
+      "title": "DO AI DETECTION TOOLS WORK?",
+      "authors": "BY YONA TR GOLDING",
+      "date": "May 14, 2025",
+      "link": "https://www.cjr.org/analysis/do-ai-detection-tools-work-fake-or-real-images.php",
+      "titleLines": ["DO AI", "DETECTION", "TOOLS", "WORK?", "-"]
+    },
+    {
+      "id": 4,
+      "title": "STEVEN LEVY ON AI AND THE PRESS",
+      "authors": "BY CAMILLE BROMLEY",
+      "date": "May 14, 2025",
+      "link": "https://www.cjr.org/the_media_today/qa_steven_levy_ai_media.php",
+      "titleLines": ["Steven", "Levy On", "AI and", "the Press", "-"]
+    },
+    {
+      "id": 5,
+      "title": "THE RISE OF AI LOCAL NEWS",
+      "authors": "BY ROBERTO FERDMAN",
+      "date": "May 15, 2025",
+      "link": "https://www.cjr.org/analysis/ai-local-news-civic-sunlight-maine.php",
+      "titleLines": ["The Rise", "of AI", "Local", "News", "-"]
+    },
+    {
+      "id": 6,
+      "title": "THE EXPERIMENT",
+      "authors": "BY SACHA BIAZZO",
+      "date": "May 16, 2025",
+      "link": "https://www.cjr.org/analysis/il-foglio-claudio-cerasa-italian-ai-newspaper.php",
+      "titleLines": ["THE", "EXPERIMENT", "", "", "-"]
+    }
+  ],
+  "metadata": {
+    "sectionTitle": "HOW AI IS RESHAPING JOURNALISM",
+    "sectionSubtitle": "JOURNALISM",
+    "totalArticles": 6,
+    "lastUpdated": "2025-05-23"
+  }
+}

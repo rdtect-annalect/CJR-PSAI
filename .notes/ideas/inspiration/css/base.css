@@ -1,0 +1,471 @@
+/* 
+  KanSearch Base CSS - Consolidated from style.css and utilities.css
+  v1.0.3
+*/
+
+/* Define the cascade layer order explicitly */
+@layer utilities, base, components, responsive, overrides;
+
+@layer utilities {
+  /* CSS Variables & Tokens */
+  :root {
+    /* Dark theme color palette */
+    --primary-bg: #121212;
+    --secondary-bg: #1e1e1e;
+    --card-bg: #252525;
+    --primary-text: #ffffff;
+    --secondary-text: #b3b3b3;
+    --accent: #8c52ff;
+    --accent-hover: #9d6aff;
+    --btn-primary: #8c52ff;
+    --btn-primary-hover: #9d6aff;
+    --btn-secondary: #2d2d2d;
+    --btn-secondary-hover: #3d3d3d;
+
+    /* Border radius variables */
+    --border-radius-sm: 0.3rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+
+    /* Transition variables */
+    --transition-base: all 0.3s ease;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    /* Shadow variables */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+    --shadow-accent: 0 4px 6px rgba(140, 82, 255, 0.2);
+
+    /* Spacing variables */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+
+    /* Layout variables */
+    --container-max-width: 1200px;
+    --header-height: 80px;
+
+    /* Calculated variables */
+    --gap-lg: calc(var(--space-md) * 2);
+    --gap-xl: calc(var(--space-md) * 3);
+
+    /* CSS Validation Property */
+    --css-loaded: "base-v1.0.3";
+  }
+
+  /* Utility Classes */
+  /* Text alignment */
+  .text-center {
+    text-align: center;
+  }
+  .text-left {
+    text-align: left;
+  }
+  .text-right {
+    text-align: right;
+  }
+
+  /* Display utilities */
+  .hidden {
+    display: none !important;
+  }
+  .block {
+    display: block;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .flex {
+    display: flex;
+  }
+
+  /* Flex utilities */
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+
+  /* Spacing utilities */
+  .m-0 {
+    margin: 0;
+  }
+  .mt-xs {
+    margin-top: var(--space-xs);
+  }
+  .mt-sm {
+    margin-top: var(--space-sm);
+  }
+  .mt-md {
+    margin-top: var(--space-md);
+  }
+  .mb-xs {
+    margin-bottom: var(--space-xs);
+  }
+  .mb-sm {
+    margin-bottom: var(--space-sm);
+  }
+  .mb-md {
+    margin-bottom: var(--space-md);
+  }
+
+  /* Padding utilities */
+  .p-0 {
+    padding: 0;
+  }
+  .p-xs {
+    padding: var(--space-xs);
+  }
+  .p-sm {
+    padding: var(--space-sm);
+  }
+  .p-md {
+    padding: var(--space-md);
+  }
+
+  /* Width utilities */
+  .w-full {
+    width: 100%;
+  }
+  .w-half {
+    width: 50%;
+  }
+  .max-w-full {
+    max-width: 100%;
+  }
+
+  /* Common UI patterns */
+  .card-base {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    transition: var(--transition-base);
+  }
+
+  .btn-base {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: none;
+    outline: none;
+  }
+
+  /* Transitions */
+  .transition-all {
+    transition: var(--transition-base);
+  }
+
+  /* Hover effects */
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-slide-x:hover {
+    transform: translateX(5px);
+  }
+
+  /* Validation class - for debugging only */
+  .css-validator::after {
+    content: var(--css-loaded, "CSS not loaded properly");
+    display: none;
+  }
+}
+
+@layer base {
+  /* RESET & BASE STYLES */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: var(--secondary-text);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--accent);
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+  }
+
+  section {
+    padding: clamp(4rem, 10vh, 8rem) clamp(1rem, 5vw, 2rem);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* BUTTON STYLES */
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    border: none;
+    outline: none;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Unified focus states for better accessibility */
+  .btn:focus-visible,
+  .role-tag:focus-visible,
+  .submit-btn:focus-visible,
+  .select-roles-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .btn-primary {
+    background-color: var(--btn-primary);
+    color: white;
+    box-shadow: var(--shadow-accent);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--btn-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(140, 82, 255, 0.3);
+  }
+
+  .btn-secondary {
+    background-color: var(--btn-secondary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--btn-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+@layer components {
+  /* --- Consolidated from card-components.css --- */
+  /* v1.0.0 Card Component Styles */
+  .solution-card,
+  .service-card {
+    position: relative;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    transition: var(--transition-base);
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: var(--shadow-sm);
+  }
+  .solution-card::before,
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(140, 82, 255, 0.15) 0%,
+      rgba(18, 18, 18, 0) 100%
+    );
+    opacity: 0;
+    z-index: -1;
+    transition: var(--transition-base);
+  }
+  .solution-card:hover::before,
+  .service-card:hover::before {
+    opacity: 1;
+  }
+  .solution-card:hover,
+  .service-card:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transform: translateY(-10px);
+  }
+  .solution-card .icon,
+  .service-card .icon {
+    transition: transform 0.3s ease;
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+  }
+  .solution-card:hover .icon,
+  .service-card:hover .icon {
+    transform: scale(1.2);
+  }
+  .logo span {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  .logo:hover span {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(140, 82, 255, 0.5);
+  }
+  .pulse {
+    animation: pulse 0.8s ease-in-out;
+  }
+  .form-success-message {
+    background-color: rgba(46, 204, 113, 0.1);
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .form-success-message p {
+    color: #2ecc71;
+    font-weight: 500;
+  }
+  .header-hidden {
+    transform: translateY(-100%);
+  }
+  .hero-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(140, 82, 255, 0.1) 0%,
+      rgba(18, 18, 18, 0) 70%
+    );
+  }
+  .expertise-chip {
+    transition: all 0.3s ease;
+  }
+  .expertise-chip-hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: var(--accent);
+    color: white;
+  }
+  @media (max-width: 768px) {
+    .solution-card:hover,
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+  }
+
+  /* --- Consolidated from ui-components.css --- */
+  /* v1.0.0 UI Component: Back to Top Button */
+  .back-to-top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: var(--transition-base);
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 900;
+    box-shadow: var(--shadow-md);
+  }
+  .back-to-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .back-to-top-btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+  }
+  .back-to-top-btn:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+  @media (max-width: 768px) {
+    .back-to-top-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  }
+}

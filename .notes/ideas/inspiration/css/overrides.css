@@ -1,0 +1,43 @@
+@layer overrides {
+  /* v1.0.1 Critical Overrides */
+
+  /*
+  IMPORTANT: Only add styles here that absolutely must override everything else.
+  When possible, fix issues in their proper component files instead.
+  All overrides should have tracking comments explaining why they're needed and 
+  when they can potentially be removed or integrated properly.
+  */
+
+  /* Force basic styles when cascade layers might be failing */
+  body:not(.styled) {
+    /* Apply only if no other styles are working */
+    background-color: #121212 !important;
+    color: #ffffff !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  }
+
+  /* Example other overrides: */
+  /* 
+  Fix: Temporary Safari z-index bug with hero animation - Issue #123 
+  TODO: Remove after Safari 16.5 release (est. June 2025)
+  */
+  /* 
+  .safari .hero-animation {
+    z-index: 5 !important;
+  }
+  */
+
+  /*
+  Critical accessibility fixes should go here if they need to override
+  other styles. For example:
+  */
+  /* 
+  Fix: Ensure sufficient color contrast on certain elements - WCAG 2.1 AA compliance
+  */
+  /* 
+  .high-contrast-mode .secondary-text {
+    color: #e0e0e0 !important;
+  }
+  */
+}

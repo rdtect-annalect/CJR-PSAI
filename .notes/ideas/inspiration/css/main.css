@@ -1,0 +1,35 @@
+/* 
+  KanSearch CSS Import Orchestrator
+  v1.0.3
+  
+  This file imports all CSS modules in the correct cascade order.
+  Base CSS is linked directly in HTML for critical rendering path.
+  This file imports all other modules in the appropriate cascade layers.
+*/
+
+/* Define the cascade layer order explicitly */
+@layer utilities, base, components, responsive, overrides;
+
+/* Components Layer: Effects and Visual Elements */
+@layer components {
+  @import url("./effects.css");
+}
+
+/* Components Layer: Sections */
+@layer components {
+  /* Core layout sections */
+  @import url("./sections/header.css");
+  @import url("./sections/hero.css");
+  @import url("./sections/problem.css");
+
+  /* Content sections */
+  @import url("./sections/solution.css");
+  @import url("./sections/services.css");
+  @import url("./sections/why-us.css");
+  @import url("./sections/expertise.css");
+  @import url("./sections/clients.css");
+  @import url("./sections/contact.css");
+
+  /* Footer */
+  @import url("./sections/footer.css");
+}

@@ -1,0 +1,386 @@
+{
+  "batches": {
+    "batch1": [
+      {
+        "title": "Shrimp Jesus",
+        "description": "Surreal images like this have gone viral, fooling many people into believing they were real.",
+        "stats": {
+          "views": 2900000,
+          "shares": 5500,
+          "likes": 53000
+        },
+        "sources": [
+          "https://www.forbes.com/sites/danidiplacido/2024/04/28/facebooks-surreal-shrimp-jesus-trend-explained/",
+          "https://www.linkedin.com/pulse/shrimp-jesus-ai-tsunami-navigating-sea-digital-sanzana-ph-d--4ubyc/"
+        ],
+        "image": "images/fightingwithAI/batch1/Shrimp-Jesus.jpg"
+      },
+      {
+        "title": "Baby Skydiving",
+        "description": "A digital creator introduced his series of images featuring babies skydiving on Facebook.",
+        "stats": {
+          "views": 91000,
+          "likes": 20000
+        },
+        "sources": [
+          "https://www.boredpanda.com/ai-generated-images-of-babies-skydiving-timothy-j-nemeth/"
+        ],
+        "image": "../images/fightingwithAI/batch1/baby.jpg"
+      },
+      {
+        "title": "Giant Strawberry",
+        "description": "Part of a trend of making images featuring huge fruits and vegetables. People even travelled to try and see these fruits.",
+        "stats": {
+          "likes": 587000,
+          "shares": 108000
+        },
+        "sources": [
+          "https://au.news.yahoo.com/amen-facebook-boomers-praising-jesus-143102189.html"
+        ],
+        "image": "../images/fightingwithAI/batch1/Giant.jpg"
+      },
+      {
+        "title": "Kid with Plastic Bottle Jesus",
+        "description": "In early 2024, a wave of images hit Facebook that centered on an odd theme: plastic bottles.",
+        "stats": {
+          "views": 346000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch1/Kid.jpg"
+      },
+      {
+        "title": "McDonalds Smoking",
+        "description": "The curious image, which has the overall tone and feel of a film photo taken in the late 1980s, was shared on X, where it racked up over 22 million views in just two days.",
+        "stats": {
+          "views": 22000000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch1/McDonalds.jpg"
+      },
+      {
+        "title": "Pikachu at Protest",
+        "description": "Images like these, depicting Pikachu at a Turkish protest, recently went viral across social media.",
+        "stats": {
+          "likes": 164000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch1/Pikachu.jpg"
+      },
+      {
+        "title": "Swifties For Trump",
+        "description": "Trump posted these images on his Truth account as part of his campaign, not realizing the creator of these AI-generated images were created for satire.",
+        "stats": {
+          "views": 3200000,
+          "shares": 16000,
+          "likes": 91000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch1/Swifties.jpg"
+      },
+      {
+        "title": "Girl Crying With Dog",
+        "description": "This image went viral during Hurricane Milton. It was used by right wing MAGA supporters to show the effects of Biden's lack of support for residents in the wake of the hurricane.",
+        "stats": {
+          "views": 420000,
+          "likes": 21000,
+          "shares": 7100
+        },
+        "sources": [
+          "https://www.rollingstone.com/culture/culture-news/ai-girl-maga-hurricane-helene-1235125285/"
+        ],
+        "image": "../images/fightingwithAI/batch1/girl_cry.jpg"
+      }
+    ],
+    "batch2": [
+      {
+        "title": "Queen Elizabeth Dancing",
+        "description": "Part of a viral series of images rendered by AI. This one depicts the late Queen Elizabeth II breaking it down on the dance floor.",
+        "stats": {
+          "likes": 18000,
+          "shares": 4500
+        },
+        "sources": [
+          "https://nypost.com/2023/05/17/want-to-see-queen-elizabeth-get-low-on-the-dance-floor-thank-ai-for-that/"
+        ],
+        "image": "../images/fightingwithAI/batch2/Elizabeth.jpg"
+      },
+      {
+        "title": "Julian Assange in Prison",
+        "description": "An image of Julian Assange looking sick in Belmarsh prison went viral at the end of 2023.",
+        "stats": {
+          "views": 500000,
+          "shares": 4500
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch2/Julian.jpg"
+      },
+      {
+        "title": "Katy Perry Met Gala",
+        "description": "This image of Katy Perry at the Met Gala went viral. Even Katy Perry's mother thought it was real. But she wasn't even at the event.",
+        "stats": {
+          "views": 17900000,
+          "likes": 2700000,
+          "comments": 18000
+        },
+        "sources": [
+          "https://www.nbcnews.com/tech/tech-news/katy-perrys-rihanna-met-gala-fake-ai-images-spread-rcna151163",
+          "https://www.nytimes.com/2024/05/07/style/katy-perry-met-gala-ai.html"
+        ],
+        "image": "../images/fightingwithAI/batch2/Katy.jpg"
+      },
+      {
+        "title": "Friends at Party",
+        "description": "A developer on X went viral after sharing what appeared to be vintage-style snaps at a house party.",
+        "stats": {
+          "views": 32200000,
+          "shares": 12000,
+          "likes": 18000
+        },
+        "sources": [
+          "https://nypost.com/2023/01/16/ai-generated-party-pics-look-eerily-real-unless-you-can-spot-these-tells/"
+        ],
+        "image": "../images/fightingwithAI/batch2/Party.jpg"
+      },
+      {
+        "title": "Pope in Designer Coat",
+        "description": "This image of the Pope in a designer jacket was first published on Reddit and went viral because of how real it looks.",
+        "stats": {
+          "views": 28000000,
+          "shares": 28000,
+          "likes": 184000
+        },
+        "sources": [
+          "https://www.cbsnews.com/news/pope-francis-puffer-jacket-fake-photos-deepfake-power-peril-of-ai/"
+        ],
+        "image": "../images/fightingwithAI/batch2/Pope.jpg"
+      },
+      {
+        "title": "Mike Tyson Gaming",
+        "description": "Part of a series of AI images depicting celebrities playing their own video games.",
+        "stats": {
+          "views": 3000,
+          "likes": 1700
+        },
+        "sources": [
+          "https://www.threads.net/@theaipage/post/DIQPdVTyQlP/this-new-ai-image-trend-reimagines-iconic-game-characters-as-if-they-were-real-p"
+        ],
+        "image": "../images/fightingwithAI/batch2/Tyson.jpg"
+      },
+      {
+        "title": "Warren Buffett",
+        "description": "Part of a trend that showed the world's richest people as if they were living in developing countries.",
+        "stats": {
+          "views": 4000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch2/Warren.jpg"
+      },
+      {
+        "title": "Will Smith Spaghetti",
+        "description": "Part of a series of AI content showing Will Smith eating spaghetti over a number of years. The images got more and more realistic as the AI software improved. Will Smith himself even parodied the videos.",
+        "stats": {
+          "views": 700000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch2/WillSmith.jpg"
+      },
+      {
+        "title": "Mark Zuckerberg Window",
+        "description": "This meme was popularized in July 2023 after the launch of Meta's new text-based app Threads.",
+        "stats": {
+          "views": 144000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch2/Zuckerberg.jpg"
+      },
+      {
+        "title": "Mr Bean",
+        "description": "This featured as part of a viral series of pop culture characters in strange situations.",
+        "stats": {
+          "shares": 6900,
+          "likes": 4600
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch2/mrBean.jpg"
+      }
+    ],
+    "batch3": [
+      {
+        "title": "Armed Men Ordering Food",
+        "description": "This image went viral because of how realistic it looked, sparking online debate about guns in public spaces.",
+        "stats": {
+          "views": 1900000,
+          "shares": 5600,
+          "likes": 37000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Armed.jpg"
+      },
+      {
+        "title": "Jair Bolsonaro Drinking",
+        "description": "Images like these of the former Brazilian president were spread to attack him by his political opponents.",
+        "stats": {
+          "interactions": 1000000
+        },
+        "sources": [
+          "https://oglobo.globo.com/english/noticia/2024/12/26/ai-generated-images-surge-on-x-amplifying-concerns-about-misinformation-risks.ghtml"
+        ],
+        "image": "../images/fightingwithAI/batch3/Bolsonaro.jpg"
+      },
+      {
+        "title": "Fictional Earthquake",
+        "description": "These images depicting an earthquake that never actually occurred in 2001 went viral.",
+        "stats": {
+          "views": 4000000,
+          "shares": 2700,
+          "likes": 9800
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Earthquake.jpg"
+      },
+      {
+        "title": "Flood in Bangladesh",
+        "description": "A set of images went viral, claiming to be from the recent floods reportedly caused by relentless monsoon rains and overflowing rivers in Bangladesh.",
+        "stats": {
+          "shares": 2400
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Flood.jpg"
+      },
+      {
+        "title": "Hurricane Milton",
+        "description": "This clip shows the formation of a huge tornado over the city. Upon closer inspection, we noticed inconsistencies in the videos, such as reversed vehicle movements, misshaped homes and vehicles, and joined windows, suggesting that these videos are likely AI-generated.",
+        "stats": {
+          "views": 4200000,
+          "shares": 21700,
+          "likes": 336000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Hurricane.jpg"
+      },
+      {
+        "title": "Israeli March",
+        "description": "The image went viral to show support to Israel. But quickly people start calling it out.",
+        "stats": {
+          "views": 217000,
+          "shares": 1200,
+          "likes": 11000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Israeli.jpg"
+      },
+      {
+        "title": "Pentagon Explosion",
+        "description": "Multiple verified X accounts shared images like this showing an explosion near the Pentagon. People believed it and the stock market even dipped as a result.",
+        "stats": {
+          "views": 2000000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Pentagon.jpg"
+      },
+      {
+        "title": "Rescuing Polar Bear",
+        "description": "Late last year this video went viral. It was a video showing people rescuing a young polar bear that was stranded on a melting iceberg.",
+        "stats": {
+          "views": 133600000,
+          "shares": 1100000,
+          "likes": 9500000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Rescuing.jpg"
+      },
+      {
+        "title": "Turkish Ministers in Syria",
+        "description": "The spread of misinformation about the Middle East conflict on social media makes it even harder for people to stay accurately informed — and AI-generated images like this only add to the confusion.",
+        "stats": {
+          "views": 19500
+        },
+        "sources": [
+          "https://x.com/aryjeay/status/1868034685542289471?s=46&t=TdE3zE227tnZVuZ31bFzOg"
+        ],
+        "image": "../images/fightingwithAI/batch3/Turkish.jpg"
+      },
+      {
+        "title": "Ukranian Girl",
+        "description": "This image and others like it were widely shared in response to attacks on Ukraine by Russia.",
+        "stats": {
+          "views": 350000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch3/Ukranian.jpg"
+      }
+    ],
+    "batch4": [
+      {
+        "title": "Crying Woman in Gaza",
+        "description": "Images like this have been shared widely on social media, adding to the ongoing debate about the war in Gaza.",
+        "stats": {
+          "views": 681000,
+          "shares": 8500,
+          "likes": 17000,
+          "comments": 1200
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch4/Cryingwoman.jpg"
+      },
+      {
+        "title": "Luxor Temple",
+        "description": "Part of a growing trend of fabricated images and videos of historical events — blurring the line between fact and fiction.",
+        "stats": {
+          "views": 33100000,
+          "shares": 101000,
+          "likes": 1200000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch4/Luxor.jpg"
+      },
+      {
+        "title": "Mysterious UFO Crash",
+        "description": "A fake video of a UFO crash site in Arizona went viral but it's just an AI-generated hoax from a TikToker.",
+        "stats": {
+          "views": 120800000,
+          "shares": 588000,
+          "likes": 3700000
+        },
+        "sources": [],
+        "image": "../images/fightingwithAI/batch4/Mysterious.jpg"
+      },
+      {
+        "title": "Man Eating Pizza",
+        "description": "Example of realistic photo that stands out as fake because of distorted fingers and missing watch features.",
+        "stats": {
+          "views": 78000
+        },
+        "sources": [
+          "https://insight.kellogg.northwestern.edu/article/ai-photos-identification"
+        ],
+        "image": "../images/fightingwithAI/batch4/Pizza.jpg"
+      },
+      {
+        "title": "David Attenborough Polar Bear",
+        "description": "This AI generated image was created my Mid Journey proving how crazy AI images are getting.",
+        "stats": {
+          "likes": 16000,
+          "shares": 791
+        },
+        "sources": [
+          "https://cheezburger.com/19000069/_",
+          "https://www.reddit.com/r/weirddalle/comments/zlptxd/david_attenborough_wrestling_a_polar_bear/"
+        ],
+        "image": "../images/fightingwithAI/batch4/david.jpg"
+      },
+      {
+        "title": "Women in Old B&W Photo",
+        "description": "This AI generated image was submitted for a major photography competition and won the top prize.",
+        "stats": {
+          "likes": 791,
+          "shares": 16000
+        },
+        "sources": [
+          "https://www.scientificamerican.com/article/how-my-ai-image-won-a-major-photography-competition/"
+        ],
+        "image": "../images/fightingwithAI/batch4/oldwomen.jpg"
+      }
+    ]
+  }
+}
