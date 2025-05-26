@@ -1,0 +1,256 @@
+/* 
+ * PSAI - Section Styles
+ * Page section specific styles (no duplicate components)
+ */
+
+@layer components {
+
+  /* ===== SHARED SECTION STYLES ===== */
+  section {
+    min-height: 100vh;
+    padding: var(--space-16) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    
+  }
+
+  /* Section headers */
+  section h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-8);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* Section typography */
+  .subtitle {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .text-content {
+    color: var(--primary);
+  }
+
+  /* Text content variants */
+  .text-content.dark {
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .highlight {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    height: 100vh;
+    padding: 0;
+  }
+
+  .hero-gifs {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .hero-gifs img {
+    position: absolute;
+    width: clamp(150px, 20vw, 350px);
+  }
+
+  .gif-top {
+    top: 15%;
+    right: 5%;
+  }
+
+  .gif-bottom {
+    bottom: 10%;
+    left: 5%;
+  }
+
+  .hero-logo {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%) translateX(-15%);
+    width: 70%;
+    max-width: 700px;
+    z-index: 2;
+  }
+
+  @media (max-width: 992px) {
+    .hero-logo {
+      left: 50%;
+      bottom: 0%;
+      transform: translate(-50%, -10%);
+      width: 100%;
+    }
+
+    .hero-gifs {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  /* ===== ABOUT SECTION ===== */
+  .about {
+    background: var(--primary);
+    color: var(--white);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  /* Text content in about section card */
+  .about .text-content {
+    color: var(--black);
+    line-height: 2;
+    margin: 0;
+  }
+
+
+  /* ===== MUSIC VIDEO SECTION ===== */
+  .music-video {
+    background: var(--black);
+  }
+
+  /* ===== FIGHTING AI SECTION ===== */
+  .fighting-ai {
+    background: var(--black);
+    color: var(--white);
+    padding: var(--space-16) 0;
+  }
+
+  .fighting-ai h2,
+  .fighting-ai .subtitle {
+    color: var(--white);
+    text-align: center;
+  }
+
+  .fighting-ai .highlight {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: var(--space-2);
+    border-radius: 2rem;
+  }
+
+
+
+  .gallery {
+    min-height: 60vh;
+    margin: var(--space-12) 0 var(--space-8);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    max-width: 800px;
+  }
+
+  /* ===== WHY PSAI SECTION ===== */
+  .why-psai {
+    position: relative;
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .why-psai h2 {
+    color: var(--primary);
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: var(--space-8);
+  }
+
+  .why-psai .text-content {
+    color: var(--white);
+  }
+
+  /* ===== READING SECTION ===== */
+  .reading {
+    background: var(--pale-yellow);
+  }
+
+  .reading h2 {
+    color: var(--text-dark);
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  /* ===== SPOT AI SECTION ===== */
+  .spot-ai {
+    background: var(--black);
+    position: relative;
+  }
+
+  .spot-ai::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 79, 42, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* ===== WHAT IS CJR SECTION ===== */
+  .what-cjr {
+    background: var(--primary);
+    position: relative;
+  }
+
+
+
+  /* ===== RESPONSIVE SECTION ADJUSTMENTS ===== */
+  /* Mobile (< 768px) */
+  @media (max-width: 767px) {
+    section {
+      padding: var(--space-12) 0;
+      min-height: 100vh;
+      /* Allow sections to be shorter on mobile */
+    }
+
+    section h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: var(--space-6);
+    }
+
+    .hero-gifs img {
+      width: 100px;
+    }
+
+    .gallery,
+    .articles-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+
+    /* Mobile text size override */
+    .text-content {
+      font-size: var(--text-base);
+    }
+  }
+
+  /* Tablet (768px - 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    section {
+      padding: var(--space-12) var(--space-4);
+    }
+
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

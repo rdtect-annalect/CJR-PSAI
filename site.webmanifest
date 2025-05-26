@@ -1,0 +1,21 @@
+{
+  "name": "CJR PSAI",
+  "short_name": "PSAI",
+  "description": "The PSAi is a campaign initiative by Columbia Journalism Review, that uses viral AI images to teach people how to spot AI images—and highlight the role we all play in spreading fakes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF4F2A",
+  "icons": [
+    {
+      "src": "assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

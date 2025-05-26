@@ -1,0 +1,589 @@
+/* 
+ * PSAI - Component Styles
+ * Reusable components without duplicates
+ * 
+ * COMPONENTS INCLUDED:
+ * - Container (.container)
+ * - Navigation (.navbar, .nav-menu)
+ * - Buttons (.btn-primary)
+ * - Videos (.bg-video, .video-embed)
+ * - Carousel (.carousel)
+ * - Modal dialog (.modal)
+ * - Footer (.footer)
+ */
+
+@layer components;
+
+@layer components {
+
+  /* ===== CONTAINER ===== */
+  .container {
+    width: 100%;
+    position: relative;
+    z-index: var(--z-content);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space-16) var(--space-8);
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: var(--space-8) var(--space-4);
+    }
+  }
+
+  /* ===== NAVIGATION ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-navbar);
+    padding: var(--space-2) var(--space-8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    background: rgba(0, 0, 0, 0.3);
+    transition: all var(--transition-fast);
+  }
+
+  /* Add a subtle gradient for better text readability */
+  .navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .navbar.scrolled {
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo img {
+    height: 48px;
+    width: auto;
+    transition: transform var(--transition-fast);
+  }
+
+  .logo:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Mobile menu toggle */
+  .menu-toggle {
+    display: none;
+    width: 32px;
+    height: 32px;
+    padding: var(--space-2);
+    position: relative;
+  }
+
+  .menu-toggle span,
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    transition: all var(--transition);
+  }
+
+  .menu-toggle span {
+    position: relative;
+  }
+
+  .menu-toggle span::before,
+  .menu-toggle span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .menu-toggle span::before {
+    top: -8px;
+  }
+
+  .menu-toggle span::after {
+    top: 8px;
+  }
+
+  .menu-toggle[aria-expanded="true"] span {
+    background: transparent;
+  }
+
+  .menu-toggle[aria-expanded="true"] span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] span::after {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  /* Navigation menu */
+  .nav-menu {
+    display: flex;
+    gap: var(--space-4);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-menu a {
+    color: var(--white);
+    transition: all var(--transition-fast);
+  }
+
+  .nav-menu a:hover,
+  .nav-menu a:focus-visible {
+    color: var(--primary);
+    background: var(--overlay-light);
+  }
+
+  /* Mobile navigation */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      padding: var(--space-4);
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all var(--transition);
+    }
+
+    .nav-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-menu a {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  /* ===== BUTTONS ===== */
+  /* Single button style - rounded outline */
+  .btn {
+    /* Structure */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    /* Typography */
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+
+    /* Appearance */
+    cursor: pointer;
+    color: var(--white);
+    border: 2px solid var(--primary);
+    border-radius: 9999px;
+    background: transparent;
+    padding: var(--space-3) var(--space-6);
+
+    /* Animation */
+    transition: all var(--transition-fast);
+    will-change: transform, background, box-shadow;
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 79, 42, 0.1);
+  }
+
+  /* Small variant */
+  .btn-sm {
+    font-size: var(--text-xs);
+    padding: var(--space-2) var(--space-4);
+    letter-spacing: 0.15em;
+  }
+
+  /* Button in Fighting AI section */
+  .fighting-ai .btn[data-refresh] {
+    margin-top: var(--space-4);
+  }
+
+  /* Focus styles for accessibility */
+  .btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  /* ===== VIDEO COMPONENTS ===== */
+  .bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    /* Prevents video from capturing clicks */
+    will-change: transform;
+    /* Optimizes performance */
+  }
+
+
+  .video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* ===== CAROUSEL COMPONENTS ===== */
+  .carousel {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: var(--space-8) 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    transition: transform var(--transition);
+    will-change: transform;
+  }
+
+  .carousel-item {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    opacity: 0.7;
+    transition: opacity var(--transition);
+  }
+
+  .carousel-item.active {
+    opacity: 1;
+  }
+
+  .carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+  }
+
+  .carousel-btn {
+    width: 48px;
+    height: 48px;
+    background: var(--overlay-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+  }
+
+  .carousel-btn:hover,
+  .carousel-btn:focus-visible {
+    background: var(--primary);
+    transform: scale(1.05);
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--overlay-light);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+  .carousel-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+  }
+
+  /* ===== MODAL COMPONENTS ===== */
+  .modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-modal);
+    border: none;
+    background: transparent;
+    padding: var(--space-4);
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: auto;
+  }
+
+  .modal::backdrop {
+    background: var(--overlay-heavy);
+    -webkit-backdrop-filter: var(--modal-blur);
+    backdrop-filter: var(--modal-blur);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--overlay-light);
+    color: var(--white);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+  }
+
+  .modal-close:hover {
+    background: var(--primary);
+  }
+
+  .modal-content {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    color: var(--text-dark);
+  }
+
+  /* Modal variants */
+  .modal.dark .modal-content {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* ===== CARD COMPONENT ===== */
+  .card {
+    position: relative;
+    padding: var(--space-8);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    max-width: 85%;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ===== TEXT CONTENT COMPONENT ===== */
+  .text-content {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    line-height: 2;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 1;
+    letter-spacing: 0.07em;
+    /* Allow corner squares to be visible */
+    overflow: visible;
+    /* Visual effects */
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    /* Transitions */
+    transition: border 0.5s ease, transform 0.3s ease;
+    will-change: transform, border, box-shadow;
+  }
+
+  .card:hover {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* We need to use a pseudo-class to create the gradient overlay */
+  .card {
+    position: relative;
+  }
+
+  /* Create a gradient overlay using a nested element */
+  .card .card-overlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.02) 0%,
+        rgba(255, 255, 255, 0.02) 100%);
+    z-index: 0;
+    pointer-events: none;
+    transition: background 0.8s ease;
+  }
+
+  .card:hover .card-overlay {
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.02) 0%,
+        rgba(255, 255, 255, 0.02) 100%);
+  }
+
+  /* Define size + color in root scope or per component */
+  .card {
+    --corner-size: 4px;
+    --corner-color: var(--white);
+    --grid-size: 25px;
+    --corner-offset: calc(var(--corner-size) / -2);
+    /* Negative half size to center on grid intersections */
+  }
+
+  /* Add a grid overlay element */
+  .card {
+    position: relative;
+  }
+
+  /* Add a grid overlay as a separate pseudo-element */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Subtle pulse animation for grid on hover */
+  .card:hover::after {
+    opacity: 0.8;
+  }
+
+  /* Corner squares in each corner */
+  .card:before {
+    content: "";
+    position: absolute;
+    /* Adjust inset to position corner squares on grid intersections */
+    top: var(--corner-offset);
+    left: var(--corner-offset);
+    right: var(--corner-offset);
+    bottom: var(--corner-offset);
+    z-index: 3;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: var(--corner-size) var(--corner-size);
+    background-image:
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      /* top-left */
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      /* top-right */
+      linear-gradient(var(--corner-color), var(--corner-color)),
+      /* bottom-left */
+      linear-gradient(var(--corner-color), var(--corner-color));
+    /* bottom-right */
+    background-position:
+      top left,
+      top right,
+      bottom left,
+      bottom right;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Media queries for responsive cards */
+  @media (max-width: 768px) {
+    .card {
+      padding: var(--space-6);
+      font-size: var(--text-base);
+    }
+  }
+
+  /* ===== FOOTER COMPONENT ===== */
+  .footer {
+    background: var(--black);
+    padding: var(--space-8) 0;
+  }
+
+  .footer .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-8);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer .logo {
+    flex-shrink: 0;
+  }
+
+  .footer-nav {
+    font-family: var(--font-display);
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .footer-nav a {
+    color: var(--primary);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+  }
+
+  .footer-nav a:hover {
+    color: var(--primary-light);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .footer .container {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-nav {
+      justify-content: center;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}

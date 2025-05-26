@@ -1,0 +1,35 @@
+/* 
+ * PSAI - Main CSS Entry Point
+ * Clean, modern 6-file architecture with CSS layers
+ *
+ * RESPONSIVE BREAKPOINTS:
+ * - Mobile: max-width: 767px
+ * - Tablet: min-width: 768px, max-width: 991px
+ * - Desktop: min-width: 992px
+ * 
+ * LAYER ORGANIZATION:
+ * - base: variables, reset, typography
+ * - components: reusable UI elements, sections
+ * - utilities: helpers, animations
+ */
+
+/* Layer order for modern CSS cascade control */
+@layer base, components, utilities;
+
+/* Import design tokens and variables */
+@import url("./variables.css") layer(base);
+
+/* Import base styles and reset */
+@import url("./base.css") layer(base);
+
+/* Import reusable components */
+@import url("./components.css") layer(components);
+
+/* Import page sections */
+@import url("./sections.css") layer(components);
+
+/* Import animations and transitions */
+@import url("./animations.css") layer(utilities);
+
+/* Import utilities last for highest specificity */
+@import url("./utilities.css") layer(utilities);
